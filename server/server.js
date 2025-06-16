@@ -14,6 +14,8 @@ app.use("/uploads", express.static("uploads")); // Serve uploaded files from /up
 // 🔗 Routes
 const authRoute = require("./router/auth-router");        // Auth routes
 const profileRoutes = require("./router/profileRoutes");  // Profile routes
+const recoveryPlanRoute = require('./router/recoveryPlan');
+app.use('/api/recovery-plan', recoveryPlanRoute);
 
 
 app.use("/api/auth", authRoute);

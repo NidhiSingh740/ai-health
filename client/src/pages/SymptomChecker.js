@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './SymptomChecker.css';
 
 const SymptomChecker = () => {
   const [symptoms, setSymptoms] = useState('');

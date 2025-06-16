@@ -1,83 +1,105 @@
+/* SymptomChecker.css */
 
-.symptom-container {
-  max-width: 700px;
-  margin: 50px auto;
-  padding: 30px;
-  background: linear-gradient(to bottom right, #f0f9ff, #e0f2f1);
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 100, 255, 0.2);
+body {
+  background: linear-gradient(to right, #e0f7fa, #ffffff);
   font-family: 'Segoe UI', sans-serif;
-  animation: fadeIn 0.6s ease-in-out;
+  margin: 0;
+  padding: 0;
 }
 
-.symptom-container h2 {
+div {
+  box-sizing: border-box;
+}
+
+h2 {
+  color: #00796b;
   text-align: center;
-  color: #00695c;
   margin-bottom: 20px;
 }
 
-.symptom-container textarea {
-  width: 100%;
-  height: 120px;
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  border: 2px solid #b2dfdb;
+  border-radius: 10px;
+  font-size: 15px;
   padding: 15px;
-  font-size: 16px;
-  border: 2px solid #b2ebf2;
-  border-radius: 12px;
   resize: none;
-  transition: 0.3s;
+  transition: border 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+textarea:focus {
+  border-color: #00796b;
   outline: none;
 }
 
-.symptom-container textarea:focus {
-  border-color: #00796b;
-  box-shadow: 0 0 5px rgba(0, 121, 107, 0.3);
-}
-
-.symptom-container button {
-  margin-top: 20px;
-  width: 100%;
-  padding: 12px;
-  font-size: 18px;
+button {
   background-color: #00796b;
   color: #fff;
   border: none;
-  border-radius: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  padding: 12px 20px;
+  margin-top: 12px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background-color 0.3s ease;
 }
 
-.symptom-container button:hover {
+button:hover {
   background-color: #004d40;
 }
 
-.result-box {
-  margin-top: 30px;
-  background: #ffffff;
-  border-left: 6px solid #00acc1;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+button:disabled {
+  background-color: #80cbc4;
+  cursor: not-allowed;
 }
 
-.result-box h3 {
-  margin-bottom: 10px;
-  color: #006064;
+.error-box {
+  margin-top: 20px;
+  padding: 15px;
+  border: 2px solid #ff5252;
+  border-radius: 10px;
+  background-color: #ffebee;
+  color: #d32f2f;
+  box-shadow: 0 2px 6px rgba(255, 0, 0, 0.1);
+}
+
+.result-box {
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px solid #a5d6a7;
+  border-radius: 12px;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+  animation: fadeIn 0.4s ease-in-out;
 }
 
 .result-box p {
   font-size: 16px;
-  line-height: 1.6;
-  white-space: pre-line;
+  margin: 10px 0;
 }
 
-/* Fade-in animation */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  textarea {
+    font-size: 14px;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  button {
+    font-size: 14px;
+  }
+
+  .result-box p {
+    font-size: 14px;
   }
 }
