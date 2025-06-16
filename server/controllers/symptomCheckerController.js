@@ -7,16 +7,16 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 exports.checkSymptoms = async (req, res) => {
   const { symptoms } = req.body;
-
+  console.log("Received symptoms:", symptoms);
   if (!symptoms) {
     return res.status(400).json({ error: "Symptoms are required." });
   }
 
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-preview-05-20" });
 
     const prompt = `User symptoms: ${symptoms}.
-Diagnose the possible condition, categorize the severity (mild, moderate, severe), and suggest whether it's self-care, doctor consultation, or emergency.`;
+    Diagnose the possible condition, categorize the severity (mild, moderate, severe), and suggest whether it's self-care, doctor consultation, or emergency.`;
 
     const result = await model.generateContent(prompt);
     const response = result.response;

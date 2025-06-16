@@ -12,7 +12,8 @@ const SymptomChecker = () => {
 
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:5000/api/symptom-checker', { symptoms });
+      const res = await axios.post('http://localhost:5000/api/symptom-checker/check', { symptoms });
+      console.log("Response from server:", res.data);
       setResult(res.data.diagnosis);
     } catch (err) {
       setResult("Something went wrong. Please try again.");
