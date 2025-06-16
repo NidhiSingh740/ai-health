@@ -12,10 +12,10 @@ const userSchema = new mongoose.Schema({
         required: true, // Corrected
         unique: true,   // Ensures unique emails at the database level
     },
-    phone: {
-        type: String,
-        required: true, // Corrected
-    },
+    // phone: {
+    //     type: String,
+    //     required: true, // Corrected
+    // },
     password: {
         type: String,
         required: true, // Corrected
@@ -44,7 +44,7 @@ userSchema.pre('save', async function(next){
         next(error); // Pass error to Mongoose/Express error handler
     }
 });
-
+0.
 
 // Instance method to compare incoming password with hashed password
 userSchema.methods.comparePassword = async function(password) {

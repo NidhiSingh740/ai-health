@@ -1,18 +1,22 @@
-// src/App.js (Modified) - Remove BrowserRouter from here
-
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom'; // No need for BrowserRouter here
-import LandingPage from './pages/LandingPage';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import MainNavbar from './components/MainNavbar';
+import { useAuth } from './context/AuthContext';
+import Footer from './components/Footer';
+import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
-import Footer from './components/Footer';
 import ProfileSetup from './pages/ProfileSetup';
-import Navbar from './components/Navbar';
+import SymptomChecker from './pages/SymptomChecker';
+import RecoveryPlan from './pages/RecoveryPlan';
+import DoctorChatbot from './pages/DoctorChatbot';
+import NutritionPlanner from './pages/NutritionPlanner';
 
 function App() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate(); // This will now work correctly
+  const navigate = useNavigate();
 
   const fetchUserProfile = async (token) => {
     try {
@@ -30,14 +34,12 @@ function App() {
       } else {
         localStorage.removeItem("token");
         setUser(null);
-        // alert("Session expired or invalid. Please log in again.");
         navigate("/login");
       }
     } catch (error) {
       console.error("Error fetching user profile:", error);
       localStorage.removeItem("token");
       setUser(null);
-      // alert("Failed to connect to the server. Please try again.");
       navigate("/login");
     } finally {
       setIsLoading(false);
@@ -68,15 +70,22 @@ function App() {
   }
 
   return (
-    <> {/* Use a React Fragment or a div here */}
+    <>
       <Navbar user={user} onLogout={handleLogout} />
+        <MainNavbar /> 
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginPage setUser={setUser} />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/profile-setup" element={<ProfileSetup />} />
+        <Route path="/symptom-checker" element={<SymptomChecker />} />
+        <Route path="/doctor-chatbot" element={<DoctorChatbot />} />
+        <Route path="/recovery-plan" element={<RecoveryPlan />} />
+        <Route path="/nutrition-planner" element={<NutritionPlanner />} />
+
+        
       </Routes>
-      {<Footer />}
+      <Footer />
     </>
   );
 }

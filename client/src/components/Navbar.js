@@ -1,8 +1,12 @@
+// components/Navbar.js
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css'; // if you have CSS
+import { Link, useLocation } from 'react-router-dom';
+import './Navbar.css'; // Optional CSS
 
-const Navbar = ({ user, onLogout }) => { // Receive user and onLogout props
+const Navbar = ({ user, onLogout }) => {
+  const location = useLocation();
+  const isDashboard = location.pathname.startsWith('/dashboard');
+
   return (
     <nav className="navbar" style={{
       display: 'flex',
@@ -19,35 +23,38 @@ const Navbar = ({ user, onLogout }) => { // Receive user and onLogout props
         fontSize: '24px',
         fontWeight: 'bold',
         color: '#007bff'
-      }}>🩺 Smart Health AI</div>
-      <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-        <Link to="/" style={{ textDecoration: 'none', color: '#333', fontSize: '16px' }}>Home</Link>
-        <a href="#features" style={{ textDecoration: 'none', color: '#333', fontSize: '16px' }}>Features</a>
+      }}>
+        🩺 Smart Health AI
+      </div>
 
-        {user ? (
-          // If user is logged in
+      <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+        {isDashboard && user ? (
           <>
+            <Link to="/dashboard/profile-setup" style={{ textDecoration: 'none', color: '#333', fontSize: '16px' }}>Profile Setup</Link>
+            <Link to="/dashboard/symptom-checker" style={{ textDecoration: 'none', color: '#333', fontSize: '16px' }}>AI Symptom Checker</Link>
+            <Link to="/dashboard/recovery-plan" style={{ textDecoration: 'none', color: '#333', fontSize: '16px' }}>Recovery Plan</Link>
+            <Link to="/dashboard/chatbot" style={{ textDecoration: 'none', color: '#333', fontSize: '16px' }}>Doctor Chatbot</Link>
+            <Link to="/dashboard/diet-planner" style={{ textDecoration: 'none', color: '#333', fontSize: '16px' }}>Nutrition Planner</Link>
+
             <span style={{ fontSize: '16px', color: '#555' }}>
-              Welcome, <span style={{ fontWeight: 'bold' }}>{user.username}</span>
+              Welcome, <strong>{user.username}</strong>
             </span>
             <button
               onClick={onLogout}
               style={{
                 padding: '8px 15px',
-                backgroundColor: '#dc3545', // Red for logout
+                backgroundColor: '#dc3545',
                 color: 'white',
                 border: 'none',
                 borderRadius: '4px',
                 cursor: 'pointer',
-                fontSize: '16px',
-                textDecoration: 'none'
+                fontSize: '16px'
               }}
             >
               Logout
             </button>
           </>
         ) : (
-          // If user is not logged in
           <>
             <Link to="/login" style={{
               padding: '8px 15px',
@@ -58,21 +65,17 @@ const Navbar = ({ user, onLogout }) => { // Receive user and onLogout props
               cursor: 'pointer',
               fontSize: '16px',
               textDecoration: 'none'
-            }}>
-              Login
-            </Link>
+            }}>Login</Link>
             <Link to="/signup" style={{
               padding: '8px 15px',
-              backgroundColor: '#28a745', // Green for signup
+              backgroundColor: '#28a745',
               color: 'white',
               border: 'none',
               borderRadius: '4px',
               cursor: 'pointer',
               fontSize: '16px',
               textDecoration: 'none'
-            }}>
-              Sign Up
-            </Link>
+            }}>Sign Up</Link>
           </>
         )}
       </div>

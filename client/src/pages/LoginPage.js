@@ -93,7 +93,7 @@ function LoginPage({ setUser }) { // Receive setUser prop
             backgroundColor: '#007bff',
             color: 'white',
             border: 'none',
-            borderRadius: '4px',
+            borderRadius: '8px',
             cursor: 'pointer',
             fontSize: '16px'
           }}>Login</button>

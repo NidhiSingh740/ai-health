@@ -1,12 +1,16 @@
 {
   "dependencies": {
-    "axios": "^1.9.0",
+    "@google/genai": "^1.5.1",
+    "@google/generative-ai": "^0.24.1",
+    "axios": "^1.10.0",
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.15.0",
+    "multer": "^2.0.1",
+    "openai": "^5.3.0",
     "zod": "^3.25.28"
   },
   "name": "ai-health",
@@ -18,5 +22,8 @@
     "start": "nodemon server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^24.0.1"
+  }
 }

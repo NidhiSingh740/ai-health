@@ -16,7 +16,7 @@ const register = async (req, res, next) => {
   try {
     console.log("Register request received:", req.body); // Log incoming request body
 
-    const { username, email, phone, password } = req.body;
+    const { username, email,  password } = req.body;
 
     const userExist = await User.findOne({ email });
 

@@ -24,7 +24,7 @@ body, html {
   margin-bottom: 2rem;
   color: #1f3b57;
   font-weight: 1000;
-  font-size: 1.8rem;
+  font-size: 2.8rem;
 }
 
 .auth-container form {
@@ -33,7 +33,7 @@ body, html {
 }
 
 .auth-container input {
-  margin-bottom: 1rem;
+  margin-bottom: 5rem;
   padding: 0.75rem 8rem;
   border-radius: 12px;
   border: 1px solid #ccc;
