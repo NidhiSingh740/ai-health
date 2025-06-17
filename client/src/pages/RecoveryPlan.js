@@ -14,7 +14,7 @@ const RecoveryPlan = () => {
 
     try {
       const res = await axios.post('http://localhost:5000/api/recovery-plan', { diagnosis });
-      setPlan(res.data.plan);
+      setPlan(res.data.recoveryPlan);
     } catch (error) {
       setPlan('Error fetching recovery plan.');
       console.error(error);

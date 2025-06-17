@@ -9,10 +9,10 @@ exports.generateRecoveryPlan = async (req, res) => {
 
   if (!diagnosis) {
     return res.status(400).json({ error: "Diagnosis is required." });
-  }
+  } 
 
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-preview-05-20" });
 
     const prompt = `
       Based on the diagnosed condition "${diagnosis}", suggest a customized recovery plan including:
