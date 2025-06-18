@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './RecoveryPlan.css';
 
 
 const RecoveryPlan = () => {
@@ -24,40 +25,27 @@ const RecoveryPlan = () => {
   };
 
   return (
-    <div style={{ padding: '30px', maxWidth: '700px', margin: 'auto' }}>
-      <h2>🩺 AI-Based Personalized Recovery Plan</h2>
-      <form onSubmit={handleSubmit}>
+    <div className='recoveryplan-container'>
+      <h2>🩺 AI-Based Recovery Plan</h2>
+      <form className ='recovery-plan' onSubmit={handleSubmit}>
         <textarea
-          rows="4"
-          style={{ width: '100%', padding: '10px', marginBottom: '15px' }}
+      
+         
           placeholder="Enter your diagnosed condition..."
           value={diagnosis}
           onChange={(e) => setDiagnosis(e.target.value)}
         ></textarea>
         <button
           type="submit"
-          style={{
-            padding: '10px 20px',
-            backgroundColor: '#007bff',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer',
-          }}
+          
         >
           {loading ? 'Generating...' : 'Generate Recovery Plan'}
         </button>
       </form>
 
       {plan && (
-        <div
-          style={{
-            marginTop: '30px',
-            backgroundColor: '#f9f9f9',
-            padding: '15px',
-            borderRadius: '8px',
-            boxShadow: '0 0 10px rgba(0,0,0,0.1)',
-          }}
+        <div className='suggestion'
+          
         >
           <h3>📋 Suggested Recovery Plan</h3>
           {typeof plan === 'object' ? (
