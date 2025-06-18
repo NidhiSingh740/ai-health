@@ -9,6 +9,7 @@ const DoctorChatbot = () => {
   const askChatbot = async () => {
     if (!question.trim()) return;
     setLoading(true);
+    setAnswer('');
     try {
       const response = await fetch('http://localhost:5000/api/doctor-chatbot', {
         method: 'POST',
@@ -19,22 +20,34 @@ const DoctorChatbot = () => {
       const data = await response.json();
       setAnswer(data.answer);
     } catch (err) {
-      setAnswer("Error connecting to AI.");
+      setAnswer('❌ Error connecting to AI.');
     }
     setLoading(false);
   };
 
   return (
+    
     <div className="chatbot-container">
-      <h2>🤖 AI Doctor Chatbot</h2>
-      <textarea
-        value={question}
-        onChange={(e) => setQuestion(e.target.value)}
-        placeholder="Enter your health-related question here..."
-      />
-      <button onClick={askChatbot} disabled={loading}>
-        {loading ? 'Asking AI...' : 'Ask Doctor'}
-      </button>
+      <h2 >🤖 AI Doctor Chatbot</h2>
+
+      <form className='chat-bot'on submit={askChatbot}>
+        <textarea
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+          placeholder="Enter your health-related question here..."
+        />
+        <button onClick={askChatbot} disabled={loading}>
+          {loading ? (
+            <>
+              <span className="spinner" /> Asking AI...
+            </>
+          ) : (
+            'Ask Doctor'
+          )}
+        </button>
+        </form>
+      
+
       {answer && (
         <div className="chatbot-answer">
           <h4>AI Response:</h4>

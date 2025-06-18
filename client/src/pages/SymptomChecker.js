@@ -4,14 +4,14 @@ import './SymptomChecker.css';
 
 const SymptomChecker = () => {
   const [symptoms, setSymptoms] = useState('');
-  const [result, setResult] = useState(null); // Initialize as null to expect an object
+  const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(''); // New state for error messages
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(''); // Clear previous errors
-    setResult(null); // Clear previous results
+    setError('');
+    setResult(null);
     if (!symptoms) {
       setError("Please enter your symptoms.");
       return;
@@ -20,11 +20,8 @@ const SymptomChecker = () => {
     setLoading(true);
     try {
       const res = await axios.post('http://localhost:5000/api/symptom-checker/check', { symptoms });
-      console.log("Response from server:", res.data);
-      setResult(res.data.diagnosis); // res.data.diagnosis will now be an object
+      setResult(res.data.diagnosis);
     } catch (err) {
-      console.error("Frontend error:", err);
-      // Check if the error response has a specific message from the backend
       if (err.response && err.response.data && err.response.data.error) {
         setError(err.response.data.error);
       } else {
@@ -36,52 +33,33 @@ const SymptomChecker = () => {
   };
 
   return (
-    <div style={{ padding: '30px', maxWidth: '600px', margin: 'auto' }}>
+    <div className="symptom-checker-container">
       <h2>🩺 AI Symptom Checker</h2>
-      <form onSubmit={handleSubmit}>
+      <form className="symptom-form" onSubmit={handleSubmit}>
         <textarea
-          rows="5"
-          style={{ width: '100%', padding: '10px', fontSize: '16px' }}
-          placeholder="Enter your symptoms..."
+          placeholder="Describe your symptoms here..."
           value={symptoms}
           onChange={(e) => setSymptoms(e.target.value)}
         />
-        <button
-          type="submit"
-          style={{ padding: '10px 20px', marginTop: '10px', fontSize: '16px' }}
-          disabled={loading} // Disable button while loading
-        >
+        <button type="submit" disabled={loading}>
           {loading ? 'Checking...' : 'Check Symptoms'}
         </button>
       </form>
 
-      {error && ( // Display error messages
-        <div style={{
-          marginTop: '20px',
-          padding: '15px',
-          border: '1px solid #ff4d4d',
-          borderRadius: '5px',
-          backgroundColor: '#ffe6e6',
-          color: '#cc0000'
-        }}>
+      {error && (
+        <div className="error-box">
           <h4>Error:</h4>
           <p>{error}</p>
         </div>
       )}
 
-      {result && ( // Only render if result is not null
-        <div style={{
-          marginTop: '20px',
-          padding: '15px',
-          border: '1px solid #ccc',
-          borderRadius: '5px',
-          backgroundColor: '#f9f9f9'
-        }}>
+      {result && (
+        <div className="result-box">
           <h4>Result:</h4>
           <p><strong>Condition:</strong> {result.condition}</p>
           <p><strong>Severity:</strong> {result.severity}</p>
           <p><strong>Recommendation:</strong> {result.recommendation}</p>
-          {result.notes && <p><strong>Notes:</strong> {result.notes}</p>} {/* Display notes if available */}
+          {result.notes && <p><strong>Notes:</strong> {result.notes}</p>}
         </div>
       )}
     </div>

@@ -1,105 +1,114 @@
-/* SymptomChecker.css */
-
-body {
-  background: linear-gradient(to right, #e0f7fa, #ffffff);
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  padding: 0;
+.symptom-checker-container {
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-div {
-  box-sizing: border-box;
-}
-
-h2 {
-  color: #00796b;
-  text-align: center;
+.symptom-checker-container h2 {
+  font-size: 2rem;
+  color: #2c3e50;
   margin-bottom: 20px;
+  text-align: center;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
+.symptom-form {
+  background-color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  padding: 25px;
+  transition: transform 0.3s ease;
 }
 
-textarea {
-  border: 2px solid #b2dfdb;
-  border-radius: 10px;
-  font-size: 15px;
+.symptom-form:hover {
+  transform: scale(1.01);
+}
+
+.symptom-form textarea {
+  width: 95%;
+  height: 120px;
   padding: 15px;
+  font-size: 1.1rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
   resize: none;
-  transition: border 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: border 0.2s;
 }
 
-textarea:focus {
-  border-color: #00796b;
+.symptom-form textarea:focus {
+  border-color: #66bb6a;
   outline: none;
 }
 
-button {
-  background-color: #00796b;
-  color: #fff;
+.symptom-form button {
+  margin-top: 15px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  background-color: #2e7d32;
+  color: white;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
-  padding: 12px 20px;
-  margin-top: 12px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #004d40;
+.symptom-form button:hover {
+  background-color: #1b5e20;
 }
 
-button:disabled {
-  background-color: #80cbc4;
+.symptom-form button:disabled {
+  background-color: #a5d6a7;
   cursor: not-allowed;
 }
 
+.result-box,
 .error-box {
-  margin-top: 20px;
-  padding: 15px;
-  border: 2px solid #ff5252;
-  border-radius: 10px;
-  background-color: #ffebee;
-  color: #d32f2f;
-  box-shadow: 0 2px 6px rgba(255, 0, 0, 0.1);
-}
-
-.result-box {
-  margin-top: 20px;
+  margin-top: 25px;
   padding: 20px;
-  border: 2px solid #a5d6a7;
   border-radius: 12px;
-  background-color: #e8f5e9;
-  color: #2e7d32;
-  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
   animation: fadeIn 0.4s ease-in-out;
 }
 
+.result-box {
+  background-color: #ffffff;
+  /* border-left: 6px solid #0ae115; */
+}
+
+.result-box h4 {
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+  color: #2e7d32;
+}
+
 .result-box p {
-  font-size: 16px;
-  margin: 10px 0;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: #0d1114;
+}
+
+.error-box {
+  background-color: #ffebee;
+  border-left: 6px solid #e53935;
+}
+
+.error-box h4 {
+  font-size: 1.2rem;
+  color: #c62828;
+  margin-bottom: 10px;
+}
+
+.error-box p {
+  color: #b71c1c;
+  font-size: 1rem;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  textarea {
-    font-size: 14px;
+  from {
+    opacity: 0;
+    transform: translateY(15px);
   }
-
-  button {
-    font-size: 14px;
-  }
-
-  .result-box p {
-    font-size: 14px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
