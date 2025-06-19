@@ -18,6 +18,8 @@ const recoveryPlanRoute = require('./router/recoveryPlan');
 app.use('/api/recovery-plan', recoveryPlanRoute);
 const chatbotRoute = require('./router/doctorChatbot');
 app.use('/api/doctor-chatbot', chatbotRoute);
+const nutritionRoute = require("./router/nutrition");
+app.use("/api/nutrition", nutritionRoute);
 
 
 app.use("/api/auth", authRoute);

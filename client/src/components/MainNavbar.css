@@ -26,13 +26,13 @@
 }
 
 .nav-link:hover {
-  background-color: #e3f2fd;
-  color: #1976d2;
+  background-color: #07529d;
+  color: white;
   transform: scale(1.05);
 }
 
 .nav-link.active {
-  background-color: #07529d;
-  color: white;
+  background-color: white;
+  color: #1976d2;
   box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
 }
