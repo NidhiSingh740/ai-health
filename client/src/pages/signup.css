@@ -1,3 +1,4 @@
+
 /* Reset and Base */
 * {
   margin: 0;
@@ -13,13 +14,13 @@ body {
 
 /* Container: Image + Form side-by-side */
 /* Container: Image + Form side-by-side */
-.login-page-container {
+.signup-page-container {
   display: flex;
   min-height: 100vh;
 }
 
 /* Left side: image */
-.login-image-section {
+.signup-image-section {
   flex: 3; /* Increased from 1 to 3 (60% of the space) */
   background-color: #d7e8ff;
   display: flex;
@@ -28,7 +29,7 @@ body {
   overflow: hidden;
 }
 
-.login-image {
+.signup-image {
   width: 100%;
   height: 100vh;
   object-fit: cover;
@@ -154,7 +155,7 @@ body {
     flex-direction: column;
   }
 
-  .login-image-section {
+  .signup-image-section {
     display: none;
   }
 

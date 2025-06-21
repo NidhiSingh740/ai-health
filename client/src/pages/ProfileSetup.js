@@ -61,22 +61,53 @@ const ProfileSetup = () => {
   };
 
   return (
+
+    
     <div className="profile-setup-container">
-      <h2>User Profile Setup</h2>
-      <form onSubmit={handleSubmit} className="profile-form">
-        <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
-        <input type="number" name="age" placeholder="Age" onChange={handleChange} required />
-        <input type="text" name="gender" placeholder="Gender" onChange={handleChange} required />
-        <input type="number" name="weight" placeholder="Weight (kg)" onChange={handleChange} required />
-        <input type="number" name="height" placeholder="Height (cm)" onChange={handleChange} required />
-        <textarea name="diseases" placeholder="Past Diseases" onChange={handleChange}></textarea>
-        <textarea name="allergies" placeholder="Allergies" onChange={handleChange}></textarea>
-        <textarea name="treatments" placeholder="Ongoing Treatments" onChange={handleChange}></textarea>
-        <textarea name="medications" placeholder="Medications" onChange={handleChange}></textarea>
-        <label>Upload Medical Reports (PDF/Image):</label>
-        <input type="file" onChange={handleFileChange} />
-        <button type="submit">Submit</button>
-      </form>
+
+      
+        <div className='profile-title'> 
+          <h2>User Profile Setup</h2>
+
+        </div>
+<form onSubmit={handleSubmit} className="profile-form">
+  <div className="form-row">
+    <label className="form-label">Name:</label>
+    <input type="text" name="name" placeholder="Name" onChange={handleChange} required  className="form-input" />
+    <label className="form-label">Age:</label>
+      <input type="number" name="age" placeholder="Age" onChange={handleChange}required className="form-input" />
+  </div>
+
+  <div className="form-row">
+    <label className="form-label">Gender:</label>
+     <input type="text" name="gender" placeholder="Gender" onChange={handleChange}  required className="form-input" />
+    <label className="form-label">Weight (kg):</label>
+    <input type="number" name="weight" placeholder='Weight' onChange={handleChange} required className="form-input" />
+  </div>
+
+  {/* <div className="form-row">
+    <label className="form-label">Height (cm):</label>
+    <input type="number" name="height" placeholder='Height' onChange={handleChange} required className="form-input" />
+  </div> */}
+
+  <label className="form-label">Past Diseases:</label>
+  <textarea name="diseases" placeholder='Past Diseases' onChange={handleChange} />
+
+  <label className="form-label">Allergies:</label>
+  <textarea name="allergies" placeholder='Allergies' onChange={handleChange} />
+
+  <label className="form-label">Ongoing Treatments:</label>
+  <textarea name="treatments" placeholder='Ongoing Treatments' onChange={handleChange} />
+
+  <label className="form-label">Medications:</label>
+  <textarea name="medications" placeholder='Medications' onChange={handleChange} />
+
+  <label className="form-label">Upload Medical Reports:</label>
+  <input type="file" placeholder='Upload Mediacal Reports' onChange={handleFileChange} />
+
+  <button type="submit">Submit</button>
+</form>
+
     </div>
   );
 };

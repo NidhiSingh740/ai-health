@@ -1,33 +1,55 @@
-
+/* General Reset and Font */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f4f8fc;
+  background-color: #ffffff;
   color: #222;
 }
 
-.navbar {
+/* Hero Section Fix */
+.hero-section {
+  background: #ffffff;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+}
+
+/* Hero Content: Align both sides properly and remove excess height */
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1400px;
+  width: 110%;
+}
+
+/* Hero Text Styling */
+.hero-text {
+  flex: 1;
   padding: 1rem 2rem;
-  background-color: #5b18b9;
-  color: white;
+  text-align: right;
 }
 
-.nav-links a {
-  margin-left: 1.5rem;
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
+.hero-text h1 {
+  font-size: 2.5rem;
+  color: #5e00d9;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
-.btn {
-  background-color: #4895e8;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  color: black;
+.hero-text p {
+  font-size: 1.2rem;
+  color: #333;
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
 }
+
 .cta-button {
   display: inline-block;
   padding: 0.75rem 1.5rem;
@@ -37,8 +59,7 @@ body {
   border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
-  font-size:1.5rem;
-  margin-top: 2rem;
+  font-size: 1.5rem;
   transition: background-color 0.3s ease;
 }
 
@@ -46,31 +67,23 @@ body {
   background-color: #4700b3;
 }
 
+/* Hero Image Styling */
 .hero-image {
   flex: 1;
-  min-width: 400px;
-  text-align: right;
+  min-width: 300px;
+  text-align: center;
+  padding: 1rem;
 }
 
-.hero {
-  text-align: left;
-  padding: 5rem 2rem;
-  background-color: #94afef;
+.hero-image img {
+  max-width: 50%;
+  height: auto;
+  vertical-align: middle;
 }
 
-.hero h1 {
-  font-size: 3rem;
-  color: #6200ea;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  margin-top: 1rem;
-}
-
-
+/* Features Section */
 .features {
-  padding: 4rem 2rem;
+  padding: 3rem 2rem;
   background-color: #6484ea;
 }
 
@@ -85,6 +98,7 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
 }
+
 .feature-card {
   background-color: #fff;
   border-radius: 10px;
@@ -101,56 +115,10 @@ body {
   background-color: rgb(137, 209, 234);
 }
 
-
+/* Footer */
 .footer {
   padding: 5rem;
   text-align: center;
   background-color: #464748;
   color: #876fe0;
-}
-
-.hero-section {
-  padding: 0;
-  margin: 0;
-  background: white;
-}
-
-.hero-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0;
-  margin: 0;
-  flex-wrap: wrap;
-}
-
-.hero-text {
-  flex: 1;
-  padding: 2rem;
-  text-align: center;
-}
-
-.hero-text h1 {
-  font-size: 3rem;
-  color: #5e00d9;
-  font-weight: 700;
-}
-
-.hero-text p {
-  font-size: 1.5rem;
-  margin: 1rem 0;
-  color: #333;
-}
-
-.hero-image {
-  flex: 1;
-  margin: 0;
-  padding: 2.5rem;
-}
-
-.hero-image img {
-   max-width: 100%;
-  height: auto;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }

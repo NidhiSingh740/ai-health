@@ -1,19 +1,21 @@
-
 import React from 'react';
+import '../pages/Home.css';
 
 const HeroSection = () => {
-   return (
+  return (
     <section className="hero-section">
       <div className="hero-content">
-        <div className="hero-text">
+        <div className="hero-text text-right">
           <h1>Your AI Health Companion</h1>
           <p>
-            Track symptoms, get personalized recovery plans, receive medication reminders, chat with an AI doctor, manage mental health, and handle emergencies – all in one intelligent healthcare platform.
+            Track symptoms, get personalized recovery plans, receive medication reminders,
+            chat with an AI doctor, manage mental health, and handle emergencies –
+            all in one intelligent healthcare platform.
           </p>
           <a href="/signup" className="cta-button">Get Started</a>
         </div>
         <div className="hero-image">
-          {/* <img src="/images/doctor.png" alt="AI Healthcare Assistant" /> */}
+          <img src="/images/doctor.png" alt="AI Healthcare Assistant" />
         </div>
       </div>
     </section>

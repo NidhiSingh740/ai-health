@@ -6,10 +6,10 @@
   padding: 15px 60px;
   background-color: #7777f5;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
+  /* border-radius: 10px; */
   /* margin: 5px auto; */
-  width: 95%;
-  max-width: 2000px;
+  width: 105%;
+  max-width: 2200px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   position: sticky;
   top: 0;

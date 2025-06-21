@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import './LoginSignup.css';
 
-function LoginPage({ setUser }) { // Receive setUser prop
+function LoginPage({ setUser }) {
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -11,34 +12,28 @@ function LoginPage({ setUser }) { // Receive setUser prop
 
   const handleInput = (e) => {
     const { name, value } = e.target;
-    setCredentials({
-      ...credentials,
-      [name]: value,
-    });
+    setCredentials({ ...credentials, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/auth/login", { // Ensure this URL is correct
+      const response = await fetch("http://localhost:5000/api/auth/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials),
       });
 
       if (response.ok) {
         const responseData = await response.json();
-        alert(responseData.msg); // "Login successful"
-        localStorage.setItem("token", responseData.token); // Store the token
-        setUser({ // Update global user state
+        alert(responseData.msg);
+        localStorage.setItem("token", responseData.token);
+        setUser({
           userId: responseData.userId,
           username: responseData.username,
-          email: credentials.email, // Use email from credentials
-          // Add other user details if returned by backend
+          email: credentials.email,
         });
-        navigate("/"); // Redirect to home page or dashboard
+        navigate("/");
       } else {
         const errorData = await response.json();
         alert(errorData.message || "Login failed. Please check your credentials.");
@@ -50,56 +45,38 @@ function LoginPage({ setUser }) { // Receive setUser prop
   };
 
   return (
-    <div style={{
-      backgroundImage: "url('/images/signup.jpeg')",
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
-    }}>
-      <div style={{
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
-        padding: '30px',
-        borderRadius: '8px',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-        maxWidth: '400px',
-        width: '100%',
-        textAlign: 'center'
-      }}>
-        <h2>Login to Smart Health AI</h2>
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={credentials.email}
-            onChange={handleInput}
-            required
-            style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ddd' }}
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={credentials.password}
-            onChange={handleInput}
-            required
-            style={{ padding: '10px', borderRadius: '4px', border: '1px solid #ddd' }}
-          />
-          <button type="submit" style={{
-            padding: '10px 15px',
-            backgroundColor: '#007bff',
-            color: 'white',
-            border: 'none',
-            borderRadius: '8px',
-            cursor: 'pointer',
-            fontSize: '16px'
-          }}>Login</button>
-        </form>
-        <div style={{ marginTop: '20px' }}>
-          <p>Don't have an account? <Link to="/signup" style={{ color: '#007bff', textDecoration: 'none' }}>Sign Up</Link></p>
+    
+    <div className="login-page-container">
+      <div className="login-image-section">
+        <img src="/images/loginsignup1.png" alt="Login Visual" className="login-image" />
+      </div>
+
+      <div className="auth-container">
+        <div className="auth-box">
+          <h2>Welcome Back 👋</h2>
+          <p className="auth-subtitle">Login to your Smart AI HealthCare</p>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={credentials.email}
+              onChange={handleInput}
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={credentials.password}
+              onChange={handleInput}
+              required
+            />
+            <button type="submit">Login</button>
+          </form>
+          <div className="auth-footer">
+            <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
+          </div>
         </div>
       </div>
     </div>
