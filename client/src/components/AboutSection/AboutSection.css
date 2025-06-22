@@ -1,0 +1,108 @@
+.about-container {
+  font-family: 'Segoe UI', sans-serif;
+  color: #1f1e1e;
+}
+
+/* ========== About + Features Section ========== */
+.about-features {
+  padding: 80px 20px;
+  background-color:white; /* peach */
+  text-align: center;
+   
+}
+
+.about-features h2 {
+  font-size: 33px;
+  margin-bottom: 15px;
+  color: #0e1c8b; /* ✅ Rich dark blue */
+
+}
+
+.about-features p {
+  font-size: 19px;
+  max-width: 900px;
+  margin: 0 auto 40px auto;
+  line-height: 1.6;
+}
+
+ .features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+} 
+
+.feature-card {
+ background-color: #cadae9;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #0e1c8b;
+}
+
+.feature-card p {
+  font-size: 16px;
+  color: #121212;
+}
+
+/* ========== How to Use Section ========== */
+.how-it-works {
+  padding: 80px 20px;
+  background-color: #73a4f9; /* soft yellow */
+  text-align: center;
+ 
+}
+
+.how-it-works h2 {
+  font-size: 32px;
+  margin-bottom: 25px;
+  color: #110471;
+}
+
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.step {
+  flex: 1 1 220px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.step:hover {
+  transform: scale(1.02);
+}
+
+.step span {
+  font-size: 26px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.step h4 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #0e1c8b;
+}
+
+.step p {
+  font-size: 16px;
+  color: #0d0d0d;
+}

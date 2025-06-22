@@ -23,6 +23,8 @@ const MainNavbar = () => {
       <NavLink to="/nutrition-planner" className="nav-link">
         Nutrition Planner
       </NavLink>
+      <NavLink to="/mental-health" className="nav-link">Mental Health Support</NavLink>
+
     </nav>
   );
 };

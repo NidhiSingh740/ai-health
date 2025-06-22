@@ -12,6 +12,7 @@ import SymptomChecker from './pages/SymptomChecker';
 import RecoveryPlan from './pages/RecoveryPlan';
 import DoctorChatbot from './pages/DoctorChatbot';
 import NutritionPlanner from './pages/NutritionPlanner';
+import MentalHealth from './pages/MentalHealth';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -82,7 +83,7 @@ function App() {
         <Route path="/doctor-chatbot" element={<DoctorChatbot />} />
         <Route path="/recovery-plan" element={<RecoveryPlan />} />
         <Route path="/nutrition-planner" element={<NutritionPlanner />} />
-
+        <Route path="/mental-health" element={<MentalHealth />} />
         
       </Routes>
       <Footer />

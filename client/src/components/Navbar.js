@@ -66,16 +66,16 @@ const Navbar = ({ user, onLogout }) => {
               fontSize: '16px',
               textDecoration: 'none'
             }}>Login</Link>
-            <Link to="/signup" style={{
+            {/* <Link to="/signup" style={{
               padding: '8px 15px',
-              backgroundColor: '#28a745',
+              backgroundColor: 'blue',
               color: 'white',
               border: 'none',
               borderRadius: '4px',
               cursor: 'pointer',
               fontSize: '16px',
               textDecoration: 'none'
-            }}>Sign Up</Link>
+            }}>Sign Up</Link> */}
           </>
         )}
       </div>

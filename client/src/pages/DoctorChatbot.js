@@ -30,7 +30,7 @@ const DoctorChatbot = () => {
     <div className="chatbot-container">
       <h2 >🤖 AI Doctor Chatbot</h2>
 
-      <form className='chat-bot'on submit={askChatbot}>
+      <form className='chat-bot'onSubmit={askChatbot}>
         <textarea
           value={question}
           onChange={(e) => setQuestion(e.target.value)}

@@ -20,6 +20,8 @@ const chatbotRoute = require('./router/doctorChatbot');
 app.use('/api/doctor-chatbot', chatbotRoute);
 const nutritionRoute = require("./router/nutrition");
 app.use("/api/nutrition", nutritionRoute);
+const mentalHealthRoute = require('./router/mentalHealth');
+app.use('/api/mental-health', mentalHealthRoute);
 
 
 app.use("/api/auth", authRoute);

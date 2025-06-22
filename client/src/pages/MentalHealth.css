@@ -1,0 +1,166 @@
+/* Container styling similar to chatbot-container */
+.mental-health-container {
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mental-health-container h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Form wrapper like chat-bot */
+.mental-health {
+  background-color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  padding: 25px;
+  transition: transform 0.3s ease;
+}
+
+.mental-health:hover {
+  transform: scale(1.01);
+}
+
+/* Textarea styling */
+.mental-health textarea {
+  width: 95%;
+  height: 120px;
+  padding: 15px;
+  font-size: 1.1rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  resize: none;
+  transition: border 0.2s;
+}
+
+.mental-health textarea:focus {
+  border-color: #66bb6a;
+  outline: none;
+}
+
+/* Button styling */
+.mental-health button {
+  margin-top: 15px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.mental-health button:hover {
+  background-color: #1b5e20;
+}
+
+.mental-health button:disabled {
+  background-color: #a5d6a7;
+  cursor: not-allowed;
+}
+
+/* Spinner animation */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 3px solid white;
+  border-top: 3px solid #388e3c;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* AI response styling */
+.mentalhealth-answer {
+  margin-top: 20px;
+  background: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  padding: 1.5rem;
+  border-radius: 16px;
+  animation: fadeIn 0.4s ease-in-out;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
+  white-space: pre-wrap;
+  line-height: 1.8;
+}
+
+.mentalhealth-answer h4 {
+  font-size: 1.5rem;
+  color: #2e7d32;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0.4rem;
+}
+
+.mentalhealth-answer p {
+  margin-bottom: 1.2rem;
+  font-size: 1.4rem;
+  color: #151212;
+}
+
+.mentalhealth-answer ul,
+.mentalhealth-answer ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.mentalhealth-answer li {
+  margin-bottom: 0.9rem;
+  font-size: 1rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.mentalhealth-answer li::before {
+  content: "✅";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 1rem;
+  color: #4CAF50;
+}
+
+.mentalhealth-answer li.alert::before {
+  content: "🚨";
+  color: #e74c3c;
+}
+
+.mentalhealth-answer li.med::before {
+  content: "💊";
+  color: #3498db;
+}
+
+.mentalhealth-answer li.home::before {
+  content: "🏠";
+  color: #f39c12;
+}
+
+.mentalhealth-answer li.sleep::before {
+  content: "🛌";
+  color: #9b59b6;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
