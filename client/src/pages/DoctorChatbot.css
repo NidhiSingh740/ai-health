@@ -1,5 +1,4 @@
 /* Overall container */
-
 .chatbot-container {
   padding: 40px 20px;
   max-width: 1100px;
@@ -15,10 +14,12 @@
 }
 
 .chat-bot{
-  background-color: #ffffff;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  border-radius: 16px;
-  padding: 25px;
+   background-color: #ffffff;
+ box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  padding: 40px; /* increased from 25px */
+  transition: transform 0.3s ease;
+  width: 100%; 
   transition: transform 0.3s ease;
 }
 
@@ -30,9 +31,10 @@
 /* Textarea styling */
 
 .chat-bot textarea {
-  width: 95%;
-  height: 120px;
-  padding: 15px;
+   width: 100%;
+  height: 150px; /* increased from 120px */
+  padding: 18px;
+  font-size: 1.2rem;
   font-size: 1.1rem;
   border: 1px solid #ccc;
   border-radius: 12px;
@@ -47,8 +49,8 @@
 
 .chat-bot button {
   margin-top: 15px;
-  padding: 10px 24px;
-  font-size: 1rem;
+   padding: 12px 28px;
+  font-size: 1.1rem;
   background-color: #2e7d32;
   color: white;
   border: none;

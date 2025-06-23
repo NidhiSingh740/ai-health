@@ -39,12 +39,10 @@ body {
   flex: 2; /* Decreased from 1 to 2 (40% of the space) */
   /* background-color: linear-gradient(135deg, #e6f0ff, #ffffff); */
   background-color: white;
-
-;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 3rem;
 }
 
 

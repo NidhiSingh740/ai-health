@@ -24,6 +24,30 @@
   color: white;
 }
 
+/* src/App.css */
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f9f9f9; /* Optional */
+}
+
+.app-content {
+  flex: 1;
+  padding: 1rem; /* Optional spacing */
+}
+
+/* Optional: center the loading message */
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
 .App-link {
   color: #61dafb;
 }

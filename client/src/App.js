@@ -13,6 +13,7 @@ import RecoveryPlan from './pages/RecoveryPlan';
 import DoctorChatbot from './pages/DoctorChatbot';
 import NutritionPlanner from './pages/NutritionPlanner';
 import MentalHealth from './pages/MentalHealth';
+import './App.css';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -71,23 +72,26 @@ function App() {
   }
 
   return (
-    <>
+     <div className="app-wrapper">
       <Navbar user={user} onLogout={handleLogout} />
-        <MainNavbar /> 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LoginPage setUser={setUser} />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/profile-setup" element={<ProfileSetup />} />
-        <Route path="/symptom-checker" element={<SymptomChecker />} />
-        <Route path="/doctor-chatbot" element={<DoctorChatbot />} />
-        <Route path="/recovery-plan" element={<RecoveryPlan />} />
-        <Route path="/nutrition-planner" element={<NutritionPlanner />} />
-        <Route path="/mental-health" element={<MentalHealth />} />
-        
-      </Routes>
+      <MainNavbar />
+
+      <div className="app-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<LoginPage setUser={setUser} />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/profile-setup" element={<ProfileSetup />} />
+          <Route path="/symptom-checker" element={<SymptomChecker />} />
+          <Route path="/doctor-chatbot" element={<DoctorChatbot />} />
+          <Route path="/recovery-plan" element={<RecoveryPlan />} />
+          <Route path="/nutrition-planner" element={<NutritionPlanner />} />
+          <Route path="/mental-health" element={<MentalHealth />} />
+        </Routes>
+      </div>
+
       <Footer />
-    </>
+    </div>
   );
 }
 

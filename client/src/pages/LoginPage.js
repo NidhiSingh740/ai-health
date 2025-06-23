@@ -48,7 +48,7 @@ function LoginPage({ setUser }) {
     
     <div className="login-page-container">
       <div className="login-image-section">
-        <img src="/images/loginsignup1.png" alt="Login Visual" className="login-image" />
+        <img src="/images/loginsignup2.png" alt="Login Visual" className="login-image" />
       </div>
 
       <div className="auth-container">

@@ -22,9 +22,9 @@ const Navbar = ({ user, onLogout }) => {
       <div className="logo" style={{
         fontSize: '24px',
         fontWeight: 'bold',
-        color: '#007bff'
+        color: '#04751c'
       }}>
-        🩺 Smart Health AI
+         Smart Health AI
       </div>
 
       <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
@@ -58,7 +58,7 @@ const Navbar = ({ user, onLogout }) => {
           <>
             <Link to="/login" style={{
               padding: '8px 15px',
-              backgroundColor: '#007bff',
+              backgroundColor: '#04751c',
               color: 'white',
               border: 'none',
               borderRadius: '4px',

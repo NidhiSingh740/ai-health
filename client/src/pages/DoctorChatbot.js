@@ -26,7 +26,7 @@ const DoctorChatbot = () => {
   };
 
   return (
-    
+  
     <div className="chatbot-container">
       <h2 >🤖 AI Doctor Chatbot</h2>
 
@@ -55,6 +55,7 @@ const DoctorChatbot = () => {
         </div>
       )}
     </div>
+   
   );
 };
 
