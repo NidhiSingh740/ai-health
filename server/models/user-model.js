@@ -5,50 +5,89 @@ const jwt = require("jsonwebtoken");
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: true, // Corrected from require:true
+        required: true,
     },
     email: {
         type: String,
-        required: true, // Corrected
-        unique: true,   // Ensures unique emails at the database level
+        required: true,
+        unique: true,
     },
-    // phone: {
-    //     type: String,
-    //     required: true, // Corrected
-    // },
     password: {
         type: String,
-        required: true, // Corrected
+        required: true,
     },
     isAdmin: {
         type: Boolean,
         default: false,
     },
+    // --- Profile Information ---
+    name: {
+        type: String,
+        // required: true, // Making this optional for initial registration flexibility
+    },
+    age: {
+        type: Number,
+        // required: true,
+    },
+    gender: {
+        type: String,
+        // required: true,
+    },
+    weight: {
+        type: Number,
+        // required: true,
+    },
+    height: { // Keeping height as it was commented out in frontend but might be needed
+        type: Number,
+    },
+    diseases: {
+        type: String, // Storing as a single string for simplicity as per frontend textarea
+        default: ""
+    },
+    allergies: {
+        type: String, // Storing as a single string for simplicity as per frontend textarea
+        default: ""
+    },
+    treatments: {
+        type: String, // Storing as a single string for simplicity as per frontend textarea
+        default: ""
+    },
+    medications: {
+        type: String, // Storing as a single string for simplicity as per frontend textarea
+        default: ""
+    },
+    reports: [
+        {
+            filename: String,
+            path: String,
+            uploadedAt: {
+                type: Date,
+                default: Date.now,
+            },
+        },
+    ], // Array of objects to store file details
 });
 
 // IMPORTANT: Pre-save hook to hash the password before saving a new user
 userSchema.pre('save', async function(next){
-    const user = this; // 'this' refers to the user document about to be saved
+    const user = this;
 
-    // Only hash the password if it's new or has been modified
     if(!user.isModified("password")){
-        return next(); // Skip hashing if password hasn't changed
+        return next();
     }
 
     try {
-        const saltRound = await bcrypt.genSalt(10); // Generate a salt
-        user.password = await bcrypt.hash(user.password, saltRound); // Hash the password
-        next(); // Proceed to save
+        const saltRound = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(user.password, saltRound);
+        next();
     } catch(error){
         console.error("Error during password hashing in pre-save hook:", error);
-        next(error); // Pass error to Mongoose/Express error handler
+        next(error);
     }
 });
-0.
 
 // Instance method to compare incoming password with hashed password
 userSchema.methods.comparePassword = async function(password) {
-    // 'this.password' refers to the hashed password stored in the database
     return bcrypt.compare(password, this.password);
 };
 
@@ -57,22 +96,21 @@ userSchema.methods.generateToken = async function () {
     try {
         return jwt.sign(
             {
-                userId: this._id.toString(), // Use this._id for the user's MongoDB ID
+                userId: this._id.toString(),
                 email: this.email,
                 isAdmin: this.isAdmin,
             },
-            process.env.JWT_SECRET_KEY, // The secret key for signing the token
+            process.env.JWT_SECRET_KEY,
             {
-                expiresIn: "30d", // Token expiration time
+                expiresIn: "30d",
             }
         );
     } catch(error){
         console.error("Error in generateToken method:", error);
-        throw new Error("Failed to generate authentication token."); // Propagate error for proper handling
+        throw new Error("Failed to generate authentication token.");
     }
 };
 
-// Create the User model
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;

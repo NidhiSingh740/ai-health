@@ -1,7 +1,6 @@
-const User = require("../models/user-model"); // Adjust path if needed
+const User = require("../models/user-model");
 const bcrypt = require("bcryptjs");
 
-// Home logic (just for a simple test)
 const home = async (req, res) => {
   try {
     res.status(200).send("Welcome to the authentication API!");
@@ -11,12 +10,12 @@ const home = async (req, res) => {
   }
 };
 
-// Register logic
+// Register logic (remains for initial user creation if needed separately from profile setup)
 const register = async (req, res, next) => {
   try {
-    console.log("Register request received:", req.body); // Log incoming request body
+    console.log("Register request received:", req.body);
 
-    const { username, email, phone, password } = req.body;
+    const { username, email, password } = req.body; // Only initial registration fields here
 
     const userExist = await User.findOne({ email });
 
@@ -24,27 +23,23 @@ const register = async (req, res, next) => {
       return res.status(400).json({ msg: "Email already exists" });
     }
 
-    // IMPORTANT: Pass the plain password to User.create.
-    // The pre('save') hook in user-model.js will handle the hashing.
     const userCreated = await User.create({
       username,
       email,
-      phone,
-      password: password, // Pass the original, plain password
+      password,
+      // No profile fields here, they'll be added/updated via updateProfile
     });
 
-    // Generate token for immediate login after registration (optional, but common)
     const token = await userCreated.generateToken();
 
-    res.status(201).json({ // 201 Created status for successful resource creation
+    res.status(201).json({
       msg: "Registration successful",
-      token: token, // Include token in signup response
+      token: token,
       userId: userCreated._id.toString(),
-      username: userCreated.username, // Also send username for immediate display
+      username: userCreated.username,
     });
   } catch (error) {
     console.error("Error during registration in auth-controller:", error);
-    // Pass the error to the error handling middleware
     next(error);
   }
 };
@@ -53,7 +48,7 @@ const register = async (req, res, next) => {
 const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    console.log("Login attempt for email:", email); // Log login attempt
+    console.log("Login attempt for email:", email);
 
     const userExist = await User.findOne({ email });
 
@@ -61,44 +56,103 @@ const login = async (req, res, next) => {
       return res.status(400).json({ message: "Invalid credentials (email not found)" });
     }
 
-    // Compare the provided plain password with the hashed password stored in the database
-    const isPasswordValid = await userExist.comparePassword(password); // Use the method from the model
+    const isPasswordValid = await userExist.comparePassword(password);
 
     if (isPasswordValid) {
-      // Generate token upon successful login
       const token = await userExist.generateToken();
+
+      // Ensure all profile fields are sent back on login
+      const userProfile = { ...userExist._doc };
+      delete userProfile.password;
 
       res.status(200).json({
         msg: "Login successful",
         token: token,
         userId: userExist._id.toString(),
-        username: userExist.username, // Include username in login response
+        username: userExist.username,
+        profile: userProfile, // Send full profile data on login
       });
     } else {
-      console.log("Password comparison failed for email:", email); // Log failure
-      res.status(401).json({ message: "Invalid email or password" }); // 401 Unauthorized
+      console.log("Password comparison failed for email:", email);
+      res.status(401).json({ message: "Invalid email or password" });
     }
   } catch (error) {
     console.error("Error during login in auth-controller:", error);
-    // Pass the error to the error handling middleware
     next(error);
   }
 };
 
-// New: Get User Profile logic
+// Get User Profile logic
 const getProfile = async (req, res, next) => {
   try {
-    // The user data is attached to req.user by the authMiddleware
-    const userData = req.user;
+    const userData = req.user; // Data from authMiddleware
     console.log("Profile request for user:", userData.email);
 
-    // Send back the user data (excluding sensitive info like password)
-    // The select({ password: 0 }) in authMiddleware already handles this.
-    return res.status(200).json({ userData });
+    // Filter out password field before sending
+    const userProfile = { ...userData._doc };
+    delete userProfile.password;
+
+    return res.status(200).json({ userData: userProfile });
   } catch (error) {
     console.error("Error getting user profile:", error);
-    next(error); // Pass error to error handling middleware
+    next(error);
   }
 };
 
-module.exports = { home, register, login, getProfile };
+// New: Update User Profile logic
+const updateProfile = async (req, res, next) => {
+  try {
+    const userId = req.user._id; // User ID from authMiddleware
+    const updates = req.body; // All fields sent from frontend for update
+
+    // Find the user and update the profile fields
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { $set: updates }, // Use $set to update specific fields
+      { new: true, runValidators: true } // Return the updated document and run schema validators
+    ).select('-password'); // Exclude password from the returned document
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found." });
+    }
+
+    res.status(200).json({
+      message: "Profile updated successfully!",
+      profile: updatedUser,
+    });
+  } catch (error) {
+    console.error("Error updating user profile:", error);
+    next(error);
+  }
+};
+
+// New: Upload medical reports endpoint (remains the same)
+const uploadMedicalReports = async (req, res, next) => {
+    try {
+        if (!req.files || req.files.length === 0) {
+            return res.status(400).json({ message: "No files uploaded." });
+        }
+
+        const userId = req.user._id;
+        const user = await User.findById(userId);
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found." });
+        }
+
+        const newReports = req.files.map(file => ({
+            filename: file.originalname,
+            path: file.path,
+        }));
+
+        user.reports.push(...newReports);
+        await user.save();
+
+        res.status(200).json({ message: "Medical reports uploaded successfully!", reports: user.reports });
+    } catch (error) {
+        console.error("Error uploading medical reports:", error);
+        next(error);
+    }
+};
+
+module.exports = { home, register, login, getProfile, updateProfile, uploadMedicalReports };

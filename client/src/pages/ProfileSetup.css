@@ -104,3 +104,8 @@ input[type="file"] {
     transform: translateY(0);
   }
 }
+/* Add to ProfileSetup.css for read-only fields */
+.form-input.read-only {
+  background-color: #e9ecef; /* A light grey background */
+  cursor: not-allowed; /* Indicate it's not editable */
+}
