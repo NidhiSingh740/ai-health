@@ -28,16 +28,11 @@ const Navbar = ({ user, onLogout }) => {
       </div>
 
       <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-        {isDashboard && user ? (
+        { user ? (
           <>
-            <Link to="/dashboard/profile-setup" style={{ textDecoration: 'none', color: '#333', fontSize: '16px' }}>Profile Setup</Link>
-            <Link to="/dashboard/symptom-checker" style={{ textDecoration: 'none', color: '#333', fontSize: '16px' }}>AI Symptom Checker</Link>
-            <Link to="/dashboard/recovery-plan" style={{ textDecoration: 'none', color: '#333', fontSize: '16px' }}>Recovery Plan</Link>
-            <Link to="/dashboard/chatbot" style={{ textDecoration: 'none', color: '#333', fontSize: '16px' }}>Doctor Chatbot</Link>
-            <Link to="/dashboard/diet-planner" style={{ textDecoration: 'none', color: '#333', fontSize: '16px' }}>Nutrition Planner</Link>
-
+       
             <span style={{ fontSize: '16px', color: '#555' }}>
-              Welcome, <strong>{user.username}</strong>
+             <strong>{user.username}</strong>
             </span>
             <button
               onClick={onLogout}

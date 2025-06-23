@@ -32,6 +32,7 @@ function App() {
 
       if (response.ok) {
         const data = await response.json();
+        console.log("User profile fetched successfully:", data);
         setUser(data.userData);
       } else {
         localStorage.removeItem("token");
@@ -74,7 +75,7 @@ function App() {
   return (
      <div className="app-wrapper">
       <Navbar user={user} onLogout={handleLogout} />
-      <MainNavbar />
+      {user && (<MainNavbar />)}
 
       <div className="app-content">
         <Routes>
