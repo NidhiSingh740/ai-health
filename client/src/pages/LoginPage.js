@@ -28,11 +28,7 @@ function LoginPage({ setUser }) {
         const responseData = await response.json();
         alert(responseData.msg);
         localStorage.setItem("token", responseData.token);
-        setUser({
-          userId: responseData.userId,
-          username: responseData.username,
-          email: credentials.email,
-        });
+        setUser(responseData.profile);
         navigate("/");
       } else {
         const errorData = await response.json();

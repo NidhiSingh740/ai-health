@@ -70,7 +70,7 @@ const login = async (req, res, next) => {
         token: token,
         userId: userExist._id.toString(),
         username: userExist.username,
-        profile: userProfile, // Send full profile data on login
+        profile: userProfile, 
       });
     } else {
       console.log("Password comparison failed for email:", email);
