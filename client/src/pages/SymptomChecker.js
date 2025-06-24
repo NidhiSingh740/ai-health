@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './SymptomChecker.css';
 
-const SymptomChecker = () => {
+const SymptomChecker = ({ user }) => {
   const [symptoms, setSymptoms] = useState('');
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -12,17 +12,38 @@ const SymptomChecker = () => {
     e.preventDefault();
     setError('');
     setResult(null);
-    if (!symptoms) {
+
+    if (!symptoms.trim()) {
       setError("Please enter your symptoms.");
       return;
     }
 
     setLoading(true);
+
     try {
-      const res = await axios.post('http://localhost:5000/api/symptom-checker/check', { symptoms });
+      // Build payload with both symptoms and user profile
+      const payload = {
+        symptoms: symptoms.trim(),
+        user: {
+          name: user?.name,
+          age: user?.age,
+          gender: user?.gender,
+          weight: user?.weight,
+          height: user?.height,
+          diseases: user?.diseases,
+          allergies: user?.allergies,
+          treatments: user?.treatments,
+          medications: user?.medications
+        }
+      };
+
+      const res = await axios.post(
+        'http://localhost:5000/api/symptom-checker/check',
+        payload
+      );
       setResult(res.data.diagnosis);
     } catch (err) {
-      if (err.response && err.response.data && err.response.data.error) {
+      if (err.response?.data?.error) {
         setError(err.response.data.error);
       } else {
         setError("Something went wrong. Please try again.");
@@ -55,6 +76,12 @@ const SymptomChecker = () => {
 
       {result && (
         <div className="result-box">
+          {/* Personalized greeting */}
+          {user?.name && (
+            <p className="greeting">
+              Hi {user.name}, here’s what I found:
+            </p>
+          )}
           <h4>Result:</h4>
           <p><strong>Condition:</strong> {result.condition}</p>
           <p><strong>Severity:</strong> {result.severity}</p>

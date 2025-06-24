@@ -83,7 +83,7 @@ function App() {
           <Route path="/login" element={<LoginPage setUser={setUser} />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/profile-setup" element={<ProfileSetup />} />
-          <Route path="/symptom-checker" element={<SymptomChecker />} />
+          <Route path="/symptom-checker" element={<SymptomChecker user={user} />} />
           <Route path="/doctor-chatbot" element={<DoctorChatbot />} />
           <Route path="/recovery-plan" element={<RecoveryPlan />} />
           <Route path="/nutrition-planner" element={<NutritionPlanner />} />
