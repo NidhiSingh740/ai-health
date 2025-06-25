@@ -84,10 +84,10 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/profile-setup" element={<ProfileSetup />} />
           <Route path="/symptom-checker" element={<SymptomChecker user={user} />} />
-          <Route path="/doctor-chatbot" element={<DoctorChatbot />} />
-          <Route path="/recovery-plan" element={<RecoveryPlan />} />
-          <Route path="/nutrition-planner" element={<NutritionPlanner />} />
-          <Route path="/mental-health" element={<MentalHealth />} />
+          <Route path="/doctor-chatbot" element={<DoctorChatbot user = {user} />} />
+          <Route path="/recovery-plan" element={<RecoveryPlan user = {user} />} />
+          <Route path="/nutrition-planner" element={<NutritionPlanner user = {user} />} />
+          <Route path="/mental-health" element={<MentalHealth user = {user} />} />
         </Routes>
       </div>
 
