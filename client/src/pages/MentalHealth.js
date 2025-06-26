@@ -1,64 +1,102 @@
+import React, { useState } from "react";
+import Spinner from "../components/Spinner";
+import axios from "axios";
+import "./SymptomChecker.css"; // Reusing same styles for consistency
 
-import React, { useState } from 'react';
-import Spinner from '../components/Spinner';
-import axios from 'axios';
-import './MentalHealth.css';
-
-function MentalHealth() {
-  const [message, setMessage] = useState('');
-  const [reply, setReply] = useState('');
+function MentalHealth({ user }) {
+  const [message, setMessage] = useState("");
+  const [mood, setMood] = useState("");
+  const [triggers, setTriggers] = useState("");
+  const [history, setHistory] = useState("");
+  const [reply, setReply] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const sendMessage = async () => {
-    if (!message.trim()) return;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setReply("");
+
+    if (!message.trim()) {
+      setError("Please describe how you're feeling.");
+      return;
+    }
+
     setLoading(true);
-    setReply('');
 
     try {
-      const res = await axios.post(
-        'http://localhost:5000/api/mental-health',
-        { message }
-      );
+      const payload = {
+        message: message.trim(),
+        userMood: mood.trim(),
+        stressTriggers: triggers.trim(),
+        mentalHealthHistory: history.trim(),
+        user: {
+          name: user?.name,
+          age: user?.age,
+          gender: user?.gender,
+        },
+      };
+
+      const res = await axios.post("http://localhost:5000/api/mental-health", payload);
       setReply(res.data.reply);
     } catch (err) {
-      setReply('Error processing request. Please try again.');
+      setError("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="mental-health-container">
-      <h2>🧘 Mental Health Support</h2>
-      <form className='mental-health' onSubmit={sendMessage}>
-      <textarea
-        value={message}
-        onChange={e => setMessage(e.target.value)}
-        placeholder="Describe how you’re feeling..."
+    <div className="symptom-checker-container">
+      <h2>🧘 AI Mental Health Support</h2>
+      <form className="symptom-form" onSubmit={handleSubmit}>
+        <textarea
+          placeholder="Describe how you’re feeling..."
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          rows="2"
+        />
+        <textarea
+          placeholder="Current mood (e.g. anxious, sad, overwhelmed...)"
+          value={mood}
+          onChange={(e) => setMood(e.target.value)}
+          rows="2"
+        />
+        <textarea
+          placeholder="Any known stress triggers?"
+          value={triggers}
+          onChange={(e) => setTriggers(e.target.value)}
+          rows="2"
+        />
+        <textarea
+          placeholder="Any mental health history to share?"
+          value={history}
+          onChange={(e) => setHistory(e.target.value)}
+          rows="2"
+        />
+        <button type="submit" disabled={loading}>
+          {loading ? "Analyzing..." : "Get Support"}
+        </button>
+      </form>
 
-      />
-      <button
-        onClick={sendMessage}
-     
-        disabled={loading}
-      >
-        {loading?(
-        <>
-        <span className='spinner'/> Thinking..
-        
-        </>
-        ):(
-          'Send'
-        )}
-      
-      </button>
-</form>
+      {error && (
+        <div className="error-box">
+          <h4>Error:</h4>
+          <p>{error}</p>
+        </div>
+      )}
+
       {loading && <Spinner />}
 
       {reply && (
-        <div className='mentalhealth-answer'>
+        <div className="result-box">
+          {user?.name && (
+            <p className="greeting">
+              Hi {user.name}, here's what I suggest for your mental well-being:
+            </p>
+          )}
           <h4>AI Response:</h4>
-          <p>{reply}</p>
+          <pre style={{ whiteSpace: 'pre-wrap', lineHeight: '1.5' }}>{reply}</pre>
         </div>
       )}
     </div>

@@ -11,7 +11,7 @@ exports.checkSymptoms = async (req, res) => {
     return res.status(400).json({ error: "Symptoms are required." });
   }
 
-  // Personalized greeting
+  // Personalized greeting                    
   const greeting = user?.name
     ? `Hey ${user.name}! `
     : `Hello there! `;
