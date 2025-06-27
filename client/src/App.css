@@ -56,7 +56,52 @@
   from {
     transform: rotate(0deg);
   }
+
+
   to {
     transform: rotate(360deg);
   }
+}
+
+
+/* In your App.css or index.css (GLOBAL STYLES) */
+
+html, body, #root {
+  height: 100%; /* Make sure these take up the full viewport height */
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif; /* Your main font */
+  background-color: #f0f2f5; /* Your desired background color */
+  box-sizing: border-box; /* Include padding/border in element's total width/height */
+}
+
+/* Assuming your main React app wrapper is a div with class 'App' */
+.App {
+  display: flex;
+  flex-direction: column; /* Stacks children (navbar, main content, footer) vertically */
+  min-height: 100vh; /* Ensures the app container always takes at least the full viewport height */
+}
+
+/* Assuming your main content area (where routes like /doctor-chatbot are rendered) is within a <main> tag or similar div */
+.App main {
+  flex-grow: 1; /* This is absolutely KEY: allows the main content area to fill all available vertical space */
+  padding: 20px; /* Adjust general padding around your content as needed */
+  display: flex; /* Make main a flex container to handle centering/alignment of its children */
+  justify-content: center; /* Center horizontally */
+  align-items: flex-start; /* Align content to the top */
+  box-sizing: border-box;
+  /* NO overflow: auto; here unless you want the *entire page content* to scroll.
+     We want the chatbot's internal area to scroll. */
+}
+
+/* Example styles for Navbar and Footer if they are direct children of .App */
+.navbar {
+  flex-shrink: 0; /* Prevents navbar from shrinking if space is tight */
+  /* Add other navbar specific styles here */
+}
+
+.footer {
+  flex-shrink: 0; /* Prevents footer from shrinking */
+  margin-top: auto; /* Pushes the footer to the bottom if the main content is shorter than the viewport */
+  /* Add other footer specific styles here */
 }

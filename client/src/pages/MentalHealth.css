@@ -1,169 +1,323 @@
-/* Container styling similar to chatbot-container */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* --- IMPORTANT: Ensure these body/root styles are in your main app's global CSS (e.g., App.css or index.css) --- */
+/* They should NOT be in MentalHealth.css if this component is embedded. */
+/* If not already present, add them to your main global CSS. */
+/*
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #f0f2f5;
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main { // Assuming your main content area that wraps MentalHealth component
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+*/
+/* --- End of global styles recommendation --- */
+
+
+.mental-health-wrapper {
+  width: 100%;
+  max-width: 1200px; /* Max width for the whole component */
+  margin: 40px auto; /* Centers horizontally and adds top/bottom margin */
+  padding: 0 20px; /* Horizontal padding */
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Main Mental Health Container */
 .mental-health-container {
-  padding: 40px 20px;
-  max-width: 1100px;
-  margin: auto;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.mental-health-container h2 {
-  font-size: 2rem;
-  color: #2c3e50;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-/* Form wrapper like chat-bot */
-.mental-health {
   background-color: #ffffff;
- box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
-  border-radius: 20px;
-  padding: 40px; /* increased from 25px */
-  transition: transform 0.3s ease;
-  width: 100%; 
-  transition: transform 0.3s ease;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  height: auto; /* ALLOWS HEIGHT TO EXPAND BASED ON CONTENT */
+  min-height: 600px; /* Ensures a good minimum height for overall component */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* For container's rounded corners */
+  position: relative;
 }
 
-.mental-health:hover {
-  transform: scale(1.01);
+/* Header Section */
+.mental-health-header {
+  background-color: #2c332e; /* A calming purple for mental health */
+  color: #ffffff;
+  padding: 18px 25px;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
 }
 
-/* Textarea styling */
-.mental-health textarea {
- width: 100%;
-  height: 150px; /* increased from 120px */
-  padding: 18px;
-  font-size: 1.2rem;
-  font-size: 1.1rem;
-  border: 1px solid #ccc;
+.mental-health-header h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.icon-lotus { /* Icon for mental health theme */
+  font-size: 1.8rem;
+}
+
+/* Input Form Section */
+.mental-health-input-form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 25px;
+  gap: 15px;
+  border-bottom: 1px solid #eceff1;
+  background-color: #fdfdfd;
+  flex-shrink: 0;
+}
+
+.mental-health-input-form textarea {
+  flex-grow: 1;
+  border: 1px solid #cfd8dc;
   border-radius: 12px;
-  resize: none;
-  transition: border 0.2s;
+  padding: 12px 18px;
+  font-size: 1rem;
+  resize: vertical; /* Allows user to drag to resize vertically */
+  min-height: 40px; /* Small default height */
+  max-height: 120px; /* Maximum height for an individual textarea */
+  overflow-y: auto; /* Allows individual textarea to scroll if content exceeds max-height */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.mental-health textarea:focus {
-  border-color: #66bb6a;
+.mental-health-input-form textarea:focus {
   outline: none;
+  border-color: #353535; /* Focus color matches header */
+  box-shadow: 0 0 0 3px rgba(126, 87, 194, 0.2);
 }
 
-/* Button styling */
-.mental-health button {
-  margin-top: 15px;
-   padding: 12px 28px;
-  font-size: 1.1rem;
-  background-color: #2e7d32;
-  color: white;
+.mental-health-input-form button {
+  background-color: #1c1c1c; /* Button color matches header */
+  color: #ffffff;
   border: none;
-  border-radius: 8px;
+  border-radius: 28px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  align-self: flex-end; /* Align button to the right */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.mental-health button:hover {
-  background-color: #1b5e20;
+.mental-health-input-form button:hover:not(:disabled) {
+  background-color: #555456; /* Darker purple on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-.mental-health button:disabled {
-  background-color: #a5d6a7;
+.mental-health-input-form button:disabled {
+  background-color: #b0bec5;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
-/* Spinner animation */
-.spinner {
-  width: 16px;
-  height: 16px;
-  border: 3px solid white;
-  border-top: 3px solid #388e3c;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  display: inline-block;
-  margin-right: 8px;
+/* Loading Spinner (reused styles) */
+/* Assuming 'send-spinner' and its keyframes are defined globally or in Spinner.css */
+/* If not, ensure they are copied here or from a shared utility CSS */
+.send-spinner {
+  animation: rotate 1s linear infinite;
+  width: 20px;
+  height: 20px;
 }
 
-@keyframes spin {
-  to {
+.send-spinner .path {
+  stroke: #fff;
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100% {
     transform: rotate(360deg);
   }
 }
 
-/* AI response styling */
-.mentalhealth-answer {
-  margin-top: 20px;
-  background: #ffffff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-  padding: 1.5rem;
-  border-radius: 16px;
-  animation: fadeIn 0.4s ease-in-out;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #2c3e50;
-  white-space: pre-wrap;
-  line-height: 1.8;
-}
-
-.mentalhealth-answer h4 {
-  font-size: 1.5rem;
-  color: #2e7d32;
-  margin-bottom: 1.2rem;
-  font-weight: 600;
-  border-bottom: 2px solid #e0e0e0;
-  padding-bottom: 0.4rem;
-}
-
-.mentalhealth-answer p {
-  margin-bottom: 1.2rem;
-  font-size: 1.4rem;
-  color: #151212;
-}
-
-.mentalhealth-answer ul,
-.mentalhealth-answer ol {
-  margin: 1rem 0;
-  padding-left: 2rem;
-}
-
-.mentalhealth-answer li {
-  margin-bottom: 0.9rem;
-  font-size: 1rem;
-  position: relative;
-  padding-left: 1.5rem;
-}
-
-.mentalhealth-answer li::before {
-  content: "✅";
-  position: absolute;
-  left: 0;
-  top: 2px;
-  font-size: 1rem;
-  color: #4CAF50;
-}
-
-.mentalhealth-answer li.alert::before {
-  content: "🚨";
-  color: #e74c3c;
-}
-
-.mentalhealth-answer li.med::before {
-  content: "💊";
-  color: #3498db;
-}
-
-.mentalhealth-answer li.home::before {
-  content: "🏠";
-  color: #f39c12;
-}
-
-.mentalhealth-answer li.sleep::before {
-  content: "🛌";
-  color: #9b59b6;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+
+/* Error Message Box */
+.mental-health-error-message {
+  background-color: #ffe0e0;
+  color: #c62828;
+  padding: 15px 25px;
+  border-radius: 0 0 18px 18px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-top: 1px solid #ef9a9a;
+  text-align: center;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03);
+}
+
+/* Mental Health Reply Result Box Styling */
+.mental-health-result-box {
+  background-color: #ede7f6; /* Light purple background for results - cozy feel */
+  color: #0c0c0c;
+  padding: 25px;
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03);
+  line-height: 1.6;
+  flex-grow: 1; /* This is CRUCIAL: it makes the result box take all available vertical space */
+  overflow-y: auto; /* This makes the RESULT BOX itself scroll if the reply is very long */
+}
+
+.mental-health-result-box .greeting {
+  font-style: italic;
+  font-size: 0.95em;
+  color: #171717;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #cfd8dc;
+}
+
+.mental-health-result-box .response-heading {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #080808; /* A deeper purple for main heading */
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.mental-health-result-box .response-content {
+  font-size: 1rem;
+  overflow: visible; /* Ensure content expands fully */
+  height: auto;
+  word-wrap: break-word;
+}
+
+/* Styles for the <p> tag within response-content that holds the actual reply string */
+.mental-health-result-box .response-content p {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    overflow: visible; /* Crucial: make sure the paragraph itself doesn't scroll */
+    max-height: none; /* Crucial: make sure the paragraph itself doesn't have a max height */
+}
+
+/* Scrollbar Styling (for Webkit browsers) - for the result box only if it scrolls */
+.mental-health-result-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.mental-health-result-box::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.mental-health-result-box::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+  border-radius: 10px;
+}
+
+.mental-health-result-box::-webkit-scrollbar-thumb:hover {
+  background: #9e9e9e;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .mental-health-wrapper {
+    padding: 0 10px;
+  }
+
+  .mental-health-container {
+    border-radius: 0;
+    min-height: 450px;
+    height: auto;
+    max-height: 95vh;
+  }
+
+  .mental-health-header {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 15px 20px;
+  }
+
+  .mental-health-input-form {
+    padding: 15px 20px;
+  }
+
+  .mental-health-input-form textarea {
+    padding: 10px 15px;
+    font-size: 0.95rem;
+    min-height: 35px;
+    max-height: 100px;
+  }
+
+  .mental-health-input-form button {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+
+  .mental-health-error-message,
+  .mental-health-result-box {
+    border-radius: 0;
+    padding: 20px;
+  }
+
+  .mental-health-result-box .greeting {
+    font-size: 0.9em;
+  }
+
+  .mental-health-result-box .response-heading {
+    font-size: 1.2rem;
+  }
+
+  .mental-health-result-box .response-content {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mental-health-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .icon-lotus {
+    font-size: 1.5rem;
   }
 }

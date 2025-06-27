@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./SymptomChecker.css"; // Reusing existing styles
+import "./NutritionPlanner.css"; // Dedicated styling for Nutrition Planner
 
 const NutritionPlanner = ({ user }) => {
   const [healthConditions, setHealthConditions] = useState("");
   const [preferences, setPreferences] = useState("");
   const [goal, setGoal] = useState("");
   const [feedback, setFeedback] = useState("");
-  const [plan, setPlan] = useState(null);
+  const [plan, setPlan] = useState(null); // Assuming plan is a string response
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    setPlan(null);
+    setPlan(null); // Clear previous plan
 
     if (!goal.trim()) {
-      setError("Please enter your health goal.");
+      setError("Please enter your primary health goal to generate a plan.");
       return;
     }
 
@@ -43,12 +43,12 @@ const NutritionPlanner = ({ user }) => {
       };
 
       const res = await axios.post("http://localhost:5000/api/nutrition", payload);
-      setPlan(res.data.plan);
+      setPlan(res.data.plan); // Assuming res.data.plan is the string meal plan
     } catch (err) {
       if (err.response?.data?.error) {
         setError(err.response.data.error);
       } else {
-        setError("Something went wrong. Please try again.");
+        setError("Something went wrong generating the nutrition plan. Please try again.");
       }
     } finally {
       setLoading(false);
@@ -56,57 +56,77 @@ const NutritionPlanner = ({ user }) => {
   };
 
   return (
-    <div className="symptom-checker-container">
-      <h2>🥗 AI Diet & Nutrition Planner</h2>
-      <form className="symptom-form" onSubmit={handleSubmit}>
-        <textarea
-          placeholder="Health conditions (e.g. diabetes, thyroid...)"
-          value={healthConditions}
-          onChange={(e) => setHealthConditions(e.target.value)}
-          rows="2"
-        />
-        <textarea
-          placeholder="Dietary preferences (e.g. vegetarian, keto...)"
-          value={preferences}
-          onChange={(e) => setPreferences(e.target.value)}
-          rows="2"
-        />
-        <textarea
-          placeholder="Health goal (e.g. weight loss, muscle gain...)"
-          value={goal}
-          onChange={(e) => setGoal(e.target.value)}
-          rows="2"
-        />
-        <textarea
-          placeholder="Feedback or progress (optional)"
-          value={feedback}
-          onChange={(e) => setFeedback(e.target.value)}
-          rows="2"
-        />
-
-        <button type="submit" disabled={loading}>
-          {loading ? "Generating..." : "Generate Meal Plan"}
-        </button>
-      </form>
-
-      {error && (
-        <div className="error-box">
-          <h4>Error:</h4>
-          <p>{error}</p>
+    <div className="nutrition-planner-wrapper">
+      <div className="nutrition-planner-container">
+        {/* Header Section */}
+        <div className="nutrition-planner-header">
+          <span className="icon-salad" role="img" aria-label="salad bowl">
+            🥗
+          </span>
+          <h2>AI Diet & Nutrition Planner</h2>
         </div>
-      )}
 
-      {plan && (
-        <div className="result-box">
-          {user?.name && (
-            <p className="greeting">
-              Hi {user.name}, here’s your personalized meal plan:
-            </p>
-          )}
-          <h4>Your Plan:</h4>
-          <pre style={{ whiteSpace: 'pre-wrap', lineHeight: '1.5' }}>{plan}</pre>
-        </div>
-      )}
+        {/* Input Form Section */}
+        <form className="nutrition-planner-input-form" onSubmit={handleSubmit}>
+          <textarea
+            placeholder="Your health conditions (e.g., diabetes, hypertension, allergies...)"
+            value={healthConditions}
+            onChange={(e) => setHealthConditions(e.target.value)}
+            rows="2"
+          />
+          <textarea
+            placeholder="Your dietary preferences (e.g., vegetarian, keto, gluten-free, no dairy...)"
+            value={preferences}
+            onChange={(e) => setPreferences(e.target.value)}
+            rows="2"
+          />
+          <textarea
+            placeholder="Your health goal (e.g., weight loss, muscle gain, energy boost, better digestion...)"
+            value={goal}
+            onChange={(e) => setGoal(e.target.value)}
+            rows="2"
+          />
+          <textarea
+            placeholder="Optional: Any feedback or progress since your last plan?"
+            value={feedback}
+            onChange={(e) => setFeedback(e.target.value)}
+            rows="2"
+          />
+
+          <button type="submit" disabled={loading}>
+            {loading ? (
+              <svg className="send-spinner" viewBox="0 0 50 50">
+                <circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="5"></circle>
+              </svg>
+            ) : (
+              'Generate Plan'
+            )}
+          </button>
+        </form>
+
+        {/* Error Display */}
+        {error && (
+          <div className="nutrition-planner-error-message">
+            <p>{error}</p>
+          </div>
+        )}
+
+        {/* Plan Display */}
+        {plan && (
+          <div className="nutrition-planner-result-box">
+            {user?.name && (
+              <p className="greeting">
+                Hi {user.name}, here’s your personalized nutrition plan:
+              </p>
+            )}
+            <h3 className="plan-heading">📋 Your Custom Meal Plan</h3>
+            <div className="plan-content">
+               {/* Assuming 'plan' is a string that might contain newlines/formatting */}
+              <p style={{ whiteSpace: 'pre-wrap', lineHeight: '1.6' }}>{plan}</p>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
