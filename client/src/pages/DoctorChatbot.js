@@ -1,156 +1,230 @@
-import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
-import './DoctorChatbot.css'; // Updated styling for the new look
+import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
+import Spinner from "../components/Spinner"; // Assuming you have a Spinner component
+import "./DoctorChatbot.css"; // Your existing CSS for the chatbot
 
-const DoctorChatbot = ({ user }) => {
-  const [question, setQuestion] = useState('');
-  const [messages, setMessages] = useState([]); // Stores all messages for chat history
+function DoctorChatbot({ user }) {
+  const [messages, setMessages] = useState([]); // Stores both user and AI messages
+  const [currentQuestion, setCurrentQuestion] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null); // New state for selected file
+  const [filePreview, setFilePreview] = useState(null); // New state for file preview
 
-  const messagesEndRef = useRef(null); // Ref for auto-scrolling to the latest message
+  const messagesEndRef = useRef(null); // For auto-scrolling
 
-  // Scroll to the bottom of messages whenever messages update or loading changes
-  useEffect(() => {
+  const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, loading]);
+  };
 
-  // Initial greeting message when component mounts or user data changes
   useEffect(() => {
-    if (user?.name && messages.length === 0) {
-      setMessages([{
-        text: `Hi ${user.name}, how can I assist you with your health today?`,
-        sender: 'bot-greeting' // Special sender type for unique styling
-      }]);
-    }
-  }, [user, messages.length]);
+    scrollToBottom();
+  }, [messages]);
 
-  const handleSubmit = async (e) => {
+  // Initial greeting when component mounts
+  useEffect(() => {
+    setMessages([
+      {
+        type: "ai",
+        text: `Hi ${user?.name || 'there'}, how can I assist you with your health today?`,
+      },
+    ]);
+  }, [user?.name]);
+
+  const handleTextSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-
-    if (!question.trim()) {
-      setError("Please enter your question.");
+    if (!currentQuestion.trim()) {
+      setError("Please type your question.");
       return;
     }
 
-    const userMessage = { text: question.trim(), sender: 'user' };
-    setMessages((prevMessages) => [...prevMessages, userMessage]);
-    setQuestion(''); // Clear input field immediately
-
+    const newMessage = { type: "user", text: currentQuestion.trim() };
+    setMessages((prevMessages) => [...prevMessages, newMessage]);
+    setCurrentQuestion("");
+    setError("");
     setLoading(true);
 
     try {
       const payload = {
-        question: question.trim(),
+        question: currentQuestion.trim(),
         user: {
           name: user?.name,
           age: user?.age,
           gender: user?.gender,
-          weight: user?.weight,
-          height: user?.height,
           diseases: user?.diseases,
           allergies: user?.allergies,
           treatments: user?.treatments,
-          medications: user?.medications
-        }
+          medications: user?.medications,
+        },
       };
 
-      const res = await axios.post(
-        'http://localhost:5000/api/doctor-chatbot',
-        payload
-      );
-      const botResponse = res.data.answer.response;
-      // We will render 'botResponse' within the message bubble
-      setMessages((prevMessages) => [...prevMessages, { text: botResponse, sender: 'bot' }]);
+      const res = await axios.post("http://localhost:5000/api/doctor-chatbot", payload);
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { type: "ai", text: res.data.reply },
+      ]);
     } catch (err) {
-      let errorMessage = "Something went wrong. Please try again.";
-      if (err.response?.data?.error) {
-        errorMessage = err.response.data.error;
-      }
-      setMessages((prevMessages) => [...prevMessages, { text: errorMessage, sender: 'error' }]);
-      setError(errorMessage); // Keep error state for potential display outside chat
+      console.error("Error communicating with AI:", err.response?.data || err.message);
+      setError("Failed to get a response from the AI. Please try again.");
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { type: "ai", text: "I'm sorry, I couldn't process your request right now. Please try again later." },
+      ]);
     } finally {
       setLoading(false);
     }
   };
 
+  // --- New Function for File Handling ---
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setSelectedFile(file);
+      setFilePreview(URL.createObjectURL(file)); // Create a URL for preview
+      setError(""); // Clear previous errors
+    } else {
+      setSelectedFile(null);
+      setFilePreview(null);
+    }
+  };
+
+  const handleFileUpload = async () => {
+    if (!selectedFile) {
+      setError("Please select a medical report image to upload.");
+      return;
+    }
+
+    // Add user message indicating file upload
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { type: "user", text: `Uploading report: "${selectedFile.name}"...`, isFile: true, fileUrl: filePreview },
+    ]);
+
+    setLoading(true);
+    setError("");
+
+    const formData = new FormData();
+    formData.append("medicalReport", selectedFile); // 'medicalReport' must match backend field name
+    formData.append("user", JSON.stringify({ // Send user data for context
+      name: user?.name,
+      age: user?.age,
+      gender: user?.gender,
+      diseases: user?.diseases,
+      allergies: user?.allergies,
+      treatments: user?.treatments,
+      medications: user?.medications,
+    }));
+
+    try {
+      const res = await axios.post("http://localhost:5000/api/doctor-chatbot/analyze-report", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data", // Important for file uploads
+        },
+      });
+
+      // Add AI response
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { type: "ai", text: res.data.explanation },
+      ]);
+
+      // Clear file selection after successful upload
+      setSelectedFile(null);
+      setFilePreview(null);
+
+    } catch (err) {
+      console.error("Error uploading or analyzing report:", err.response?.data || err.message);
+      setError("Failed to analyze the report. Please ensure the image is clear or try again.");
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { type: "ai", text: "I'm sorry, I couldn't analyze the report. Please make sure the image is clear and try again." },
+      ]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
   return (
-    <div className="chatbot-wrapper">
-      <div className="chatbot-container">
-        <div className="chatbot-header">
+    <div className="doctor-chatbot-wrapper">
+      <div className="doctor-chatbot-container">
+        {/* Header */}
+        <div className="doctor-chatbot-header">
           <span className="icon-doctor" role="img" aria-label="doctor">
             👨‍⚕️
           </span>
           <h2>AI Doctor Chatbot</h2>
         </div>
 
-        <div className="chatbot-messages-area">
+        {/* Chat Messages Area */}
+        <div className="chat-messages">
           {messages.map((msg, index) => (
-            <div key={index} className={`message-bubble ${msg.sender}`}>
-              {(msg.sender === 'bot' || msg.sender === 'user') && (
-                <span className={`icon-${msg.sender}`}>
-                  {msg.sender === 'bot' ? '👨‍⚕️' : '👤'}
-                </span>
-              )}
-              {/* Conditional rendering for bot messages to apply specific answer styling */}
-              {msg.sender === 'bot' ? (
-                <div className="chatbot-answer-content">
-                  {/* Parse and render the text content for better styling */}
-                  <p className="greeting-after-question">
-                    {user?.name ? `Hi ${user.name}, here's what the doctor says:` : "Here's what the doctor says:"}
-                  </p>
-                  <div className="response-text" dangerouslySetInnerHTML={{ __html: msg.text.replace(/\n/g, '<br/>') }} />
-                  {/* We are using dangerouslySetInnerHTML to render br tags.
-                      For more advanced formatting (headings, lists), you'd need a Markdown parser here. */}
-                </div>
-              ) : (
-                <p>{msg.text}</p>
+            <div key={index} className={`message-bubble ${msg.type}`}>
+              {msg.text}
+              {msg.isFile && msg.fileUrl && (
+                <img src={msg.fileUrl} alt="Uploaded Report" className="uploaded-file-preview" />
               )}
             </div>
           ))}
           {loading && (
-            <div className="message-bubble bot loading">
-              <span className="icon-bot">👨‍⚕️</span>
-              <p>Thinking...</p>
-              <div className="loading-spinner"></div>
+            <div className="message-bubble ai loading">
+              <Spinner />
             </div>
           )}
-          <div ref={messagesEndRef} />
+          <div ref={messagesEndRef} /> {/* Scroll target */}
         </div>
 
-        <form className="chatbot-input-form" onSubmit={handleSubmit}>
-          <textarea
-            placeholder="Ask your health-related question here..."
-            value={question}
-            onChange={(e) => setQuestion(e.target.value)}
-            rows="1"
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                handleSubmit(e);
-              }
-            }}
-          />
-          <button type="submit" disabled={loading}>
-            {loading ? (
-              <svg className="send-spinner" viewBox="0 0 50 50">
-                <circle className="path" cx="25" cy="25" r="20" fill="none" strokeWidth="5"></circle>
-              </svg>
-            ) : (
-              'Ask'
-            )}
-          </button>
-        </form>
+        {/* Input Area */}
+        <div className="chat-input-area">
+          {filePreview && (
+            <div className="file-preview-container">
+              <img src={filePreview} alt="Selected Report Preview" className="selected-file-thumbnail" />
+              <button className="clear-file-button" onClick={() => { setSelectedFile(null); setFilePreview(null); setError(''); }}>
+                &times;
+              </button>
+            </div>
+          )}
 
-        {error && (
-          <div className="general-error-message">
-            <p>{error}</p>
+          <div className="input-row">
+            <label htmlFor="file-upload" className="file-upload-button" title="Upload Medical Report">
+              📄
+            </label>
+            <input
+              type="file"
+              id="file-upload"
+              accept="image/*"
+              onChange={handleFileChange}
+              style={{ display: 'none' }} // Hide actual input
+            />
+            <textarea
+              placeholder={selectedFile ? "Click 'Analyze Report' or type a question..." : "Ask your health-related question here..."}
+              value={currentQuestion}
+              onChange={(e) => setCurrentQuestion(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey && !selectedFile) {
+                  e.preventDefault();
+                  handleTextSubmit(e);
+                }
+              }}
+              rows="1" // Maintain compact rows
+              className="chat-textarea"
+              disabled={loading}
+            />
+            {selectedFile ? (
+              <button onClick={handleFileUpload} disabled={loading} className="send-button file-button">
+                {loading ? <Spinner /> : 'Analyze Report'}
+              </button>
+            ) : (
+              <button onClick={handleTextSubmit} disabled={loading || !currentQuestion.trim()} className="send-button">
+                {loading ? <Spinner /> : 'Ask'}
+              </button>
+            )}
           </div>
-        )}
+          {error && <div className="error-message chat-error">{error}</div>}
+        </div>
       </div>
     </div>
   );
-};
+}
 
 export default DoctorChatbot;

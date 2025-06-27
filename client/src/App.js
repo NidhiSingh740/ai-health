@@ -61,7 +61,7 @@ function App() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     setUser(null);
-    navigate("/login");
+    navigate("/");
   };
 
   if (isLoading) {
