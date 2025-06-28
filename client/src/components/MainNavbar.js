@@ -17,6 +17,9 @@ const MainNavbar = () => {
       <NavLink to="/recovery-plan" className="nav-link">
         Recovery Plan
       </NavLink>
+      <NavLink to="/medication-reminder" className="nav-link">
+        Medication Reminder
+      </NavLink>
       <NavLink to="/doctor-chatbot" className="nav-link">
         Doctor Chatbot
       </NavLink>
