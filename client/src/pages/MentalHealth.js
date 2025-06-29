@@ -1,3 +1,5 @@
+// src/pages/MentalHealth.js
+
 import React, { useState } from "react";
 // Assuming Spinner is a shared component like the one used in NutritionPlanner
 // If you don't have this Spinner component, you'll need to create it or remove the import/usage.

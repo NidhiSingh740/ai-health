@@ -1,9 +1,8 @@
-/* client/src/pages/MentalHealth */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* --- IMPORTANT: Ensure these body/root styles are in your main app's global CSS (e.g., App.css or index.css) --- */
-/* They should NOT be in MentalHealth.css if this component is embedded. */
+/* They should NOT be in MedicationReminder.css if this component is embedded. */
 /* If not already present, add them to your main global CSS. */
 /*
 html, body, #root {
@@ -21,7 +20,7 @@ html, body, #root {
   min-height: 100vh;
 }
 
-main { // Assuming your main content area that wraps MentalHealth component
+main { // Assuming your main content area that wraps MedicationReminder component
   flex-grow: 1;
   padding: 20px;
   display: flex;
@@ -32,7 +31,7 @@ main { // Assuming your main content area that wraps MentalHealth component
 /* --- End of global styles recommendation --- */
 
 
-.mental-health-wrapper {
+.medication-reminder-wrapper {
   width: 100%;
   max-width: 1200px; /* Max width for the whole component */
   margin: 40px auto; /* Centers horizontally and adds top/bottom margin */
@@ -43,8 +42,8 @@ main { // Assuming your main content area that wraps MentalHealth component
   align-items: flex-start;
 }
 
-/* Main Mental Health Container */
-.mental-health-container {
+/* Main Medication Reminder Container (similar to mental-health-container) */
+.medication-reminder-container {
   background-color: #ffffff;
   border-radius: 18px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -57,9 +56,9 @@ main { // Assuming your main content area that wraps MentalHealth component
   position: relative;
 }
 
-/* Header Section */
-.mental-health-header {
-  background-color: #2c332e; /* A calming purple for mental health */
+/* Header Section (similar to mental-health-header) */
+.medication-reminder-header {
+  background-color: #353535; /* A slightly different, but harmonious dark grey */
   color: #ffffff;
   padding: 18px 25px;
   border-top-left-radius: 18px;
@@ -71,18 +70,18 @@ main { // Assuming your main content area that wraps MentalHealth component
   flex-shrink: 0;
 }
 
-.mental-health-header h2 {
+.medication-reminder-header h2 {
   margin: 0;
   font-size: 1.4rem;
   font-weight: 600;
 }
 
-.icon-lotus { /* Icon for mental health theme */
+.icon-pill { /* Icon for medication reminder theme */
   font-size: 1.8rem;
 }
 
-/* Input Form Section */
-.mental-health-input-form {
+/* Input Form Section (similar to mental-health-input-form) */
+.medication-reminder-input-form {
   display: flex;
   flex-direction: column;
   padding: 20px 25px;
@@ -90,29 +89,42 @@ main { // Assuming your main content area that wraps MentalHealth component
   border-bottom: 1px solid #eceff1;
   background-color: #fdfdfd;
   flex-shrink: 0;
+  flex-grow: 1; /* Allow the form to take up available space */
 }
 
-.mental-health-input-form textarea {
+.medication-reminder-input-form div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Space between label and input */
+}
+
+.medication-reminder-input-form label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #455a64; /* Darker grey for labels */
+}
+
+.medication-reminder-input-form input[type="text"],
+.medication-reminder-input-form input[type="datetime-local"],
+.medication-reminder-input-form input[type="tel"] {
   flex-grow: 1;
   border: 1px solid #cfd8dc;
   border-radius: 12px;
   padding: 12px 18px;
   font-size: 1rem;
-  resize: vertical; /* Allows user to drag to resize vertically */
-  min-height: 40px; /* Small default height */
-  max-height: 120px; /* Maximum height for an individual textarea */
-  overflow-y: auto; /* Allows individual textarea to scroll if content exceeds max-height */
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
   transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  width: 100%; /* Ensure inputs take full width of their container */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
-.mental-health-input-form textarea:focus {
+.medication-reminder-input-form input:focus {
   outline: none;
   border-color: #353535; /* Focus color matches header */
-  box-shadow: 0 0 0 3px rgba(126, 87, 194, 0.2);
+  box-shadow: 0 0 0 3px rgba(126, 87, 194, 0.2); /* Adjust shadow color if purple is too strong for new theme */
 }
 
-.mental-health-input-form button {
+.medication-reminder-input-form button {
   background-color: #1c1c1c; /* Button color matches header */
   color: #ffffff;
   border: none;
@@ -128,15 +140,16 @@ main { // Assuming your main content area that wraps MentalHealth component
   min-width: 120px;
   align-self: flex-end; /* Align button to the right */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 15px; /* Add some space above the button */
 }
 
-.mental-health-input-form button:hover:not(:disabled) {
-  background-color: #555456; /* Darker purple on hover */
+.medication-reminder-input-form button:hover:not(:disabled) {
+  background-color: #555456; /* Darker grey on hover */
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-.mental-health-input-form button:disabled {
+.medication-reminder-input-form button:disabled {
   background-color: #b0bec5;
   cursor: not-allowed;
   box-shadow: none;
@@ -144,7 +157,6 @@ main { // Assuming your main content area that wraps MentalHealth component
 
 /* Loading Spinner (reused styles) */
 /* Assuming 'send-spinner' and its keyframes are defined globally or in Spinner.css */
-/* If not, ensure they are copied here or from a shared utility CSS */
 .send-spinner {
   animation: rotate 1s linear infinite;
   width: 20px;
@@ -178,8 +190,8 @@ main { // Assuming your main content area that wraps MentalHealth component
   }
 }
 
-/* Error Message Box */
-.mental-health-error-message {
+/* Error Message Box (similar to mental-health-error-message) */
+.medication-reminder-error-message {
   background-color: #ffe0e0;
   color: #c62828;
   padding: 15px 25px;
@@ -189,137 +201,70 @@ main { // Assuming your main content area that wraps MentalHealth component
   border-top: 1px solid #ef9a9a;
   text-align: center;
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03);
+  margin-top: auto; /* Push to the bottom */
 }
 
-/* Mental Health Reply Result Box Styling */
-.mental-health-result-box {
-  background-color: #ede7f6; /* Light purple background for results - cozy feel */
-  color: #0c0c0c;
-  padding: 25px;
+/* Success Message Box (new, similar to error but green) */
+.medication-reminder-success-message {
+  background-color: #e8f5e9; /* Light green */
+  color: #2e7d32; /* Dark green */
+  padding: 15px 25px;
   border-radius: 0 0 18px 18px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-top: 1px solid #a5d6a7; /* Border green */
+  text-align: center;
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03);
-  line-height: 1.6;
-  flex-grow: 1; /* This is CRUCIAL: it makes the result box take all available vertical space */
-  overflow-y: auto; /* This makes the RESULT BOX itself scroll if the reply is very long */
-}
-
-.mental-health-result-box .greeting {
-  font-style: italic;
-  font-size: 0.95em;
-  color: #171717;
-  margin-bottom: 15px;
-  padding-bottom: 10px;
-  border-bottom: 1px dashed #cfd8dc;
-}
-
-.mental-health-result-box .response-heading {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #080808; /* A deeper purple for main heading */
-  margin-top: 0;
-  margin-bottom: 15px;
-}
-
-.mental-health-result-box .response-content {
-  font-size: 1rem;
-  overflow: visible; /* Ensure content expands fully */
-  height: auto;
-  word-wrap: break-word;
-}
-
-/* Styles for the <p> tag within response-content that holds the actual reply string */
-.mental-health-result-box .response-content p {
-    margin: 0;
-    padding: 0;
-    border: none;
-    background: none;
-    font-family: inherit;
-    font-size: inherit;
-    color: inherit;
-    overflow: visible; /* Crucial: make sure the paragraph itself doesn't scroll */
-    max-height: none; /* Crucial: make sure the paragraph itself doesn't have a max height */
-}
-
-/* Scrollbar Styling (for Webkit browsers) - for the result box only if it scrolls */
-.mental-health-result-box::-webkit-scrollbar {
-  width: 8px;
-}
-
-.mental-health-result-box::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-.mental-health-result-box::-webkit-scrollbar-thumb {
-  background: #bdbdbd;
-  border-radius: 10px;
-}
-
-.mental-health-result-box::-webkit-scrollbar-thumb:hover {
-  background: #9e9e9e;
+  margin-top: auto; /* Push to the bottom */
 }
 
 
-/* Responsive Adjustments */
+/* Responsive Adjustments (adapted from MentalHealth.css) */
 @media (max-width: 768px) {
-  .mental-health-wrapper {
+  .medication-reminder-wrapper {
     padding: 0 10px;
   }
 
-  .mental-health-container {
+  .medication-reminder-container {
     border-radius: 0;
     min-height: 450px;
     height: auto;
     max-height: 95vh;
   }
 
-  .mental-health-header {
+  .medication-reminder-header {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     padding: 15px 20px;
   }
 
-  .mental-health-input-form {
+  .medication-reminder-input-form {
     padding: 15px 20px;
   }
 
-  .mental-health-input-form textarea {
+  .medication-reminder-input-form input {
     padding: 10px 15px;
     font-size: 0.95rem;
-    min-height: 35px;
-    max-height: 100px;
   }
 
-  .mental-health-input-form button {
+  .medication-reminder-input-form button {
     padding: 10px 20px;
     font-size: 0.95rem;
   }
 
-  .mental-health-error-message,
-  .mental-health-result-box {
+  .medication-reminder-error-message,
+  .medication-reminder-success-message {
     border-radius: 0;
     padding: 20px;
-  }
-
-  .mental-health-result-box .greeting {
-    font-size: 0.9em;
-  }
-
-  .mental-health-result-box .response-heading {
-    font-size: 1.2rem;
-  }
-
-  .mental-health-result-box .response-content {
-    font-size: 0.95rem;
   }
 }
 
 @media (max-width: 480px) {
-  .mental-health-header h2 {
+  .medication-reminder-header h2 {
     font-size: 1.2rem;
   }
 
-  .icon-lotus {
+  .icon-pill {
     font-size: 1.5rem;
   }
 }
