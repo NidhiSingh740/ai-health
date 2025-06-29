@@ -4,6 +4,7 @@ const cors = require("cors");
 const multer = require('multer'); // New: For handling file uploads
 const { createWorker } = require('tesseract.js'); // New: For OCR
 const axios = require('axios'); // New: For making requests to your AI model
+const startMedicationScheduler = require('../server/scheduler/medicationScheduler'); // New: Import the scheduler
 
 const app = express();
 
@@ -169,6 +170,10 @@ app.use('/api/mental-health', mentalHealthRoute);
 const symptomCheckerRoute = require('./router/symptomChecker');
 app.use('/api/symptom-checker', symptomCheckerRoute);
 
+
+const medicationRoute = require('./router/medicationReminder');
+app.use('/api/medication', medicationRoute);
+
 // 🌐 Basic route
 app.get("/", (req, res) => {
     res.status(200).send("Hello Nidhi! Welcome to the Smart Health AI API.");
@@ -184,6 +189,8 @@ connectDb()
     .then(() => {
         app.listen(PORT, () => {
             console.log(`✅ Server running on http://localhost:${PORT}`);
+            startMedicationScheduler(); // New: Start the medication scheduler here
+
         });
     })
     .catch((error) => {

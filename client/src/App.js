@@ -13,6 +13,8 @@ import RecoveryPlan from './pages/RecoveryPlan';
 import DoctorChatbot from './pages/DoctorChatbot';
 import NutritionPlanner from './pages/NutritionPlanner';
 import MentalHealth from './pages/MentalHealth';
+import MedicationReminder from './pages/MedicationReminder';
+
 import './App.css';
 
 function App() {
@@ -86,6 +88,8 @@ function App() {
           <Route path="/symptom-checker" element={<SymptomChecker user={user} />} />
           <Route path="/doctor-chatbot" element={<DoctorChatbot user = {user} />} />
           <Route path="/recovery-plan" element={<RecoveryPlan user = {user} />} />
+          <Route path="/medication-reminder" element={<MedicationReminder user = {user} />} />
+
           <Route path="/nutrition-planner" element={<NutritionPlanner user = {user} />} />
           <Route path="/mental-health" element={<MentalHealth user = {user} />} />
         </Routes>
