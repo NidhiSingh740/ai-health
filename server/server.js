@@ -184,13 +184,19 @@ const connectDb = require("./utils/db");
 
 // 🚀 Start server
 const PORT = process.env.PORT || 5000;
-
+app.get('/ping', (req, res) => {
+  res.send('pong');
+});
 connectDb()
     .then(() => {
         app.listen(PORT, () => {
             console.log(`✅ Server running on http://localhost:${PORT}`);
             startMedicationScheduler(); // New: Start the medication scheduler here
-
+          setInterval(() => {
+  fetch('https://numbr-exq6.onrender.com/api/ping')
+    .then(() => console.log('Pinged self!'))
+    .catch(() => console.log('Self ping failed.'));
+}, 1000 * 60 * 10); // Every 10 mins
         });
     })
     .catch((error) => {
