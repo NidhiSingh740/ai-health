@@ -9,7 +9,7 @@ const startMedicationScheduler = require('../server/scheduler/medicationSchedule
 const app = express();
 
 // 🔐 CORS setup to allow frontend requests
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors({ origin: "http://arogyaai.vercel.app", credentials: true }));
 
 // 📦 Middleware
 app.use(express.json());
