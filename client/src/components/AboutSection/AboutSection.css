@@ -27,7 +27,7 @@ body {
 .about-features h2 {
     font-size: 2.5em; /* Larger heading for emphasis */
     margin-bottom: 20px;
-    color: #333; /* Darker, softer black */
+    color: #07450a; /* Darker, softer black */
     font-weight: 700; /* Bolder heading */
     line-height: 1.2; /* Better line spacing for headings */
 }
@@ -37,7 +37,7 @@ body {
     max-width: 900px;
     margin: 0 auto 50px auto; /* More space below introductory paragraph */
     line-height: 1.7; /* Improved line height for readability */
-    color: #555; /* Softer text color */
+    color: #212020; /* Softer text color */
 }
 
 .features-grid {
@@ -80,13 +80,13 @@ body {
 .feature-card h3 {
     font-size: 1.4em; /* Larger heading within the card */
     margin-bottom: 12px;
-    color: #333; /* Darker text for headings */
+    color: #12480a; /* Darker text for headings */
     font-weight: 600; /* Semi-bold */
 }
 
 .feature-card p {
     font-size: 1em; /* Standard paragraph font size */
-    color: #555; /* Softer black for body text */
+    color: #292929; /* Softer black for body text */
     line-height: 1.6;
     margin-bottom: 0;
 }
@@ -103,7 +103,7 @@ body {
 .how-it-works h2 {
     font-size: 2.5em; /* Consistent heading size */
     margin-bottom: 50px; /* More space below heading */
-    color: #333;
+    color: #093f0b;
     font-weight: 700;
 }
 
@@ -179,13 +179,13 @@ body {
 .step h4 {
     font-size: 1.3em;
     margin-bottom: 12px;
-    color: #333;
+    color: #0c4b09;
     font-weight: 600;
 }
 
 .step p {
     font-size: 1em;
-    color: #555;
+    color: #252525;
     line-height: 1.6;
     margin-bottom: 0;
 }

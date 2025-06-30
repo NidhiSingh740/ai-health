@@ -1,51 +1,233 @@
-
+/* General Navbar Styling */
 .main-navbar {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  padding: 15px 60px;
-  background-color: #34a054;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  /* border-radius: 10px; */
-  /* margin: 5px auto; */
-  width: 105%;
-  max-width: 2200px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-.nav-link {
-  text-decoration: none;
-  color: #0e0e0e;
-  font-weight: 800;
-   padding: 8px 16px;
-  border-radius: 20px;
-  transition: all 0.3s ease;
-  position: relative; /* Needed for underline */
+    display: flex;
+    justify-content: flex-end; /* Aligns content to the right by default */
+    align-items: center; /* Vertically aligns items */
+    gap: 25px; /* Space between nav links and user info */
+
+    padding: 15px 60px; /* Your original padding on the navbar itself */
+    background-color: #34a054; /* Your chosen green background */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    /* --- CRITICAL FIXES FOR HORIZONTAL SCROLL AND MAIN SCREEN BOUNDS --- */
+    width: 100%; /* Ensures it fills its parent container (usually body) */
+    max-width: 1800px; /* Matches your hero section's max-width */
+    margin: 0 auto; /* Centers the entire navbar within the page */
+    box-sizing: border-box; /* Ensures padding is included in the width, preventing overflow */
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Your original font */
+    position: sticky; /* Keeps it fixed on top after scrolling */
+    top: 0; /* Sticks to the very top */
+    z-index: 100; /* Ensures it stays on top of other content */
+    overflow-x: hidden; /* Prevent horizontal scrollbar on the navbar itself if anything inside overflows */
 }
 
-/* Hover effect (unchanged, but still nice) */
+/* Nav Links Container (for desktop) */
+.nav-links-container {
+    display: flex; /* Display as flex on desktop */
+    justify-content: center; /* Centers links within their container */
+    gap: 25px; /* Space between nav links */
+    flex-wrap: nowrap; /* Prevents links from wrapping on desktop */
+    /* Ensure it doesn't get pushed away by hamburger on desktop */
+    flex-grow: 1; /* Allows it to take available space */
+    justify-content: flex-end; /* Aligns links to the right if there's no brand */
+}
+
+/* Individual Nav Link */
+.nav-link {
+    text-decoration: none;
+    color: #0e0e0e; /* Your original color */
+    font-weight: 800;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    position: relative; /* Needed for underline */
+    white-space: nowrap; /* Ensure links stay on one line */
+}
+
+/* Hover effect */
 .nav-link:hover {
     background-color: #02780e;
-  color: white;
-  transform: scale(1.05);
+    color: white;
+    transform: scale(1.05);
 }
 
-/* ✅ Active link with white text and white underline */
+/* Active link with white text and white underline */
 .nav-link.active {
-  color: white;
-  background-color: transparent; /* Remove white box */
+    color: white;
+    background-color: transparent; /* Remove white box */
 }
 
-/* ✅ White underline effect */
+/* White underline effect */
 .nav-link.active::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0; /* Adjust as needed */
-  width: 100%;
-  height: 3px;
-  background-color: white;
-  border-radius: 1px;
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 1px;
+}
+
+/* User Info (Nikki, Logout) */
+.navbar-user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #0e0e0e; /* Keep your original color */
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.logout-button {
+    background-color: #0e0e0e; /* Your original logout button color */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #02780e; /* Hover effect */
+}
+
+
+/* --- Hamburger Menu Styling (Hidden on Desktop) --- */
+.hamburger-menu {
+    display: none; /* Hidden by default on desktop */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 101; /* Ensure it's above the menu when open */
+    margin-right: 20px; /* Space between hamburger and user info on mobile */
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 3px;
+    background-color: white; /* White bars for contrast */
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hamburger animation when open */
+.hamburger-menu .bar:nth-child(1).open {
+    transform: translateY(11px) rotate(45deg);
+}
+.hamburger-menu .bar:nth-child(2).open {
+    opacity: 0;
+}
+.hamburger-menu .bar:nth-child(3).open {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+
+/* --- Responsive Adjustments with Media Queries --- */
+
+/* For screens smaller than 1200px (adjust this breakpoint as needed) */
+@media (max-width: 1200px) {
+    .main-navbar {
+        padding: 15px 30px; /* Reduced horizontal padding for smaller screens */
+        gap: 15px; /* Reduce gap between items */
+    }
+
+    .nav-link {
+        font-size: 0.95rem; /* Slightly smaller font for links */
+        padding: 8px 12px; /* Smaller padding for links */
+    }
+}
+
+
+/* For screens smaller than 992px (typical tablet/mobile breakpoint) */
+@media (max-width: 992px) {
+    .main-navbar {
+        justify-content: space-between; /* Space out hamburger and user info */
+        padding: 15px 20px; /* More reduced padding for very small screens */
+    }
+
+    .hamburger-menu {
+        display: flex; /* Show hamburger on mobile/tablet */
+        order: 1; /* Place hamburger first */
+        margin-right: auto; /* Pushes hamburger to the left, user info to the right */
+        margin-left: 0; /* Ensure no unwanted left margin */
+    }
+
+    .navbar-user-info {
+        order: 2; /* Place user info last */
+    }
+
+    /* Hide horizontal nav links on mobile/tablet */
+    .nav-links-container {
+        /* CRITICAL FIXES HERE for overlay behavior */
+        display: none; /* Hidden by default when not open */
+        position: fixed; /* Use fixed to ensure it covers the whole viewport */
+        top: 0; /* Start from the very top of the viewport */
+        left: 0;
+        width: 100vw; /* Cover the entire viewport width */
+        height: 100vh; /* Cover the entire viewport height */
+        background-color: #34a054; /* Match navbar background */
+        flex-direction: column; /* Stack links vertically when open */
+        justify-content: flex-start; /* Start links from the top */
+        align-items: center; /* Center links horizontally */
+        padding-top: 80px; /* Space for the fixed navbar content (hamburger/user info) */
+        transform: translateX(-100%); /* Start off-screen to the left */
+        transition: transform 0.3s ease-in-out; /* Smooth slide transition */
+        z-index: 99; /* Below the hamburger button, above page content */
+        overflow-y: auto; /* Enable scrolling if many links */
+        box-sizing: border-box; /* Include padding in width/height */
+    }
+
+    .nav-links-container.open {
+        transform: translateX(0); /* Slide in when 'open' class is applied */
+        display: flex; /* IMPORTANT: Set to flex to override display: none; */
+    }
+
+    /* Styling for individual links in the mobile menu */
+    .nav-link {
+        padding: 15px 0; /* More vertical padding for mobile links */
+        width: 80%; /* Make links wider for easier tapping */
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
+        color: white; /* White text for mobile links for better contrast */
+        font-size: 1.1rem;
+        border-radius: 0; /* Remove border-radius on mobile links for full-width look */
+    }
+
+    .nav-link:last-child {
+        border-bottom: none; /* No border on last link */
+    }
+
+    .nav-link.active {
+        background-color: rgba(0, 0, 0, 0.1); /* Subtle background for active link on mobile */
+        /* Remove underline for mobile if preferred, or style differently */
+        &::after {
+            display: none;
+        }
+    }
+}
+
+/* For screens smaller than 768px (typical mobile phone breakpoint) */
+@media (max-width: 768px) {
+    .main-navbar {
+        padding: 10px 15px; /* Even smaller padding on very small screens */
+    }
+    .navbar-user-info span {
+        display: none; /* Hide username "Nikki" to save space on small phones */
+    }
+    .logout-button {
+        padding: 6px 12px; /* Smaller logout button */
+        font-size: 0.9rem;
+    }
+    .nav-links-container {
+        padding-top: 60px; /* Adjust padding for mobile menu when navbar height shrinks */
+    }
 }

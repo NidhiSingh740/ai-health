@@ -1,18 +1,18 @@
 /* General Reset and Font */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #ffffff;
-  color: #222;
-}
+
+
 
 /* Hero Section Fix */
 .hero-section {
   /* background: #d4e0f1; */
-background:linear-gradient(to bottom, #f5fff7 0%, #caf0d7 50%, #96dfab 100%);;
+background:linear-gradient(to bottom, #f5fff7 0%, #caf0d7 50%, #96dfab 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+ width: 98.1vw;
+  box-sizing: border-box;
+   margin: 0;
+  padding: 0;
 }
 
 /* Hero Content: Align both sides properly and remove excess height */
@@ -22,7 +22,11 @@ background:linear-gradient(to bottom, #f5fff7 0%, #caf0d7 50%, #96dfab 100%);;
   justify-content: space-between;
   flex-wrap: wrap;
   max-width: 1400px;
-  width: 110%;
+  width: 130%;
+  box-sizing: border-box;
+
+  margin: 0;
+  padding: 0;
 }
 
 /* Hero Text Styling */
