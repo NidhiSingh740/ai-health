@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* --- IMPORTANT: Ensure these body/root styles are in your main app's global CSS (e.g., App.css or index.css) --- */
@@ -32,239 +31,363 @@ main { // Assuming your main content area that wraps MedicationReminder componen
 
 
 .medication-reminder-wrapper {
-  width: 100%;
-  max-width: 1200px; /* Max width for the whole component */
-  margin: 40px auto; /* Centers horizontally and adds top/bottom margin */
-  padding: 0 20px; /* Horizontal padding */
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+    width: 100%;
+    max-width: 1200px; /* Max width for the whole component - KEPT FOR DESKTOP */
+    margin: 40px auto; /* Centers horizontally and adds top/bottom margin - KEPT FOR DESKTOP */
+    padding: 0 20px; /* Horizontal padding - KEPT FOR DESKTOP */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
-/* Main Medication Reminder Container (similar to mental-health-container) */
+/* Main Medication Reminder Container (consistent with mental-health-container) */
 .medication-reminder-container {
-  background-color: #ffffff;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  width: 100%;
-  height: auto; /* ALLOWS HEIGHT TO EXPAND BASED ON CONTENT */
-  min-height: 600px; /* Ensures a good minimum height for overall component */
-  display: flex;
-  flex-direction: column;
-  overflow: hidden; /* For container's rounded corners */
-  position: relative;
+    background-color: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    height: auto; /* ALLOWS HEIGHT TO EXPAND BASED ON CONTENT */
+    min-height: 600px; /* Ensures a good minimum height for overall component - KEPT FOR DESKTOP */
+    max-height: 80vh; /* Added max-height for desktop to enable internal scrolling if content is very long - KEPT FOR DESKTOP */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* For container's rounded corners */
+    position: relative;
 }
 
 /* Header Section (similar to mental-health-header) */
 .medication-reminder-header {
-  background-color: #353535; /* A slightly different, but harmonious dark grey */
-  color: #ffffff;
-  padding: 18px 25px;
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  flex-shrink: 0;
+    background-color: #353535; /* A slightly different, but harmonious dark grey */
+    color: #ffffff;
+    padding: 18px 25px; /* KEPT FOR DESKTOP */
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
 }
 
 .medication-reminder-header h2 {
-  margin: 0;
-  font-size: 1.4rem;
-  font-weight: 600;
+    margin: 0;
+    font-size: 1.4rem; /* KEPT FOR DESKTOP */
+    font-weight: 600;
 }
 
 .icon-pill { /* Icon for medication reminder theme */
-  font-size: 1.8rem;
+    font-size: 1.8rem; /* KEPT FOR DESKTOP */
 }
 
 /* Input Form Section (similar to mental-health-input-form) */
 .medication-reminder-input-form {
-  display: flex;
-  flex-direction: column;
-  padding: 20px 25px;
-  gap: 15px;
-  border-bottom: 1px solid #eceff1;
-  background-color: #fdfdfd;
-  flex-shrink: 0;
-  flex-grow: 1; /* Allow the form to take up available space */
+    display: flex;
+    flex-direction: column;
+    padding: 20px 25px; /* KEPT FOR DESKTOP */
+    gap: 15px;
+    border-bottom: 1px solid #eceff1;
+    background-color: #fdfdfd;
+    flex-shrink: 0;
+    flex-grow: 1; /* Allow the form to take up available space */
+    overflow-y: auto; /* Allow form content to scroll if it exceeds container height */
+    -webkit-overflow-scrolling: touch; /* For smoother iOS scrolling */
 }
 
 .medication-reminder-input-form div {
-  display: flex;
-  flex-direction: column;
-  gap: 8px; /* Space between label and input */
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Space between label and input */
 }
 
 .medication-reminder-input-form label {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #455a64; /* Darker grey for labels */
+    font-size: 0.95rem; /* KEPT FOR DESKTOP */
+    font-weight: 500;
+    color: #455a64; /* Darker grey for labels */
 }
 
 .medication-reminder-input-form input[type="text"],
 .medication-reminder-input-form input[type="datetime-local"],
 .medication-reminder-input-form input[type="tel"] {
-  flex-grow: 1;
-  border: 1px solid #cfd8dc;
-  border-radius: 12px;
-  padding: 12px 18px;
-  font-size: 1rem;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
-  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  width: 100%; /* Ensure inputs take full width of their container */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    width: 100%; /* Ensure inputs take full width of their container */
+    flex-grow: 1; /* Allow input to grow within flex container */
+    border: 1px solid #cfd8dc;
+    border-radius: 12px;
+    padding: 12px 18px; /* KEPT FOR DESKTOP */
+    font-size: 1rem; /* KEPT FOR DESKTOP */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .medication-reminder-input-form input:focus {
-  outline: none;
-  border-color: #353535; /* Focus color matches header */
-  box-shadow: 0 0 0 3px rgba(126, 87, 194, 0.2); /* Adjust shadow color if purple is too strong for new theme */
+    outline: none;
+    border-color: #353535; /* Focus color matches header */
+    box-shadow: 0 0 0 3px rgba(53, 53, 53, 0.2); /* Adjusted shadow color to match header */
 }
 
 .medication-reminder-input-form button {
-  background-color: #1c1c1c; /* Button color matches header */
-  color: #ffffff;
-  border: none;
-  border-radius: 28px;
-  padding: 12px 25px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 120px;
-  align-self: flex-end; /* Align button to the right */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  margin-top: 15px; /* Add some space above the button */
+    background-color: #1c1c1c; /* Button color matches header */
+    color: #ffffff;
+    border: none;
+    border-radius: 28px;
+    padding: 12px 25px; /* KEPT FOR DESKTOP */
+    font-size: 1rem; /* KEPT FOR DESKTOP */
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px; /* KEPT FOR DESKTOP */
+    align-self: flex-end; /* Align button to the right */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 15px; /* Add some space above the button */
 }
 
 .medication-reminder-input-form button:hover:not(:disabled) {
-  background-color: #555456; /* Darker grey on hover */
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    background-color: #555456; /* Darker grey on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .medication-reminder-input-form button:disabled {
-  background-color: #b0bec5;
-  cursor: not-allowed;
-  box-shadow: none;
+    background-color: #b0bec5;
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
 /* Loading Spinner (reused styles) */
 /* Assuming 'send-spinner' and its keyframes are defined globally or in Spinner.css */
 .send-spinner {
-  animation: rotate 1s linear infinite;
-  width: 20px;
-  height: 20px;
+    animation: rotate 1s linear infinite;
+    width: 20px;
+    height: 20px;
 }
 
 .send-spinner .path {
-  stroke: #fff;
-  stroke-linecap: round;
-  animation: dash 1.5s ease-in-out infinite;
+    stroke: #fff;
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
 }
 
 @keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes dash {
-  0% {
-    stroke-dasharray: 1, 150;
-    stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dasharray: 90, 150;
-    stroke-dashoffset: -35;
-  }
-  100% {
-    stroke-dasharray: 90, 150;
-    stroke-dashoffset: -124;
-  }
+    0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+    }
+    100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+    }
 }
 
 /* Error Message Box (similar to mental-health-error-message) */
 .medication-reminder-error-message {
-  background-color: #ffe0e0;
-  color: #c62828;
-  padding: 15px 25px;
-  border-radius: 0 0 18px 18px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  border-top: 1px solid #ef9a9a;
-  text-align: center;
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03);
-  margin-top: auto; /* Push to the bottom */
+    background-color: #ffe0e0;
+    color: #c62828;
+    padding: 15px 25px;
+    border-radius: 0 0 18px 18px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-top: 1px solid #ef9a9a;
+    text-align: center;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03);
+    margin-top: auto; /* Push to the bottom */
 }
 
 /* Success Message Box (new, similar to error but green) */
 .medication-reminder-success-message {
-  background-color: #e8f5e9; /* Light green */
-  color: #2e7d32; /* Dark green */
-  padding: 15px 25px;
-  border-radius: 0 0 18px 18px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  border-top: 1px solid #a5d6a7; /* Border green */
-  text-align: center;
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03);
-  margin-top: auto; /* Push to the bottom */
+    background-color: #e8f5e9; /* Light green */
+    color: #2e7d32; /* Dark green */
+    padding: 15px 25px;
+    border-radius: 0 0 18px 18px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-top: 1px solid #a5d6a7; /* Border green */
+    text-align: center;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03);
+    margin-top: auto; /* Push to the bottom */
 }
 
 
-/* Responsive Adjustments (adapted from MentalHealth.css) */
+/* Responsive Adjustments */
+
+/* Tablet View (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .medication-reminder-wrapper {
+        margin: 30px auto;
+        padding: 0 15px; /* Slightly more padding for better edge spacing on tablets */
+    }
+
+    .medication-reminder-container {
+        min-height: 500px; /* Adjusted min-height for tablets */
+        max-height: 90vh; /* Cap max height to fit on screen */
+    }
+
+    .medication-reminder-header {
+        padding: 16px 20px;
+    }
+
+    .medication-reminder-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .icon-pill {
+        font-size: 1.6rem;
+    }
+
+    .medication-reminder-input-form {
+        padding: 15px 20px; /* Reduced padding for input form */
+        gap: 12px;
+    }
+
+    .medication-reminder-input-form label {
+        font-size: 0.9rem;
+    }
+
+    .medication-reminder-input-form input[type="text"],
+    .medication-reminder-input-form input[type="datetime-local"],
+    .medication-reminder-input-form input[type="tel"] {
+        padding: 10px 15px; /* Reduced padding for inputs */
+        font-size: 0.95rem;
+    }
+
+    .medication-reminder-input-form button {
+        padding: 10px 20px; /* Reduced padding for button */
+        font-size: 0.95rem;
+        min-width: 100px;
+        margin-top: 10px;
+    }
+
+    .medication-reminder-error-message,
+    .medication-reminder-success-message {
+        padding: 12px 20px; /* Reduced padding */
+        font-size: 0.9rem;
+    }
+}
+
+/* Phone View (max-width: 768px) */
 @media (max-width: 768px) {
-  .medication-reminder-wrapper {
-    padding: 0 10px;
-  }
+    .medication-reminder-wrapper {
+        margin: 15px auto;
+        padding: 0 10px; /* Standard phone padding */
+    }
 
-  .medication-reminder-container {
-    border-radius: 0;
-    min-height: 450px;
-    height: auto;
-    max-height: 95vh;
-  }
+    .medication-reminder-container {
+        border-radius: 0; /* Full width on mobile, no rounded corners */
+        min-height: 380px; /* Adjusted min-height for phones */
+        height: auto;
+        max-height: 98vh; /* Max height to fit almost full screen */
+    }
 
-  .medication-reminder-header {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    padding: 15px 20px;
-  }
+    .medication-reminder-header {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        padding: 12px 15px; /* Reduced padding */
+        gap: 8px;
+    }
 
-  .medication-reminder-input-form {
-    padding: 15px 20px;
-  }
+    .medication-reminder-header h2 {
+        font-size: 1.1rem;
+    }
 
-  .medication-reminder-input-form input {
-    padding: 10px 15px;
-    font-size: 0.95rem;
-  }
+    .icon-pill {
+        font-size: 1.4rem;
+    }
 
-  .medication-reminder-input-form button {
-    padding: 10px 20px;
-    font-size: 0.95rem;
-  }
+    .medication-reminder-input-form {
+        padding: 10px 15px; /* Further reduced padding */
+        gap: 8px;
+    }
 
-  .medication-reminder-error-message,
-  .medication-reminder-success-message {
-    border-radius: 0;
-    padding: 20px;
-  }
+    .medication-reminder-input-form label {
+        font-size: 0.85rem;
+    }
+
+    .medication-reminder-input-form input[type="text"],
+    .medication-reminder-input-form input[type="datetime-local"],
+    .medication-reminder-input-form input[type="tel"] {
+        padding: 8px 12px; /* Further reduced padding for inputs */
+        font-size: 0.85rem;
+        border-radius: 8px; /* Slightly less rounded corners */
+    }
+
+    .medication-reminder-input-form button {
+        width: 100%; /* Full width button on mobile */
+        padding: 8px 15px; /* Further reduced padding */
+        font-size: 0.85rem;
+        min-width: unset; /* Allow full width */
+        margin-top: 8px;
+    }
+
+    .medication-reminder-error-message,
+    .medication-reminder-success-message {
+        border-radius: 0; /* No rounded corners on mobile */
+        padding: 10px 15px; /* Reduced padding */
+        font-size: 0.8rem;
+    }
 }
 
+/* Very Small Phone View (max-width: 480px) */
 @media (max-width: 480px) {
-  .medication-reminder-header h2 {
-    font-size: 1.2rem;
-  }
+    .medication-reminder-wrapper {
+        margin: 10px auto;
+        padding: 0 5px; /* Minimal padding for very small screens */
+    }
 
-  .icon-pill {
-    font-size: 1.5rem;
-  }
+    .medication-reminder-container {
+        min-height: 300px;
+        max-height: 99vh; /* Maximize height usage */
+    }
+
+    .medication-reminder-header {
+        padding: 10px 10px;
+    }
+
+    .medication-reminder-header h2 {
+        font-size: 1rem;
+    }
+
+    .icon-pill {
+        font-size: 1.3rem;
+    }
+
+    .medication-reminder-input-form {
+        padding: 8px 10px;
+        gap: 6px;
+    }
+
+    .medication-reminder-input-form label {
+        font-size: 0.75rem;
+    }
+
+    .medication-reminder-input-form input[type="text"],
+    .medication-reminder-input-form input[type="datetime-local"],
+    .medication-reminder-input-form input[type="tel"] {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+
+    .medication-reminder-input-form button {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+        margin-top: 6px;
+    }
+
+    .medication-reminder-error-message,
+    .medication-reminder-success-message {
+        padding: 8px 10px;
+        font-size: 0.75rem;
+    }
 }

@@ -4,286 +4,421 @@
 /* (e.g., html, body, #root, .App, .App main should be defined globally) */
 
 .symptom-checker-wrapper {
-  width: 100%;
-  max-width: 1200px; /* Limits the max width of the checker */
-  margin: 40px auto; /* Centers horizontally and adds top/bottom margin */
-  padding: 0 20px; /* Horizontal padding */
-  box-sizing: border-box;
-  display: flex; /* Helps center the container if its parent is not flex */
-  justify-content: center;
-  align-items: flex-start;
+    width: 100%;
+    max-width: 1200px; /* Limits the max width of the checker */
+    margin: 40px auto; /* Centers horizontally and adds top/bottom margin */
+    padding: 0 20px; /* Horizontal padding */
+    box-sizing: border-box;
+    display: flex; /* Helps center the container if its parent is not flex */
+    justify-content: center;
+    align-items: flex-start;
 }
 
 /* Main Symptom Checker Container (similar to chatbot-container) */
 .symptom-checker-container {
-  background-color: #ffffff;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  width: 100%;
-  /* Define height for consistent appearance */
-  height: auto; /* Allow height to adapt to content */
-  min-height: 400px; /* Minimum height for usability */
-  max-height: 700px; /* Max height to prevent it from getting too large */
-  display: flex;
-  flex-direction: column;
-  overflow: hidden; /* Clips content if it overflows the container */
-  position: relative;
+    background-color: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    /* Define height for consistent appearance */
+    height: auto; /* Allow height to adapt to content */
+    min-height: 400px; /* Minimum height for usability */
+    max-height: 700px; /* Max height to prevent it from getting too large */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Clips content if it overflows the container */
+    position: relative;
 }
 
 /* Header Section (similar to chatbot-header) */
 .symptom-checker-header {
-  background-color: #2c332e; /* Consistent teal header */
-  color: #ffffff;
-  padding: 18px 25px;
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  flex-shrink: 0; /* Prevents header from shrinking */
+    background-color: #2c332e; /* Consistent teal header */
+    color: #ffffff;
+    padding: 18px 25px;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0; /* Prevents header from shrinking */
 }
 
 .symptom-checker-header h2 {
-  margin: 0;
-  font-size: 1.4rem;
-  font-weight: 600;
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
 }
 
 .icon-stethoscope {
-  font-size: 1.8rem;
+    font-size: 1.8rem;
 }
 
 /* Input Form Section (similar to chatbot-input-form) */
 .symptom-checker-input-form {
-  display: flex;
-  padding: 20px 25px; /* More padding for a spacious feel */
-  gap: 15px;
-  border-bottom: 1px solid #eceff1; /* Separator for form from result/error */
-  background-color: #fdfdfd; /* Light background for the form area */
-  align-items: flex-end;
-  flex-shrink: 0;
-  flex-wrap: wrap; /* Allow items to wrap on small screens */
+    display: flex;
+    padding: 20px 25px; /* More padding for a spacious feel */
+    gap: 15px;
+    border-bottom: 1px solid #eceff1; /* Separator for form from result/error */
+    background-color: #fdfdfd; /* Light background for the form area */
+    align-items: flex-end;
+    flex-shrink: 0;
+    flex-wrap: wrap; /* Allow items to wrap on small screens */
 }
 
 .symptom-checker-input-form textarea {
-  flex-grow: 1;
-  border: 1px solid #cfd8dc;
-  border-radius: 28px;
-  padding: 12px 20px;
-  font-size: 1rem;
-  resize: none;
-  max-height: 120px; /* Allow textarea to expand a bit more */
-  overflow-y: auto;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
-  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  min-width: 150px; /* Ensure textarea doesn't get too small */
+    flex-grow: 1;
+    border: 1px solid #cfd8dc;
+    border-radius: 28px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    resize: none;
+    max-height: 120px; /* Allow textarea to expand a bit more */
+    overflow-y: auto;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    min-width: 150px; /* Ensure textarea doesn't get too small */
 }
 
 .symptom-checker-input-form textarea:focus {
-  outline: none;
-  border-color: #0a0a0a;
-  box-shadow: 0 0 0 3px rgba(19, 19, 19, 0.2);
+    outline: none;
+    border-color: #0a0a0a;
+    box-shadow: 0 0 0 3px rgba(19, 19, 19, 0.2);
 }
 
 .symptom-checker-input-form button {
-  background-color: #0e0d0d;
-  color: #ffffff;
-  border: none;
-  border-radius: 28px;
-  padding: 12px 25px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 80px; /* Slightly wider button for "Check" */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #0e0d0d;
+    color: #ffffff;
+    border: none;
+    border-radius: 28px;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px; /* Slightly wider button for "Check" */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .symptom-checker-input-form button:hover:not(:disabled) {
-  background-color: #151515;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    background-color: #151515;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .symptom-checker-input-form button:disabled {
-  background-color: #202121;
-  cursor: not-allowed;
-  box-shadow: none;
+    background-color: #202121;
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
 /* Loading Spinner (reused from chatbot) */
 .send-spinner {
-  animation: rotate 1s linear infinite;
-  width: 20px;
-  height: 20px;
+    animation: rotate 1s linear infinite;
+    width: 20px;
+    height: 20px;
 }
 
 .send-spinner .path {
-  stroke: #fff;
-  stroke-linecap: round;
-  animation: dash 1.5s ease-in-out infinite;
+    stroke: #fff;
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
 }
 
 @keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes dash {
-  0% {
-    stroke-dasharray: 1, 150;
-    stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dasharray: 90, 150;
-    stroke-dashoffset: -35;
-  }
-  100% {
-    stroke-dasharray: 90, 150;
-    stroke-dashoffset: -124;
-  }
+    0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+    }
+    100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+    }
 }
 
 /* Error Message Box (similar to chatbot's general-error-message) */
 .symptom-checker-error-message {
-  background-color: #ffe0e0;
-  color: #c62828;
-  padding: 15px 25px;
-  border-radius: 0 0 18px 18px; /* Rounded at the bottom to match container */
-  font-size: 0.95rem;
-  font-weight: 500;
-  border-top: 1px solid #ef9a9a; /* Border to separate from input form */
-  text-align: center;
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03); /* Subtle shadow on top */
+    background-color: #ffe0e0;
+    color: #c62828;
+    padding: 15px 25px;
+    border-radius: 0 0 18px 18px; /* Rounded at the bottom to match container */
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-top: 1px solid #ef9a9a; /* Border to separate from input form */
+    text-align: center;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03); /* Subtle shadow on top */
 }
 
 /* Result Box Styling */
 .symptom-checker-result-box {
-  background-color: #bbbdbb; /* Light green background for results */
-  color: #212121;
-  padding: 25px; /* Ample padding */
-  border-radius: 0 0 18px 18px; /* Rounded at the bottom to match container */
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03); /* Subtle shadow on top */
-  line-height: 1.6;
-  flex-grow: 1; /* Allow it to take remaining space if not much content */
-  overflow-y: auto; /* Enable scrolling if result is very long */
+    background-color: #f7f7f7; /* Changed to a lighter grey for better readability */
+    color: #212121;
+    padding: 25px; /* Ample padding */
+    border-radius: 0 0 18px 18px; /* Rounded at the bottom to match container */
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03); /* Subtle shadow on top */
+    line-height: 1.6;
+    flex-grow: 1; /* Allow it to take remaining space if not much content */
+    overflow-y: auto; /* Enable scrolling if result is very long */
 }
 
 .symptom-checker-result-box .greeting {
-  font-style: italic;
-  font-size: 0.95em;
-  color: #1d1d1d;
-  margin-bottom: 15px;
-  padding-bottom: 10px;
-  border-bottom: 1px dashed #cfd8dc;
+    font-style: italic;
+    font-size: 0.95em;
+    color: #1d1d1d;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #cfd8dc;
 }
 
 .symptom-checker-result-box .result-heading {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #161616; /* A primary blue for main heading */
-  margin-top: 0;
-  margin-bottom: 15px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #161616; /* A primary blue for main heading */
+    margin-top: 0;
+    margin-bottom: 15px;
 }
 
 .symptom-checker-result-box .result-details p {
-  margin-bottom: 8px; /* Space between detail lines */
-  font-size: 1rem;
+    margin-bottom: 8px; /* Space between detail lines */
+    font-size: 1rem;
 }
 
 .symptom-checker-result-box .result-details p:last-child {
-  margin-bottom: 0; /* No margin after last paragraph */
+    margin-bottom: 0; /* No margin after last paragraph */
 }
 
 .symptom-checker-result-box .result-details strong {
-  color: #0e0e0e; /* Darker color for labels */
-  min-width: 120px; /* Align labels */
-  display: inline-block; /* For min-width to work */
+    color: #0e0e0e; /* Darker color for labels */
+    /* Remove fixed min-width for better flow on small screens, let text wrap naturally */
+    /* min-width: 120px; */
+    display: inline; /* Revert to inline to let text wrap if no min-width */
 }
 
 /* Scrollbar Styling (for Webkit browsers) - for result box if it scrolls */
 .symptom-checker-result-box::-webkit-scrollbar {
-  width: 8px;
+    width: 8px;
 }
 
 .symptom-checker-result-box::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
+    background: #f1f1f1;
+    border-radius: 10px;
 }
 
 .symptom-checker-result-box::-webkit-scrollbar-thumb {
-  background: #bdbdbd;
-  border-radius: 10px;
+    background: #bdbdbd;
+    border-radius: 10px;
 }
 
 .symptom-checker-result-box::-webkit-scrollbar-thumb:hover {
-  background: #9e9e9e;
+    background: #9e9e9e;
 }
 
 
 /* Responsive Adjustments */
-@media (max-width: 768px) {
-  .symptom-checker-wrapper {
-    padding: 0 10px;
-  }
 
-  .symptom-checker-container {
-    border-radius: 0; /* Full width on mobile */
-    min-height: 350px;
-    height: auto; /* Allow height to adapt on smaller screens */
-    max-height: 90vh; /* Cap max height to fit on screen */
-  }
+/* Tablet View (e.g., 769px to 1024px) */
+@media (max-width: 1024px) {
+    .symptom-checker-wrapper {
+        margin: 30px auto; /* Slightly less margin for tablets */
+        padding: 0 15px; /* Adjusted horizontal padding */
+    }
 
-  .symptom-checker-header {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    padding: 15px 20px;
-  }
+    .symptom-checker-container {
+        min-height: 380px; /* Slightly adjust min-height */
+        max-height: 80vh; /* Cap max height to fit on screen */
+    }
 
-  .symptom-checker-input-form {
-    padding: 15px 20px;
-  }
+    .symptom-checker-header {
+        padding: 16px 20px; /* Slightly less padding */
+    }
 
-  .symptom-checker-input-form textarea {
-    padding: 10px 15px;
-    font-size: 0.95rem;
-  }
+    .symptom-checker-header h2 {
+        font-size: 1.3rem;
+    }
 
-  .symptom-checker-input-form button {
-    padding: 10px 20px;
-    font-size: 0.95rem;
-  }
+    .icon-stethoscope {
+        font-size: 1.6rem;
+    }
 
-  .symptom-checker-error-message,
-  .symptom-checker-result-box {
-    border-radius: 0;
-    padding: 20px;
-  }
+    .symptom-checker-input-form {
+        padding: 18px 20px;
+        gap: 10px; /* Slightly reduce gap */
+    }
 
-  .symptom-checker-result-box .greeting {
-    font-size: 0.9em;
-  }
+    .symptom-checker-input-form textarea {
+        font-size: 0.95rem;
+        padding: 10px 18px;
+        min-width: unset; /* Allow textarea to shrink more on tablets if needed */
+    }
 
-  .symptom-checker-result-box .result-heading {
-    font-size: 1.2rem;
-  }
+    .symptom-checker-input-form button {
+        padding: 10px 22px;
+        font-size: 0.95rem;
+        min-width: 70px;
+    }
 
-  .symptom-checker-result-box .result-details p {
-    font-size: 0.95rem;
-  }
+    .symptom-checker-result-box {
+        padding: 20px; /* Slightly less padding */
+    }
+
+    .symptom-checker-result-box .greeting {
+        font-size: 0.9em;
+    }
+
+    .symptom-checker-result-box .result-heading {
+        font-size: 1.2rem;
+    }
+
+    .symptom-checker-result-box .result-details p {
+        font-size: 0.95rem;
+    }
 }
 
-@media (max-width: 480px) {
-  .symptom-checker-header h2 {
-    font-size: 1.2rem;
-  }
+/* Phone View (e.g., up to 768px) */
+@media (max-width: 768px) {
+    .symptom-checker-wrapper {
+        margin: 20px auto; /* Less margin for phones */
+        padding: 0 10px; /* Tighter horizontal padding */
+    }
 
-  .icon-stethoscope {
-    font-size: 1.5rem;
-  }
+    .symptom-checker-container {
+        border-radius: 0; /* Full width on mobile, no rounded corners */
+        min-height: 300px; /* Adjust min-height for smaller screens */
+        height: auto; /* Allow height to adapt */
+        max-height: 90vh; /* Cap max height to fit on screen */
+    }
+
+    .symptom-checker-header {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        padding: 15px 15px; /* Reduced padding */
+    }
+
+    .symptom-checker-header h2 {
+        font-size: 1.15rem; /* Smaller heading */
+    }
+
+    .icon-stethoscope {
+        font-size: 1.4rem;
+    }
+
+    .symptom-checker-input-form {
+        flex-direction: column; /* Stack textarea and button vertically */
+        padding: 15px; /* Reduced padding */
+        gap: 10px;
+        align-items: stretch; /* Stretch items to full width */
+    }
+
+    .symptom-checker-input-form textarea {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        max-height: 100px; /* Slightly smaller max-height for textarea */
+        min-width: unset; /* Ensures it can go full width */
+    }
+
+    .symptom-checker-input-form button {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+         /* Allows button to stretch full width */
+        width: 100%; /* Explicitly make button full width */
+        align-items: center;
+    }
+
+    .symptom-checker-error-message,
+    .symptom-checker-result-box {
+        border-radius: 0; /* No rounded corners on mobile */
+        padding: 15px; /* Reduced padding */
+    }
+
+    .symptom-checker-result-box .greeting {
+        font-size: 0.85em;
+    }
+
+    .symptom-checker-result-box .result-heading {
+        font-size: 1.1rem;
+    }
+
+    .symptom-checker-result-box .result-details p {
+        font-size: 0.9rem;
+        margin-bottom: 5px; /* Less space between lines */
+    }
+
+    .symptom-checker-result-box .result-details strong {
+        display: block; /* Make strong labels block to ensure they are on their own line */
+        margin-bottom: 3px; /* Space below label */
+        font-size: 0.95em;
+    }
+}
+
+/* Very Small Phone View (e.g., up to 480px) */
+@media (max-width: 480px) {
+    .symptom-checker-wrapper {
+        margin: 15px auto;
+        padding: 0 5px;
+    }
+
+    .symptom-checker-container {
+        min-height: 250px;
+        max-height: 95vh; /* Allow it to take more vertical space */
+    }
+
+    .symptom-checker-header {
+        padding: 12px 10px;
+    }
+
+    .symptom-checker-header h2 {
+        font-size: 1rem;
+    }
+
+    .icon-stethoscope {
+        font-size: 1.2rem;
+    }
+
+    .symptom-checker-input-form {
+        padding: 10px;
+    }
+
+    .symptom-checker-input-form textarea {
+        font-size: 0.85rem;
+        padding: 8px 10px;
+        min-height: 70px; 
+
+max-height: 120px;
+    }
+
+    .symptom-checker-input-form button {
+        font-size: 0.85rem;
+        padding: 8px 10px;
+        
+    }
+
+    .symptom-checker-error-message,
+    .symptom-checker-result-box {
+        padding: 10px;
+    }
+
+    .symptom-checker-result-box .greeting {
+        font-size: 0.8em;
+    }
+
+    .symptom-checker-result-box .result-heading {
+        font-size: 1rem;
+    }
+
+    .symptom-checker-result-box .result-details p {
+        font-size: 0.85rem;
+    }
 }

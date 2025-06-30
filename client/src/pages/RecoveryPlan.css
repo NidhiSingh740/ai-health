@@ -227,63 +227,198 @@
 
 
 /* Responsive Adjustments */
-@media (max-width: 768px) {
-  .recovery-plan-wrapper {
-    padding: 0 10px;
-  }
 
-  .recovery-plan-container {
-    border-radius: 0;
-    min-height: 350px;
-    height: auto;
-    max-height: 90vh;
-  }
 
-  .recovery-plan-header {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    padding: 15px 20px;
-  }
+/* Tablet View (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .recovery-plan-wrapper {
+        margin: 30px auto;
+        padding: 0 20px;
+    }
 
-  .recovery-plan-input-form {
-    padding: 15px 20px;
-  }
+    .recovery-plan-container {
+        min-height: 380px;
+        max-height: 80vh; /* Adjust max-height for tablets */
+    }
 
-  .recovery-plan-input-form textarea {
-    padding: 10px 15px;
-    font-size: 0.95rem;
-  }
+    .recovery-plan-header {
+        padding: 18px 25px;
+    }
 
-  .recovery-plan-input-form button {
-    padding: 10px 20px;
-    font-size: 0.95rem;
-  }
+    .recovery-plan-header h2 {
+        font-size: 1.4rem;
+    }
 
-  .recovery-plan-error-message,
-  .recovery-plan-result-box {
-    border-radius: 0;
-    padding: 20px;
-  }
+    .icon-heartbeat {
+        font-size: 1.8rem;
+    }
 
-  .recovery-plan-result-box .greeting {
-    font-size: 0.9em;
-  }
+    .recovery-plan-input-form {
+        padding: 20px 25px;
+        gap: 10px; /* Slightly reduced gap */
+    }
 
-  .recovery-plan-result-box .plan-heading {
-    font-size: 1.2rem;
-  }
+    .recovery-plan-input-form textarea {
+        min-height: 90px; /* Increased min-height for tablet */
+        max-height: 180px; /* Increased max-height for tablet */
+        font-size: 0.95rem;
+        padding: 12px 18px;
+    }
 
-  .recovery-plan-result-box .plan-details p {
-    font-size: 0.95rem;
-  }
+    .recovery-plan-input-form button {
+        padding: 12px 20px; /* Slightly smaller button */
+        font-size: 0.95rem;
+        min-width: 90px;
+    }
+
+    .recovery-plan-error-message,
+    .recovery-plan-result-box {
+        padding: 20px 25px; /* Consistent padding */
+    }
+
+    .recovery-plan-result-box .greeting {
+        font-size: 0.9em;
+    }
+
+    .recovery-plan-result-box .plan-heading {
+        font-size: 1.2rem;
+    }
+
+    .recovery-plan-result-box .plan-details p {
+        font-size: 0.95rem;
+    }
 }
 
-@media (max-width: 480px) {
-  .recovery-plan-header h2 {
-    font-size: 1.2rem;
-  }
 
-  .icon-heartbeat {
-    font-size: 1.5rem;
-  }
+/* Phone View (max-width: 768px) */
+@media (max-width: 768px) {
+    .recovery-plan-wrapper {
+        margin: 20px auto;
+        padding: 0 15px; /* Slightly more padding than 10px for better edge spacing */
+    }
+
+    .recovery-plan-container {
+        border-radius: 0;
+        min-height: 350px;
+        height: auto;
+        max-height: 90vh; /* Adjusted for phone */
+    }
+
+    .recovery-plan-header {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        padding: 15px 20px;
+        gap: 10px;
+    }
+
+    .recovery-plan-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .icon-heartbeat {
+        font-size: 1.6rem;
+    }
+
+    .recovery-plan-input-form {
+        flex-direction: column; /* Stack input and button vertically */
+        padding: 15px 20px;
+        gap: 10px;
+        align-items: stretch; /* Stretch items to full width */
+    }
+
+    .recovery-plan-input-form textarea {
+        min-height: 80px; /* Increased min-height for phone */
+        max-height: 150px; /* Increased max-height for phone */
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        min-width: unset; /* Allow it to be full width */
+    }
+
+    .recovery-plan-input-form button {
+        width: 100%; /* Make button full width */
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        min-width: unset; /* Remove min-width to allow full width */
+    }
+
+    .recovery-plan-error-message,
+    .recovery-plan-result-box {
+        border-radius: 0;
+        padding: 15px 20px; /* Reduced padding for mobile */
+    }
+
+    .recovery-plan-result-box .greeting {
+        font-size: 0.85em;
+    }
+
+    .recovery-plan-result-box .plan-heading {
+        font-size: 1.1rem;
+    }
+
+    .recovery-plan-result-box .plan-details p {
+        font-size: 0.9rem;
+    }
+
+    .recovery-plan-result-box .plan-details strong {
+        display: inline; /* Keep inline for smaller screens */
+    }
+}
+
+/* Very Small Phone View (max-width: 480px) */
+@media (max-width: 480px) {
+    .recovery-plan-wrapper {
+        margin: 15px auto;
+        padding: 0 10px;
+    }
+
+    .recovery-plan-container {
+        min-height: 300px;
+        max-height: 95vh;
+    }
+
+    .recovery-plan-header {
+        padding: 12px 15px;
+    }
+
+    .recovery-plan-header h2 {
+        font-size: 1.1rem;
+    }
+
+    .icon-heartbeat {
+        font-size: 1.4rem;
+    }
+
+    .recovery-plan-input-form {
+        padding: 12px 15px;
+        gap: 8px;
+    }
+
+    .recovery-plan-input-form textarea {
+        min-height: 60px; /* Increased min-height for very small phone */
+        max-height: 120px; /* Increased max-height for very small phone */
+        font-size: 0.85rem;
+        padding: 8px 12px;
+    }
+
+    .recovery-plan-input-form button {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+
+    .recovery-plan-error-message,
+    .recovery-plan-result-box {
+        padding: 12px 15px;
+    }
+
+    .recovery-plan-result-box .greeting {
+        font-size: 0.8em;
+    }
+
+    .recovery-plan-result-box .plan-heading {
+        font-size: 1rem;
+    }
+
+    .recovery-plan-result-box .plan-details p {
+        font-size: 0.85rem;
+    }
 }

@@ -11,16 +11,16 @@ body {
 .about-container {
     /* No font-family here as it's set on body */
     /* Remove redundant color if body sets it */
-    max-width: 1400px; /* Max width for the entire content */
-    margin: 0 auto; /* Center the container */
-    padding: 0 20px; /* Add some padding on sides for smaller screens */
+    max-width: 2000px; /* Max width for the entire content */
+    margin: 0 ; /* Center the container */
+    padding: 0 ; /* Add some padding on sides for smaller screens */
 }
 
 
 /* ========== About + Features Section ========== */
 .about-features {
     padding: 80px 0px; /* Adjusted padding, letting .about-container handle horizontal */
-    background-color: white; /* Keep white for the main section background */
+    background-color: rgb(246, 245, 245); /* Keep white for the main section background */
     text-align: center;
 }
 
@@ -94,10 +94,12 @@ body {
 
 /* ========== How to Use Section (Updated to match cards.jpg aesthetic) ========== */
 .how-it-works {
-    padding: 80px 20px; /* Consistent padding */
+    padding: 60px 20px; /* Consistent padding */
     text-align: center;
-    max-width: 1400px; /* Consistent max width with about-container */
+    max-width: 1800px; /* Consistent max width with about-container */
     margin: 0 auto;
+   background: linear-gradient(135deg, #edebeb 0%, #dfe6ea 100%);
+
 }
 
 .how-it-works h2 {
@@ -139,16 +141,16 @@ body {
 
 /* Specific background colors for each 'how to use' card (as previously defined) */
 .step:nth-child(1) {
-    background: linear-gradient(135deg, #f0e6fa, #e1cffc); /* Light purple/lavender */
+    background: linear-gradient(135deg, #e1d4ef, #baadc6); /* Light purple/lavender */
 }
 .step:nth-child(2) {
-    background: linear-gradient(135deg, #e6f9fa, #d0f7fb); /* Light blue/teal */
+    background: linear-gradient(135deg, #d6f7f9, #c4f6fc); /* Light blue/teal */
 }
 .step:nth-child(3) {
-    background: linear-gradient(135deg, #fae6f0, #fbcff7); /* Light pink */
+    background: linear-gradient(135deg, #f9d7e8, #f7bbf2); /* Light pink */
 }
 .step:nth-child(4) {
-    background: linear-gradient(135deg, #e6fae6, #cffcce); /* Light green */
+    background: linear-gradient(135deg, #d8fad8, #bcfbbb); /* Light green */
 }
 
 

@@ -11,16 +11,15 @@ body {
   color: #333;
 }
 
-/* Container: Image + Form side-by-side */
-/* Container: Image + Form side-by-side */
+/* Container: Image + Form side-by-side (Desktop View - Unchanged) */
 .login-page-container {
   display: flex;
   min-height: 100vh;
 }
 
-/* Left side: image */
+/* Left side: image (Desktop View - Unchanged) */
 .login-image-section {
-  flex: 3; /* Increased from 1 to 3 (60% of the space) */
+  flex: 3; /* 60% of the space horizontally on desktop */
   background-color: #d7e8ff;
   display: flex;
   align-items: center;
@@ -30,26 +29,26 @@ body {
 
 .login-image {
   width: 100%;
-  height: 100vh;
+  height: 100vh; /* This will make it fill the section's height on desktop */
   object-fit: cover;
 }
 
-/* Right side: login form */
+/* Right side: login form (Desktop View - Unchanged) */
 .auth-container {
-  flex: 2; /* Decreased from 1 to 2 (40% of the space) */
-  /* background-color: linear-gradient(135deg, #e6f0ff, #ffffff); */
+  flex: 2; /* 40% of the space horizontally on desktop */
   background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 3rem;
+  /* Add max-width: 100% here to ensure it doesn't limit itself too early on desktop if screen is small */
+  max-width: 100%; /* Important for transition to mobile */
 }
-
 
 /* Auth box */
 .auth-box {
-  width: 100%;
-  max-width: 500px;
+  width: 100%; /* Default width to take full available space from its parent up to max-width */
+  max-width: 500px; /* Default max-width for desktop */
   padding: 2.5rem;
   background-color: #ffffff;
   border-radius: 16px;
@@ -146,22 +145,70 @@ body {
   }
 }
 
-/* Responsive */
+/* Responsive Styles for Tablet and Phone Views */
 @media (max-width: 768px) {
+  /* On screens 768px wide or smaller (tablets and phones): */
+
+  /* Change the main container to stack its children vertically */
   .login-page-container {
     flex-direction: column;
   }
 
+  /* Make the image section visible and take half the height */
   .login-image-section {
-    display: none;
+    display: flex; /* Ensure it's displayed */
+    flex: 1; /* Take 1 part of the available vertical space */
+    height: 50vh; /* Explicitly set height to half of viewport height */
   }
 
+  .login-image {
+    /* Ensure the image fills its container vertically */
+    height: 100%;
+    width: 100%; /* Ensure it fills its container horizontally */
+    object-fit: cover; /* Cover the area, cropping if necessary */
+  }
+
+  /* Make the authentication container take the other half of the height */
   .auth-container {
-    padding: 1.5rem;
+    flex: 1; /* Take the other 1 part of the available vertical space */
+    padding: 1.5rem; /* Adjust padding for smaller screens */
+    /* Center content vertically in the available space */
+    justify-content: center;
+    align-items: center;
+    /* Ensure auth-container can take full width */
+    width: 100%;
+    max-width: 100%; /* Make sure it doesn't get limited by a desktop max-width */
   }
 
+  /* Increase the size of the authentication card (auth-box) */
   .auth-box {
     padding: 2rem;
     border-radius: 12px;
+    /* Try setting width directly and then max-width to ensure it takes effect */
+    width: 95%; /* Explicitly set width */
+    max-width: 95%; /* Keep max-width for safety, but width should dominate here */
+    box-sizing: border-box; /* Ensure padding doesn't push width over 95% */
+  }
+
+  /* Further minor adjustments for very small screens */
+  @media (max-width: 480px) {
+    .auth-container {
+      padding: 1rem; /* Reduce padding even more for very small phones */
+    }
+    .auth-box {
+      padding: 1.5rem;
+      border-radius: 10px;
+      /* For very small phones, you might want to slightly reduce the width
+         to ensure sufficient padding on the sides, e.g., 90% or 92% */
+      width: 92%; /* Adjusted for very small screens */
+      max-width: 92%;
+    }
+    .auth-box h2 {
+      font-size: 1.6rem; /* Smaller heading on very small phones */
+    }
+    .auth-box input, .auth-box button {
+      padding: 0.8rem;
+      font-size: 0.9rem;
+    }
   }
 }

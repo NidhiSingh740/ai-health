@@ -5,7 +5,7 @@ const AboutSection = () => {
   return (
     <div className="about-container">
 
-      <section className="about-features">
+      <div className="about-features">
         <h2>About Us</h2>
         <p>
           Our AI-Powered Smart Healthcare Assistant is designed to help users manage their health effectively using AI technology.
@@ -42,34 +42,33 @@ const AboutSection = () => {
             <p>Access mindfulness tools, stress management resources, and emotional health support.</p>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Section 2: How to Use */}
-      <section className="how-it-works">
+      <div className="how-it-works">
         <h2>How to Use</h2>
         <div className="steps">
           <div className="step">
-            <div className="step-number-circle">1</div> {/* Added wrapper div */}
+            <div className="step-number-circle">1</div>
             <h4>Signup/Login</h4>
             <p>Create your account for secure access.</p>
           </div>
           <div className="step">
-            <div className="step-number-circle">2</div> {/* Added wrapper div */}
+            <div className="step-number-circle">2</div>
             <h4>Complete Profile Setup</h4>
             <p>Fill in your health records, medical history, and preferences.</p>
           </div>
           <div className="step">
-            <div className="step-number-circle">3</div> {/* Added wrapper div */}
+            <div className="step-number-circle">3</div>
             <h4>Use Health Tools</h4>
             <p>Start using features like AI symptom checker, Doctor chatbot, and Nutrition planners.</p>
           </div>
           <div className="step">
-            <div className="step-number-circle">4</div> {/* Added wrapper div */}
+            <div className="step-number-circle">4</div>
             <h4>Track & Mental Health Support</h4>
             <p>Monitor health trends and get Mental Health Support Anytime.</p>
           </div>
         </div>
-      </section>
+      </div>
 
     </div>
   );

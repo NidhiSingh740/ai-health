@@ -33,380 +33,569 @@ main { // Assuming your main content area that wraps DoctorChatbot
 
 
 .doctor-chatbot-wrapper {
-  width: 100%;
-  max-width: 1200px; /* Max width for the whole component */
-  margin: 40px auto; /* Centers horizontally and adds top/bottom margin */
-  padding: 0 20px; /* Horizontal padding */
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+    width: 100%;
+    max-width: 1200px; /* Max width for the whole component - KEPT FOR DESKTOP */
+    margin: 40px auto; /* Centers horizontally and adds top/bottom margin - KEPT FOR DESKTOP */
+    padding: 0 20px; /* Horizontal padding - KEPT FOR DESKTOP */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 /* Main Doctor Chatbot Container */
 .doctor-chatbot-container {
-  background-color: #ffffff;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  width: 100%;
-  height: 700px; /* Fixed height for chat window, allows internal scrolling */
-  display: flex;
-  flex-direction: column;
-  overflow: hidden; /* For container's rounded corners */
-  position: relative;
+    background-color: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    height: 700px; /* Fixed height for chat window, allows internal scrolling - KEPT FOR DESKTOP */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* For container's rounded corners */
+    position: relative;
 }
 
 /* Header Section */
 .doctor-chatbot-header {
-  background-color: #2c332e; /* Teal color for the header */
-  color: #ffffff;
-  padding: 18px 25px;
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  flex-shrink: 0; /* Prevents header from shrinking */
+    background-color: #2c332e; /* Teal color for the header */
+    color: #ffffff;
+    padding: 18px 25px; /* KEPT FOR DESKTOP */
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0; /* Prevents header from shrinking */
 }
 
 .doctor-chatbot-header h2 {
-  margin: 0;
-  font-size: 1.4rem;
-  font-weight: 600;
+    margin: 0;
+    font-size: 1.4rem; /* KEPT FOR DESKTOP */
+    font-weight: 600;
 }
 
 .icon-doctor {
-  font-size: 1.8rem;
+    font-size: 1.8rem; /* KEPT FOR DESKTOP */
 }
 
 /* Chat Messages Area */
 .chat-messages {
-  flex-grow: 1; /* Takes all available vertical space */
-  padding: 20px 25px;
-  overflow-y: auto; /* Enables scrolling for chat history */
-  display: flex;
-  flex-direction: column;
-  gap: 15px; /* Space between message bubbles */
-  background-color: #f7f9fcd5; /* Light background for chat area */
+    flex-grow: 1; /* Takes all available vertical space */
+    padding: 20px 25px; /* KEPT FOR DESKTOP */
+    overflow-y: auto; /* Enables scrolling for chat history */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between message bubbles */
+    background-color: #f7f9fcd5; /* Light background for chat area */
+    -webkit-overflow-scrolling: touch; /* For smoother iOS scrolling */
 }
 
 /* Scrollbar Styling for chat-messages (Webkit browsers) */
 .chat-messages::-webkit-scrollbar {
-  width: 8px;
+    width: 8px;
 }
 
 .chat-messages::-webkit-scrollbar-track {
-  background: #e0e0e0;
-  border-radius: 10px;
+    background: #e0e0e0;
+    border-radius: 10px;
 }
 
 .chat-messages::-webkit-scrollbar-thumb {
-  background: #bdbdbd;
-  border-radius: 10px;
+    background: #bdbdbd;
+    border-radius: 10px;
 }
 
 .chat-messages::-webkit-scrollbar-thumb:hover {
-  background: #9e9e9e;
+    background: #9e9e9e;
 }
 
 
 .message-bubble {
-  max-width: 80%;
-  padding: 12px 18px;
-  border-radius: 20px;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  word-wrap: break-word; /* Ensure long words break */
-  white-space: pre-wrap; /* Preserve whitespace/line breaks from AI */
+    max-width: 80%;
+    padding: 12px 18px; /* KEPT FOR DESKTOP */
+    border-radius: 20px;
+    font-size: 0.95rem; /* KEPT FOR DESKTOP */
+    line-height: 1.5;
+    word-wrap: break-word; /* Ensure long words break */
+    white-space: pre-wrap; /* Preserve whitespace/line breaks from AI */
 }
 
 .message-bubble.user {
-  background-color: #8b8a8a; /* Light blue for user messages */
-  color: #121212;
-  align-self: flex-end; /* Align to the right */
-  border-bottom-right-radius: 4px; /* Sharper corner on sending side */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    background-color: #8b8a8a; /* Light blue for user messages */
+    color: #121212;
+    align-self: flex-end; /* Align to the right */
+    border-bottom-right-radius: 4px; /* Sharper corner on sending side */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .message-bubble.ai {
-  background-color: #bdc0bd; /* Light green for AI messages */
-  color: #131313;
-  align-self: flex-start; /* Align to the left */
-  border-bottom-left-radius: 4px; /* Sharper corner on receiving side */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    background-color: #bdc0bd; /* Light green for AI messages */
+    color: #131313;
+    align-self: flex-start; /* Align to the left */
+    border-bottom-left-radius: 4px; /* Sharper corner on receiving side */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .message-bubble.ai.loading {
-  background-color: #f0f0f0;
-  color: #1f1f1f;
-  font-style: italic;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60px; /* Small fixed width for spinner */
-  height: 40px;
-  padding: 0;
+    background-color: #f0f0f0;
+    color: #1f1f1f;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px; /* Small fixed width for spinner */
+    height: 40px;
+    padding: 0;
 }
 
 .uploaded-file-preview {
-  max-width: 150px;
-  max-height: 150px;
-  border-radius: 10px;
-  margin-top: 10px;
-  display: block; /* Ensures it's on its own line */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
+    max-width: 150px; /* KEPT FOR DESKTOP */
+    max-height: 150px; /* KEPT FOR DESKTOP */
+    border-radius: 10px;
+    margin-top: 10px;
+    display: block; /* Ensures it's on its own line */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 
 /* Chat Input Area */
 .chat-input-area {
-  padding: 15px 25px;
-  border-top: 1px solid #eceff1;
-  background-color: #ffffff;
-  flex-shrink: 0; /* Prevents input area from shrinking */
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+    padding: 15px 25px; /* KEPT FOR DESKTOP */
+    border-top: 1px solid #eceff1;
+    background-color: #ffffff;
+    flex-shrink: 0; /* Prevents input area from shrinking */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .input-row {
-  display: flex;
-  align-items: flex-end; /* Align items to the bottom, especially with textarea */
-  gap: 10px;
+    display: flex;
+    align-items: flex-end; /* Align items to the bottom, especially with textarea */
+    gap: 10px;
 }
 
 .chat-textarea {
-  flex-grow: 1; /* Takes most of the available width */
-  border: 1px solid #262627;
-  border-radius: 20px; /* More rounded input */
-  padding: 12px 18px;
-  font-size: 1rem;
-  resize: none; /* Disable manual resizing for fixed height chat input */
-  min-height: 45px; /* Minimum height */
-  max-height: 120px; /* Max height before scroll for text input */
-  overflow-y: auto; /* Allows internal scrolling for longer input */
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
-  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    flex-grow: 1; /* Takes most of the available width */
+    border: 1px solid #262627;
+    border-radius: 20px; /* More rounded input */
+    padding: 12px 18px; /* KEPT FOR DESKTOP */
+    font-size: 1rem; /* KEPT FOR DESKTOP */
+    resize: none; /* Disable manual resizing for fixed height chat input */
+    min-height: 45px; /* Minimum height - KEPT FOR DESKTOP */
+    max-height: 120px; /* Max height before scroll for text input - KEPT FOR DESKTOP */
+    overflow-y: auto; /* Allows internal scrolling for longer input */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .chat-textarea:focus {
-  outline: none;
-  border-color: #262626;
-  box-shadow: 0 0 0 3px rgba(73, 73, 73, 0.2);
+    outline: none;
+    border-color: #262626;
+    box-shadow: 0 0 0 3px rgba(73, 73, 73, 0.2);
 }
 
 .send-button {
-  background-color: #242525;
-  color: #ffffff;
-  border: none;
-  border-radius: 25px; /* Slightly less rounded than input */
-  padding: 12px 20px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  min-width: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #242525;
+    color: #ffffff;
+    border: none;
+    border-radius: 25px; /* Slightly less rounded than input */
+    padding: 12px 20px; /* KEPT FOR DESKTOP */
+    font-size: 1rem; /* KEPT FOR DESKTOP */
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 80px; /* KEPT FOR DESKTOP */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Removed fixed height to allow flexible padding/content control. Height will be managed by padding and font-size. */
 }
 
 .send-button:hover:not(:disabled) {
-  background-color: #262626;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    background-color: #262626;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .send-button:disabled {
-  background-color: #b0bec5;
-  cursor: not-allowed;
-  box-shadow: none;
+    background-color: #222222;
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
 /* File Upload Button */
 .file-upload-button {
-  background-color: #00796b; /* Darker teal for file icon */
-  color: #ffffff;
-  border-radius: 50%; /* Circular button */
-  width: 45px;
-  height: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  flex-shrink: 0; /* Prevent shrinking */
+    background-color: #00796b; /* Darker teal for file icon */
+    color: #ffffff;
+    border-radius: 50%; /* Circular button */
+    width: 45px; /* KEPT FOR DESKTOP */
+    height: 45px; /* KEPT FOR DESKTOP */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem; /* KEPT FOR DESKTOP */
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    flex-shrink: 0; /* Prevent shrinking */
 }
 
 .file-upload-button:hover {
-  background-color: #004d40;
-  transform: translateY(-2px);
+    background-color: #004d40;
+    transform: translateY(-2px);
 }
 
 .file-preview-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 15px;
-  background-color: #e0f2f1; /* Light background for preview */
-  border-radius: 12px;
-  margin-bottom: 10px; /* Space above the main input */
-  position: relative; /* For the clear button */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 15px;
+    background-color: #e0f2f1; /* Light background for preview */
+    border-radius: 12px;
+    margin-bottom: 10px; /* Space above the main input */
+    position: relative; /* For the clear button */
 }
 
 .selected-file-thumbnail {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 1px solid #b2dfdb;
+    width: 60px; /* KEPT FOR DESKTOP */
+    height: 60px; /* KEPT FOR DESKTOP */
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #b2dfdb;
 }
 
 .clear-file-button {
-  background-color: #ef5350; /* Red for clear button */
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 25px;
-  height: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  line-height: 1;
-  cursor: pointer;
-  position: absolute; /* Position over the thumbnail */
-  top: -8px;
-  right: -8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.2s ease;
+    background-color: #ef5350; /* Red for clear button */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    position: absolute; /* Position over the thumbnail */
+    top: -8px;
+    right: -8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease;
 }
 
 .clear-file-button:hover {
-  background-color: #d32f2f;
+    background-color: #d32f2f;
 }
 
 
 /* Error Message */
 .chat-error {
-  color: #c62828;
-  background-color: #ffe0e0;
-  padding: 10px 15px;
-  border-radius: 12px;
-  font-size: 0.9rem;
-  margin-top: 10px;
-  text-align: center;
+    color: #c62828;
+    background-color: #ffe0e0;
+    padding: 10px 15px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    text-align: center;
 }
 
 /* Loading Spinner (from your existing code) */
 .send-spinner {
-  animation: rotate 1s linear infinite;
-  width: 20px;
-  height: 20px;
+    animation: rotate 1s linear infinite;
+    width: 20px;
+    height: 20px;
 }
 
 .send-spinner .path {
-  stroke: #fff;
-  stroke-linecap: round;
-  animation: dash 1.5s ease-in-out infinite;
+    stroke: #fff;
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
 }
 
 @keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes dash {
-  0% {
-    stroke-dasharray: 1, 150;
-    stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dasharray: 90, 150;
-    stroke-dashoffset: -35;
-  }
-  100% {
-    stroke-dasharray: 90, 150;
-    stroke-dashoffset: -124;
-  }
+    0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+    }
+    100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+    }
 }
+
 
 /* Responsive Adjustments */
-@media (max-width: 768px) {
-  .doctor-chatbot-wrapper {
-    padding: 0 10px;
-  }
 
-  .doctor-chatbot-container {
-    border-radius: 0;
-    height: 90vh; /* More height on mobile */
-  }
+/* Tablet View (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .doctor-chatbot-wrapper {
+        margin: 30px auto;
+        padding: 0 15px;
+    }
 
-  .doctor-chatbot-header {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    padding: 15px 20px;
-  }
+    .doctor-chatbot-container {
+        height: 85vh;
+        min-height: 550px;
+    }
 
-  .chat-messages {
-    padding: 15px 20px;
-    gap: 10px;
-  }
+    .doctor-chatbot-header {
+        padding: 16px 20px;
+        gap: 10px;
+    }
 
-  .message-bubble {
-    padding: 10px 15px;
-    font-size: 0.9rem;
-  }
+    .doctor-chatbot-header h2 {
+        font-size: 1.3rem;
+    }
 
-  .chat-input-area {
-    padding: 10px 20px;
-  }
+    .icon-doctor {
+        font-size: 1.6rem;
+    }
 
-  .file-upload-button {
-    width: 40px;
-    height: 40px;
-    font-size: 1.3rem;
-  }
+    .chat-messages {
+        padding: 15px 20px;
+        gap: 12px;
+    }
 
-  .chat-textarea {
-    min-height: 40px;
-    max-height: 100px;
-    padding: 10px 15px;
-    font-size: 0.95rem;
-  }
+    .message-bubble {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
 
-  .send-button {
-    padding: 10px 15px;
-    font-size: 0.95rem;
-    min-width: 60px;
-  }
-  .selected-file-thumbnail {
-    width: 50px;
-    height: 50px;
-  }
+    .uploaded-file-preview {
+        max-width: 120px;
+        max-height: 120px;
+    }
+
+    .chat-input-area {
+        padding: 12px 20px;
+        gap: 8px;
+    }
+
+    .file-upload-button {
+        width: 40px;
+        height: 40px;
+        font-size: 1.4rem;
+    }
+
+    .chat-textarea {
+        min-height: 60px; /* Current min-height for tablets */
+        max-height: 150px; /* Current max-height for tablets */
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+
+    .send-button {
+        height: 60px; /* Set height to match chat-textarea min-height */
+        padding: 0 18px; /* Remove vertical padding, height now controls size */
+        font-size: 0.95rem;
+        min-width: 70px;
+    }
+
+    .selected-file-thumbnail {
+        width: 50px;
+        height: 50px;
+    }
+
+    .clear-file-button {
+        width: 22px;
+        height: 22px;
+        font-size: 0.9rem;
+        top: -6px;
+        right: -6px;
+    }
+
+    .chat-error {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
 }
 
-@media (max-width: 480px) {
-  .doctor-chatbot-header h2 {
-    font-size: 1.2rem;
-  }
+/* Phone View (max-width: 768px) */
+@media (max-width: 768px) {
+    .doctor-chatbot-wrapper {
+        padding: 0 10px;
+        margin: 15px auto;
+    }
 
-  .icon-doctor {
-    font-size: 1.5rem;
-  }
-  .file-upload-button {
-    width: 35px;
-    height: 35px;
-    font-size: 1.2rem;
-  }
-  .send-button {
-    padding: 8px 12px;
-    font-size: 0.9rem;
-  }
+    .doctor-chatbot-container {
+        border-radius: 0;
+        height: 90vh;
+        min-height: 400px;
+    }
+
+    .doctor-chatbot-header {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        padding: 15px 15px;
+        gap: 8px;
+    }
+
+    .doctor-chatbot-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .icon-doctor {
+        font-size: 1.5rem;
+    }
+
+    .chat-messages {
+        padding: 10px 15px;
+        gap: 8px;
+    }
+
+    .message-bubble {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+
+    .uploaded-file-preview {
+        max-width: 100px;
+        max-height: 100px;
+    }
+
+    .chat-input-area {
+        padding: 8px 15px;
+        gap: 8px;
+    }
+
+    .file-upload-button {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+
+    .chat-textarea {
+        min-height: 50px; /* Current min-height for phones */
+        max-height: 120px; /* Current max-height for phones */
+        padding: 8px 12px;
+        font-size: 0.9rem;
+        border-radius: 15px;
+    }
+
+    .send-button {
+        height: 50px; /* Set height to match chat-textarea min-height */
+        padding: 0 12px; /* Remove vertical padding, height now controls size */
+        font-size: 0.9rem;
+        width: 70px;
+        border-radius: 25px;
+    }
+    .selected-file-thumbnail {
+        width: 40px;
+        height: 40px;
+    }
+
+    .clear-file-button {
+        width: 20px;
+        height: 20px;
+        font-size: 0.8rem;
+        top: -5px;
+        right: -5px;
+    }
+
+    .chat-error {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Very Small Phone View (max-width: 400px) */
+@media (max-width: 400px) {
+    .doctor-chatbot-wrapper {
+        padding: 0 5px;
+        margin: 10px auto;
+    }
+
+    .doctor-chatbot-container {
+        height: 95vh;
+        min-height: 300px;
+    }
+
+    .doctor-chatbot-header {
+        padding: 10px 10px;
+        gap: 5px;
+    }
+
+    .doctor-chatbot-header h2 {
+        font-size: 1rem;
+    }
+
+    .icon-doctor {
+        font-size: 1.3rem;
+    }
+
+    .chat-messages {
+        padding: 8px 10px;
+        gap: 6px;
+    }
+
+    .message-bubble {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+
+    .uploaded-file-preview {
+        max-width: 80px;
+        max-height: 80px;
+    }
+
+    .chat-input-area {
+        padding: 6px 10px;
+        gap: 6px;
+    }
+
+    .file-upload-button {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+
+    .chat-textarea {
+        min-height: 40px; /* Current min-height for very small phone */
+        max-height: 90px; /* Current max-height for very small phone */
+        padding: 6px 10px;
+        font-size: 0.85rem;
+        border-radius: 15px;
+    }
+
+    .send-button {
+        height: 40px; /* Set height to match chat-textarea min-height */
+        padding: 0 10px; /* Remove vertical padding, height now controls size */
+        font-size: 0.85rem;
+        min-width: 40px;
+        border-radius: 18px;
+    }
+
+    .selected-file-thumbnail {
+        width: 30px;
+        height: 30px;
+    }
+
+    .clear-file-button {
+        width: 18px;
+        height: 18px;
+        font-size: 0.7rem;
+        top: -4px;
+        right: -4px;
+    }
+
+    .chat-error {
+        padding: 5px 8px;
+        font-size: 0.75rem;
+    }
 }

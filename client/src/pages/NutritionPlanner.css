@@ -31,200 +31,201 @@ main { // Assuming your main content area that wraps NutritionPlanner
 
 
 .nutrition-planner-wrapper {
-  width: 100%;
-  max-width: 1200px; /* Max width for the whole component */
-  margin: 40px auto; /* Centers horizontally and adds top/bottom margin */
-  padding: 0 20px; /* Horizontal padding */
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+    width: 100%;
+    max-width: 1200px; /* Max width for the whole component - KEPT FOR DESKTOP */
+    margin: 40px auto; /* Centers horizontally and adds top/bottom margin - KEPT FOR DESKTOP */
+    padding: 0 20px; /* Horizontal padding - KEPT FOR DESKTOP */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 /* Main Nutrition Planner Container */
 .nutrition-planner-container {
-  background-color: #ffffff;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  width: 100%;
-  height: auto; /* ALLOWS HEIGHT TO EXPAND BASED ON CONTENT */
-  min-height: 600px; /* Ensures a good minimum height for overall component */
-  /* *** IMPORTANT: REMOVED max-height entirely to allow infinite growth if needed *** */
-  /* If you still want a cap on the *entire* component's height, you can set max-height: 90vh; for example */
+    background-color: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    height: auto; /* ALLOWS HEIGHT TO EXPAND BASED ON CONTENT */
+    min-height: 600px; /* Ensures a good minimum height for overall component - KEPT FOR DESKTOP */
+    /* *** IMPORTANT: REMOVED max-height entirely to allow infinite growth if needed *** */
+    /* If you still want a cap on the *entire* component's height, you can set max-height: 90vh; for example */
 
-  display: flex;
-  flex-direction: column;
-  overflow: hidden; /* This is for the container's rounded corners */
-  position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* This is for the container's rounded corners */
+    position: relative;
 }
 
 /* Header Section */
 .nutrition-planner-header {
-  background-color: #2c332e;
-  color: #ffffff;
-  padding: 18px 25px;
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  flex-shrink: 0; /* Prevents header from shrinking */
+    background-color: #2c332e;
+    color: #ffffff;
+    padding: 18px 25px; /* KEPT FOR DESKTOP */
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0; /* Prevents header from shrinking */
 }
 
 .nutrition-planner-header h2 {
-  margin: 0;
-  font-size: 1.4rem;
-  font-weight: 600;
+    margin: 0;
+    font-size: 1.4rem; /* KEPT FOR DESKTOP */
+    font-weight: 600;
 }
 
 .icon-salad {
-  font-size: 1.8rem;
+    font-size: 1.8rem; /* KEPT FOR DESKTOP */
 }
 
 /* Input Form Section */
 .nutrition-planner-input-form {
-  display: flex;
-  flex-direction: column;
-  padding: 20px 25px;
-  gap: 15px;
-  border-bottom: 1px solid #eceff1;
-  background-color: #fdfdfd;
-  flex-shrink: 0; /* Prevents input form from shrinking */
+    display: flex;
+    flex-direction: column;
+    padding: 20px 25px; /* KEPT FOR DESKTOP */
+    gap: 15px;
+    border-bottom: 1px solid #eceff1;
+    background-color: #fdfdfd;
+    flex-shrink: 0; /* Prevents input form from shrinking */
 }
 
 .nutrition-planner-input-form textarea {
-  flex-grow: 1;
-  border: 1px solid #404041;
-  border-radius: 12px;
-  padding: 12px 18px;
-  font-size: 1rem;
-  resize: vertical; /* Allows user to drag to resize vertically */
-  min-height: 40px; /* Small default height */
-  max-height: 120px; /* Maximum height for an individual textarea */
-  overflow-y: auto; /* Allows individual textarea to scroll if content exceeds max-height */
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
-  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    flex-grow: 1;
+    border: 1px solid #404041;
+    border-radius: 12px;
+    padding: 12px 18px; /* KEPT FOR DESKTOP */
+    font-size: 1rem; /* KEPT FOR DESKTOP */
+    resize: vertical; /* Allows user to drag to resize vertically */
+    min-height: 40px; /* Small default height - KEPT FOR DESKTOP */
+    max-height: 120px; /* Maximum height for an individual textarea - KEPT FOR DESKTOP */
+    overflow-y: auto; /* Allows individual textarea to scroll if content exceeds max-height */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .nutrition-planner-input-form textarea:focus {
-  outline: none;
-  border-color: #0f0f0f;
-  box-shadow: 0 0 0 3px rgba(54, 54, 54, 0.2);
+    outline: none;
+    border-color: #0f0f0f;
+    box-shadow: 0 0 0 3px rgba(54, 54, 54, 0.2);
 }
 
 .nutrition-planner-input-form button {
-  background-color: #272626;
-  color: #ffffff;
-  border: none;
-  border-radius: 28px;
-  padding: 12px 25px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 120px;
-  align-self: flex-end; /* Align button to the right */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #272626;
+    color: #ffffff;
+    border: none;
+    border-radius: 28px;
+    padding: 12px 25px; /* KEPT FOR DESKTOP */
+    font-size: 1rem; /* KEPT FOR DESKTOP */
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px; /* KEPT FOR DESKTOP */
+    align-self: flex-end; /* Align button to the right */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .nutrition-planner-input-form button:hover:not(:disabled) {
-  background-color: #575858;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    background-color: #575858;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .nutrition-planner-input-form button:disabled {
-  background-color: #b0bec5;
-  cursor: not-allowed;
-  box-shadow: none;
+    background-color: #b0bec5;
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
 /* Loading Spinner (reused) */
 .send-spinner {
-  animation: rotate 1s linear infinite;
-  width: 20px;
-  height: 20px;
+    animation: rotate 1s linear infinite;
+    width: 20px;
+    height: 20px;
 }
 
 .send-spinner .path {
-  stroke: #fff;
-  stroke-linecap: round;
-  animation: dash 1.5s ease-in-out infinite;
+    stroke: #fff;
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
 }
 
 @keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes dash {
-  0% {
-    stroke-dasharray: 1, 150;
-    stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dasharray: 90, 150;
-    stroke-dashoffset: -35;
-  }
-  100% {
-    stroke-dasharray: 90, 150;
-    stroke-dashoffset: -124;
-  }
+    0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+    }
+    100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+    }
 }
 
 /* Error Message Box */
 .nutrition-planner-error-message {
-  background-color: #ffe0e0;
-  color: #c62828;
-  padding: 15px 25px;
-  border-radius: 0 0 18px 18px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  border-top: 1px solid #ef9a9a;
-  text-align: center;
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03);
+    background-color: #ffe0e0;
+    color: #c62828;
+    padding: 15px 25px;
+    border-radius: 0 0 18px 18px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-top: 1px solid #ef9a9a;
+    text-align: center;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03);
 }
 
 /* Nutrition Plan Result Box Styling */
 .nutrition-planner-result-box {
-  background-color: #bcbdbc;
-  color: #212121;
-  padding: 25px;
-  border-radius: 0 0 18px 18px;
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03);
-  line-height: 1.6;
-  flex-grow: 1; /* This is CRUCIAL: it makes the result box take all available vertical space */
-  overflow-y: auto; /* This makes the RESULT BOX itself scroll if the plan is very long */
+    background-color: #bcbdbc;
+    color: #212121;
+    padding: 25px; /* KEPT FOR DESKTOP */
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.03);
+    line-height: 1.6;
+    flex-grow: 1; /* This is CRUCIAL: it makes the result box take all available vertical space */
+    overflow-y: auto; /* This makes the RESULT BOX itself scroll if the plan is very long */
+    -webkit-overflow-scrolling: touch; /* For smoother iOS scrolling */
 }
 
 .nutrition-planner-result-box .greeting {
-  font-style: italic;
-  font-size: 0.95em;
-  color: #0d0d0d;
-  margin-bottom: 15px;
-  padding-bottom: 10px;
-  border-bottom: 1px dashed #cfd8dc;
+    font-style: italic;
+    font-size: 0.95em;
+    color: #0d0d0d;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #cfd8dc;
 }
 
 .nutrition-planner-result-box .plan-heading {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #121212;
-  margin-top: 0;
-  margin-bottom: 15px;
+    font-size: 1.3rem; /* KEPT FOR DESKTOP */
+    font-weight: 600;
+    color: #121212;
+    margin-top: 0;
+    margin-bottom: 15px;
 }
 
 .nutrition-planner-result-box .plan-content {
-  font-size: 1rem;
-  /* Ensure no internal clipping for plan-content, it should just flow */
-  overflow: visible;
-  height: auto;
-  word-wrap: break-word;
+    font-size: 1rem; /* KEPT FOR DESKTOP */
+    /* Ensure no internal clipping for plan-content, it should just flow */
+    overflow: visible;
+    height: auto;
+    word-wrap: break-word;
 }
 
 /* Styles for the <p> tag within plan-content that holds the actual plan string */
@@ -243,84 +244,211 @@ main { // Assuming your main content area that wraps NutritionPlanner
 
 /* Scrollbar Styling (for Webkit browsers) - for the result box only if it scrolls */
 .nutrition-planner-result-box::-webkit-scrollbar {
-  width: 8px;
+    width: 8px;
 }
 
 .nutrition-planner-result-box::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
+    background: #f1f1f1;
+    border-radius: 10px;
 }
 
 .nutrition-planner-result-box::-webkit-scrollbar-thumb {
-  background: #bdbdbd;
-  border-radius: 10px;
+    background: #bdbdbd;
+    border-radius: 10px;
 }
 
 .nutrition-planner-result-box::-webkit-scrollbar-thumb:hover {
-  background: #9e9e9e;
+    background: #9e9e9e;
 }
 
 
 /* Responsive Adjustments */
-@media (max-width: 768px) {
-  .nutrition-planner-wrapper {
-    padding: 0 10px;
-  }
 
-  .nutrition-planner-container {
-    border-radius: 0;
-    min-height: 450px; /* Slightly increased min-height for mobile */
-    height: auto;
-    max-height: 95vh; /* Allows it to take more vertical space on smaller screens if needed */
-  }
+/* Tablet View (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .nutrition-planner-wrapper {
+        padding: 0 15px;
+        margin: 30px auto;
+    }
 
-  .nutrition-planner-header {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    padding: 15px 20px;
-  }
+    .nutrition-planner-container {
+        min-height: 550px; /* Slightly increased for tablets */
+        max-height: 90vh; /* Allow it to take more of the viewport height */
+        /* height: auto; will remain for tablets, allowing content to dictate height */
+    }
 
-  .nutrition-planner-input-form {
-    padding: 15px 20px;
-  }
+    .nutrition-planner-header {
+        padding: 16px 20px;
+        gap: 10px;
+    }
 
-  .nutrition-planner-input-form textarea {
-    padding: 10px 15px;
-    font-size: 0.95rem;
-    min-height: 35px;
-    max-height: 100px; /* Adjusted max-height for smaller screens */
-  }
+    .nutrition-planner-header h2 {
+        font-size: 1.3rem;
+    }
 
-  .nutrition-planner-input-form button {
-    padding: 10px 20px;
-    font-size: 0.95rem;
-  }
+    .icon-salad {
+        font-size: 1.6rem;
+    }
 
-  .nutrition-planner-error-message,
-  .nutrition-planner-result-box {
-    border-radius: 0;
-    padding: 20px;
-  }
+    .nutrition-planner-input-form {
+        padding: 15px 20px;
+        gap: 12px;
+    }
 
-  .nutrition-planner-result-box .greeting {
-    font-size: 0.9em;
-  }
+    .nutrition-planner-input-form textarea {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+        min-height: 50px; /* Adjusted min-height for tablets */
+        max-height: 140px; /* Adjusted max-height for tablets */
+    }
 
-  .nutrition-planner-result-box .plan-heading {
-    font-size: 1.2rem;
-  }
+    .nutrition-planner-input-form button {
+        padding: 10px 22px; /* Slightly adjusted padding for tablet button */
+        font-size: 0.95rem;
+        min-width: 100px;
+    }
 
-  .nutrition-planner-result-box .plan-content {
-    font-size: 0.95rem;
-  }
+    .nutrition-planner-error-message,
+    .nutrition-planner-result-box {
+        padding: 20px 20px; /* Uniform padding for result/error box */
+    }
+
+    .nutrition-planner-result-box .greeting {
+        font-size: 0.92em;
+    }
+
+    .nutrition-planner-result-box .plan-heading {
+        font-size: 1.25rem;
+    }
+
+    .nutrition-planner-result-box .plan-content {
+        font-size: 0.98rem;
+    }
 }
 
-@media (max-width: 480px) {
-  .nutrition-planner-header h2 {
-    font-size: 1.2rem;
-  }
 
-  .icon-salad {
-    font-size: 1.5rem;
-  }
+/* Phone View (max-width: 768px) */
+@media (max-width: 768px) {
+    .nutrition-planner-wrapper {
+        padding: 0 10px;
+        margin: 15px auto;
+    }
+
+    .nutrition-planner-container {
+        border-radius: 0; /* Full width on mobile */
+        min-height: 450px;
+        max-height: 95vh;
+    }
+
+    .nutrition-planner-header {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        padding: 15px 15px;
+        gap: 8px;
+    }
+
+    .nutrition-planner-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .icon-salad {
+        font-size: 1.5rem;
+    }
+
+    .nutrition-planner-input-form {
+        padding: 10px 15px; /* Further reduced padding */
+        gap: 10px;
+    }
+
+    .nutrition-planner-input-form textarea {
+        padding: 8px 12px; /* Further reduced padding */
+        font-size: 0.9rem;
+        min-height: 40px; /* Adjusted min-height for phones */
+        max-height: 100px; /* Adjusted max-height for phones */
+    }
+
+    .nutrition-planner-input-form button {
+        padding: 8px 18px; /* Further reduced padding for phone button */
+        font-size: 0.9rem;
+        min-width: 80px;
+        border-radius: 25px; /* Slightly less rounded */
+    }
+
+    .nutrition-planner-error-message,
+    .nutrition-planner-result-box {
+        border-radius: 0;
+        padding: 15px; /* Further reduced padding for result/error box */
+    }
+
+    .nutrition-planner-result-box .greeting {
+        font-size: 0.88em;
+    }
+
+    .nutrition-planner-result-box .plan-heading {
+        font-size: 1.1rem;
+    }
+
+    .nutrition-planner-result-box .plan-content {
+        font-size: 0.9rem;
+    }
+}
+
+/* Smaller Phone View (max-width: 480px) */
+@media (max-width: 480px) {
+    .nutrition-planner-wrapper {
+        padding: 0 5px;
+        margin: 10px auto;
+    }
+
+    .nutrition-planner-container {
+        min-height: 380px; /* Even smaller min-height for very small phones */
+        max-height: 98vh; /* Maximize height usage */
+    }
+
+    .nutrition-planner-header {
+        padding: 10px 10px;
+    }
+
+    .nutrition-planner-header h2 {
+        font-size: 1.1rem;
+    }
+
+    .icon-salad {
+        font-size: 1.4rem;
+    }
+
+    .nutrition-planner-input-form {
+        padding: 8px 10px;
+        gap: 8px;
+    }
+
+    .nutrition-planner-input-form textarea {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+        min-height: 30px; /* Adjusted min-height for very small phones */
+        max-height: 80px; /* Adjusted max-height for very small phones */
+    }
+
+    .nutrition-planner-input-form button {
+        padding: 6px 15px;
+        font-size: 0.85rem;
+        min-width: 70px;
+    }
+
+    .nutrition-planner-error-message,
+    .nutrition-planner-result-box {
+        padding: 10px;
+    }
+
+    .nutrition-planner-result-box .greeting {
+        font-size: 0.85em;
+    }
+
+    .nutrition-planner-result-box .plan-heading {
+        font-size: 1rem;
+    }
+
+    .nutrition-planner-result-box .plan-content {
+        font-size: 0.88rem;
+    }
 }
