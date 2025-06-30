@@ -19,7 +19,7 @@ body {
 
 /* Left side: image (Desktop View - Unchanged) */
 .login-image-section {
-  flex: 3; /* 60% of the space horizontally on desktop */
+  flex: 3.5; /* 60% of the space horizontally on desktop */
   background-color: #d7e8ff;
   display: flex;
   align-items: center;

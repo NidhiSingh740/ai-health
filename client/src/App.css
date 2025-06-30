@@ -35,7 +35,7 @@
 
 .app-content {
   flex: 1;
-  padding: 1rem; /* Optional spacing */
+  /* Optional spacing */
 }
 
 /* Optional: center the loading message */

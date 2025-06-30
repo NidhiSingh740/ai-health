@@ -157,7 +157,7 @@ body {
   /* Make the image section visible and take half the height */
   .signup-image-section {
     display: flex; /* Ensure it's displayed */
-    /* Take 1 part of the available vertical space */
+    flex: 1; /* Take 1 part of the available vertical space */
     height: 50vh; /* Explicitly set height to half of viewport height */
     /* Override desktop flex-basis */
     flex-basis: auto;
