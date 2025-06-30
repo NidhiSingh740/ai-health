@@ -27,45 +27,47 @@ background:linear-gradient(to bottom, #f5fff7 0%, #caf0d7 50%, #96dfab 100%);;
 
 /* Hero Text Styling */
 .hero-text {
-  flex: 1;
-  padding: 1rem 2rem;
-  text-align: right;
+    flex: 1; /* Allows it to grow */
+    min-width: 300px; /* Prevents it from getting too small */
+    padding-right: 40px; /* Space between text and image */
+    text-align: left; 
 }
 
 .hero-text h1 {
-  font-size: 2.5rem;
-  color: #04751c;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  line-height: 1.2;
+ font-size: 2.5rem; /* Larger, more impactful heading */
+    color: #084911; /* Darker, professional blue-gray */
+    font-weight: 700; /* Extra bold */
+    margin-bottom: 1.5rem; /* More space below heading */
+    line-height: 1.1; /* Tighter line height for large headings */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
 }
 
 .hero-text p {
-  font-size: 1.2rem;
-  color: #131313;
-  max-width: 600px;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-  margin-left: auto;
-  margin-right: 0;
-  text-align: right;
+ font-size: 1.3rem; /* Larger, more readable body text */
+    color: #232323; /* Softer text color */
+    max-width: 650px; /* Controls line length for readability */
+    line-height: 1.7; /* Improved line height */
+    margin-bottom: 2.5rem;
 }
 
 .cta-button {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background-color: #01400f;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.5rem;
-  transition: background-color 0.3s ease;
+   display: inline-block;
+    padding: 1rem 2.5rem; /* Larger button */
+    background-color: #1d7c30; /* Muted teal/light blue-green */
+    color: #fff;
+    border: none;
+    border-radius: 50px; /* Pill-shaped button */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.25rem; /* Slightly larger text */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .cta-button:hover {
-  background-color: #108f36;
+   background-color: #45ad45; /* Slightly darker on hover */
+    transform: translateY(-3px); /* Subtle lift effect */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Hero Image Styling */
@@ -122,4 +124,59 @@ background:linear-gradient(to bottom, #f5fff7 0%, #caf0d7 50%, #96dfab 100%);;
   text-align: center;
   background-color: #464748;
   color: #876fe0;
+}
+
+
+@media (max-width: 992px) {
+    .hero-content {
+        flex-direction: column; /* Stack content vertically */
+        text-align: center; /* Center text when stacked */
+        padding: 0 20px;
+    }
+
+    .hero-text {
+        padding-right: 0;
+        text-align: center; /* Center align text */
+        margin-bottom: 40px; /* Space between text and image when stacked */
+    }
+
+    .hero-text h1 {
+        font-size: 3rem; /* Slightly smaller on tablets */
+    }
+
+    .hero-text p {
+        font-size: 1.1rem;
+        max-width: 700px; /* Allow paragraph to spread more */
+        margin-left: auto;
+        margin-right: auto; /* Center paragraph */
+    }
+
+    .hero-image {
+        padding-left: 0;
+        min-width: unset; /* Allow min-width to be flexible */
+    }
+
+    .hero-image img {
+        max-width: 80%; /* Smaller image on tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 0;
+        min-height: 80vh; /* Take up more height on smaller screens */
+    }
+    .hero-text h1 {
+        font-size: 2.5rem; /* Smaller on mobile */
+    }
+    .hero-text p {
+        font-size: 1rem;
+    }
+    .cta-button {
+        font-size: 1.1rem;
+        padding: 0.8rem 2rem;
+    }
+    .hero-image img {
+        max-width: 90%; /* Adjust for mobile */
+    }
 }

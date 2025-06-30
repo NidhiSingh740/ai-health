@@ -45,7 +45,7 @@ function SignupPage() {
   return (
     <div className="signup-page-container">
       <div className="signup-image-section">
-        <img src="/images/loginsignup1.png" alt="Signup Visual" className="signup-image" />
+        <img src="/images/loginsignup2.png" alt="Signup Visual" className="signup-image" />
       </div>
 
       <div className="auth-container">

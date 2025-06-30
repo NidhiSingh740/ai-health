@@ -1,114 +1,232 @@
-.about-container {
-  font-family: 'Segoe UI', sans-serif;
-  color: #1f1e1e;
+/* General Body and Container adjustments for better presentation */
+/* Applying global font for consistency and modern look */
+body {
+    font-family: 'Inter', sans-serif; /* Using Inter, Poppins, or similar clean sans-serif font */
+    margin: 0;
+    padding: 0;
+    background-color: #f7f9fc; /* Light, neutral background */
+    color: #333; /* Default text color */
 }
+
+.about-container {
+    /* No font-family here as it's set on body */
+    /* Remove redundant color if body sets it */
+    max-width: 1400px; /* Max width for the entire content */
+    margin: 0 auto; /* Center the container */
+    padding: 0 20px; /* Add some padding on sides for smaller screens */
+}
+
 
 /* ========== About + Features Section ========== */
 .about-features {
-  padding: 80px 20px;
-  background-color:white; /* peach */
-  text-align: center;
-   
+    padding: 80px 0px; /* Adjusted padding, letting .about-container handle horizontal */
+    background-color: white; /* Keep white for the main section background */
+    text-align: center;
 }
 
 .about-features h2 {
-  font-size: 33px;
-  margin-bottom: 15px;
-  color: #054107; /* ✅ Rich dark blue */
-
+    font-size: 2.5em; /* Larger heading for emphasis */
+    margin-bottom: 20px;
+    color: #333; /* Darker, softer black */
+    font-weight: 700; /* Bolder heading */
+    line-height: 1.2; /* Better line spacing for headings */
 }
 
 .about-features p {
-  font-size: 19px;
-  max-width: 900px;
-  margin: 0 auto 40px auto;
-  line-height: 1.6;
+    font-size: 1.15em; /* Slightly larger paragraph font */
+    max-width: 900px;
+    margin: 0 auto 50px auto; /* More space below introductory paragraph */
+    line-height: 1.7; /* Improved line height for readability */
+    color: #555; /* Softer text color */
 }
 
- .features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
-  padding: 20px 0;
-} 
+.features-grid {
+    display: grid;
+    /* Adjusted grid to ensure 3 cards per row on larger screens, similar to card.jpg arrangement for Features */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; /* Increased gap between feature cards */
+    padding: 30px 0; /* More padding around the grid */
+    max-width: 1200px; /* Limit grid width for better appearance */
+    margin: 0 auto; /* Center the grid */
+}
 
 .feature-card {
- background: linear-gradient(135deg, #c1f0dc, #8ad68f);
-
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
+    /* Backgrounds: Using subtle gradients for each card */
+    background: linear-gradient(135deg, #f8faff, #e6edff); /* Light blue/lavender for features */
+    border-radius: 20px; /* Consistent rounded corners with the 'how to use' steps */
+    padding: 30px; /* More generous padding */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Softer, more pronounced shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left; /* Align text to the left */
+    display: flex; /* Use flexbox for internal alignment */
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the start */
 }
 
+/* Optional: Add distinct gradients for feature cards if desired, similar to how-to-use */
+.feature-card:nth-child(1) { background: linear-gradient(135deg, #e6f9fa, #d0f7fb); } /* Light blue */
+.feature-card:nth-child(2) { background: linear-gradient(135deg, #fae6f0, #fbcff7); } /* Light pink */
+.feature-card:nth-child(3) { background: linear-gradient(135deg, #f0e6fa, #e1cffc); } /* Light purple */
+.feature-card:nth-child(4) { background: linear-gradient(135deg, #e6fae6, #cffcce); } /* Light green */
+.feature-card:nth-child(5) { background: linear-gradient(135deg, #f9f0fa, #fce1fc); } /* Light magenta */
+.feature-card:nth-child(6) { background: linear-gradient(135deg, #fff0e6, #ffe9d0); } /* Light orange */
+
+
 .feature-card:hover {
-  transform: translateY(-5px);
+    transform: translateY(-8px); /* Consistent lift on hover */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12); /* Enhanced shadow on hover */
 }
 
 .feature-card h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: #046d20;
+    font-size: 1.4em; /* Larger heading within the card */
+    margin-bottom: 12px;
+    color: #333; /* Darker text for headings */
+    font-weight: 600; /* Semi-bold */
 }
 
 .feature-card p {
-  font-size: 16px;
-  color: #121212;
+    font-size: 1em; /* Standard paragraph font size */
+    color: #555; /* Softer black for body text */
+    line-height: 1.6;
+    margin-bottom: 0;
 }
 
 
+/* ========== How to Use Section (Updated to match cards.jpg aesthetic) ========== */
 .how-it-works {
-  padding: 80px 20px;
-  /* background: linear-gradient(135deg, #d4f8d8, #90e2a6); */
-
-
-  text-align: center;
- 
+    padding: 80px 20px; /* Consistent padding */
+    text-align: center;
+    max-width: 1400px; /* Consistent max width with about-container */
+    margin: 0 auto;
 }
 
 .how-it-works h2 {
-  font-size: 32px;
-  margin-bottom: 25px;
-  color: #034209;
+    font-size: 2.5em; /* Consistent heading size */
+    margin-bottom: 50px; /* More space below heading */
+    color: #333;
+    font-weight: 700;
 }
 
 .steps {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px; /* Consistent gap */
+    max-width: 1200px; /* Limit grid width for better appearance */
+    margin: 0 auto; /* Center the steps grid */
 }
 
 .step {
-  flex: 1 1 220px;
-  /* background: linear-gradient(135deg, #e0fce4, #b4e4c1); */
- background: linear-gradient(135deg, #c1f0dc, #8ad68f);
+    flex: 1 1 calc(25% - 25px); /* Allows 4 cards per row, accounting for gap */
+    max-width: 300px; /* Wider, rectangular card */
 
-
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  text-align: center;
-  transition: transform 0.2s ease;
+    padding: 30px; /* Consistent padding */
+    border-radius: 20px; /* Consistent rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Consistent shadow */
+    text-align: left; /* Align text to left */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the start */
+    position: relative;
+    overflow: hidden;
 }
 
 .step:hover {
-  transform: scale(1.02);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
 
-.step span {
-  font-size: 26px;
-  display: block;
-  margin-bottom: 10px;
+/* Specific background colors for each 'how to use' card (as previously defined) */
+.step:nth-child(1) {
+    background: linear-gradient(135deg, #f0e6fa, #e1cffc); /* Light purple/lavender */
 }
+.step:nth-child(2) {
+    background: linear-gradient(135deg, #e6f9fa, #d0f7fb); /* Light blue/teal */
+}
+.step:nth-child(3) {
+    background: linear-gradient(135deg, #fae6f0, #fbcff7); /* Light pink */
+}
+.step:nth-child(4) {
+    background: linear-gradient(135deg, #e6fae6, #cffcce); /* Light green */
+}
+
+
+/* Styling for the circular number icon */
+.step .step-number-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #8c72ff; /* Default color, overridden below */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    align-self: flex-start;
+}
+
+/* Specific colors for each number circle (as previously defined) */
+.step:nth-child(1) .step-number-circle { background-color: #8c72ff; }
+.step:nth-child(2) .step-number-circle { background-color: #5bbffb; }
+.step:nth-child(3) .step-number-circle { background-color: #f770b5; }
+.step:nth-child(4) .step-number-circle { background-color: #5acb87; }
+
 
 .step h4 {
-  font-size: 18px;
-  margin-bottom: 8px;
-  color: #044f17;
+    font-size: 1.3em;
+    margin-bottom: 12px;
+    color: #333;
+    font-weight: 600;
 }
 
 .step p {
-  font-size: 16px;
-  color: #0d0d0d;
+    font-size: 1em;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust for 3 columns on slightly smaller wide screens */
+        max-width: 900px;
+    }
+    .step {
+        flex: 1 1 calc(33.333% - 25px); /* 3 cards per row for 'how to use' on slightly smaller wide screens */
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 992px) {
+    .features-grid, .steps {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 2 cards per row */
+        max-width: 600px; /* Center with appropriate width */
+    }
+    .feature-card, .step {
+        flex: 1 1 calc(50% - 25px); /* Ensure 2 cards per row */
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-features h2, .how-it-works h2 {
+        font-size: 2em;
+    }
+    .about-features p {
+        font-size: 1em;
+        margin-bottom: 30px;
+    }
+    .features-grid, .steps {
+        grid-template-columns: 1fr; /* 1 card per row */
+        max-width: 400px; /* Limit single card width */
+    }
+    .feature-card, .step {
+        flex: 1 1 100%; /* Full width */
+        max-width: 380px; /* Consistent max width */
+    }
 }

@@ -110,7 +110,7 @@
 }
 
 .symptom-checker-input-form button:disabled {
-  background-color: #b0bec5;
+  background-color: #202121;
   cursor: not-allowed;
   box-shadow: none;
 }
