@@ -50,22 +50,22 @@ const AboutSection = () => {
           <div className="step">
             <div className="step-number-circle">1</div>
             <h4>Signup/Login</h4>
-            <p>Create your account for secure access.</p>
+            <p>Create your account for secure access to personalized health tools.</p>
           </div>
           <div className="step">
             <div className="step-number-circle">2</div>
             <h4>Complete Profile Setup</h4>
-            <p>Fill in your health records, medical history, and preferences.</p>
+            <p>Fill in your health records, medical history, and preferences for tailored support.</p>
           </div>
           <div className="step">
             <div className="step-number-circle">3</div>
             <h4>Use Health Tools</h4>
-            <p>Start using features like AI symptom checker, Doctor chatbot, and Nutrition planners.</p>
+            <p>Explore features like the AI symptom checker, Doctor chatbot, Nutrition Planner, and Medication Reminder.</p>
           </div>
           <div className="step">
             <div className="step-number-circle">4</div>
             <h4>Track & Mental Health Support</h4>
-            <p>Monitor health trends and get Mental Health Support Anytime.</p>
+            <p>Monitor your health trends and receive Mental Health Support anytime you need it.</p>
           </div>
         </div>
       </div>

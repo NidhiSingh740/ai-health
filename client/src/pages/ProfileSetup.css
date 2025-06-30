@@ -1,3 +1,6 @@
+
+
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* --- IMPORTANT: Ensure these body/root styles are in your main app's global CSS (e.g., App.css or index.css) --- */
@@ -202,7 +205,7 @@ main { // Assuming your main content area that wraps ProfileSetup
     color: #ffffff;
     border: none;
     border-radius: 28px;
-    padding: 14px 30px; /* Increased padding for a more substantial button */
+    padding: 14px 20px; /* Increased padding for a more substantial button */
     font-size: 1.05rem; /* Slightly larger font for the button */
     font-weight: 500;
     cursor: pointer;
@@ -210,7 +213,7 @@ main { // Assuming your main content area that wraps ProfileSetup
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 180px; /* Increased min-width for the button */
+    width: 180px; /* Increased min-width for the button */
     /* align-self: flex-end; -- This will be handled by .profile-setup-footer-actions */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     /* margin-top: 20px; -- This will be handled by gap in .profile-setup-footer-actions */
