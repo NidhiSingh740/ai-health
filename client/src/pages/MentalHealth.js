@@ -50,7 +50,7 @@ function MentalHealth({ user }) {
         },
       };
 
-      const res = await axios.post("http://localhost:5000/api/mental-health", payload);
+      const res = await axios.post("https://ai-health-n4i4.onrender.com/api/mental-health", payload);
       setReply(res.data.reply);
     } catch (err) {
       if (err.response?.data?.error) {

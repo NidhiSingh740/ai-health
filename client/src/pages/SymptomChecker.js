@@ -37,7 +37,7 @@ const SymptomChecker = ({ user }) => {
             };
 
             const res = await axios.post(
-                'http://localhost:5000/api/symptom-checker/check',
+                'https://ai-health-n4i4.onrender.com/api/symptom-checker/check',
                 payload
             );
             // Assuming res.data.diagnosis is the structured object from the backend

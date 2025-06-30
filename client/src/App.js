@@ -24,7 +24,7 @@ function App() {
 
   const fetchUserProfile = async (token) => {
     try {
-      const response = await fetch("http://localhost:5000/api/auth/profile", {
+      const response = await fetch("https://ai-health-n4i4.onrender.com/api/auth/profile", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

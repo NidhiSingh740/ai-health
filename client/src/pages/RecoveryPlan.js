@@ -21,7 +21,7 @@ const RecoveryPlan = ({ user }) => {
     setLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:5000/api/recovery-plan/generate', {
+      const res = await axios.post('https://ai-health-n4i4.onrender.com/api/recovery-plan/generate', {
         diagnosis: diagnosis.trim(),
         user: { // Pass user details as context, if your backend uses them for personalization
           name: user?.name,

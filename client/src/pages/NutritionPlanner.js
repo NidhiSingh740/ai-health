@@ -42,7 +42,7 @@ const NutritionPlanner = ({ user }) => {
         }
       };
 
-      const res = await axios.post("http://localhost:5000/api/nutrition", payload);
+      const res = await axios.post("https://ai-health-n4i4.onrender.com/api/nutrition", payload);
       setPlan(res.data.plan); // Assuming res.data.plan is the string meal plan
     } catch (err) {
       if (err.response?.data?.error) {

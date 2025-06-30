@@ -41,7 +41,7 @@ function MedicationReminder({ user }) { // Added 'user' prop for consistency, th
       };
 
       const res = await axios.post(
-        'http://localhost:5000/api/medication/add',
+        'https://ai-health-n4i4.onrender.com/api/medication/add',
         payload,
         {
           headers: {

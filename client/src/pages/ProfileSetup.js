@@ -32,7 +32,7 @@ const ProfileSetup = () => {
                     return;
                 }
 
-                const res = await axios.get('http://localhost:5000/api/auth/profile', {
+                const res = await axios.get('https://ai-health-n4i4.onrender.com/api/auth/profile', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -83,7 +83,7 @@ const ProfileSetup = () => {
         }
 
         try {
-            const res = await axios.put('http://localhost:5000/api/auth/profile', formData, {
+            const res = await axios.put('https://ai-health-n4i4.onrender.com/api/auth/profile', formData, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`,

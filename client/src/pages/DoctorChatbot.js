@@ -58,7 +58,7 @@ function DoctorChatbot({ user }) {
         },
       };
 
-      const res = await axios.post("http://localhost:5000/api/doctor-chatbot", payload);
+      const res = await axios.post("https://ai-health-n4i4.onrender.com/api/doctor-chatbot", payload);
       setMessages((prevMessages) => [
         ...prevMessages,
         { type: "ai", text: res.data.reply },
@@ -116,7 +116,7 @@ function DoctorChatbot({ user }) {
     }));
 
     try {
-      const res = await axios.post("http://localhost:5000/api/doctor-chatbot/analyze-report", formData, {
+      const res = await axios.post("https://ai-health-n4i4.onrender.com/api/doctor-chatbot/analyze-report", formData, {
         headers: {
           "Content-Type": "multipart/form-data", // Important for file uploads
         },
