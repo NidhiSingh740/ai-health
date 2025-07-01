@@ -5,6 +5,10 @@ const HeroSection = () => {
   return (
     <section className="hero-section">
       <div className="hero-content">
+             <div className="hero-image">
+          <img src="/i.webp" alt="AI Healthcare Assistant" />
+        </div>
+
         <div className="hero-text">
           <h1>Your AI Health Companion</h1>
           <p>
@@ -14,9 +18,7 @@ const HeroSection = () => {
           </p>
           <a href="/signup" className="cta-button">Get Started</a>
         </div>
-        <div className="hero-image">
-          <img src="/images/doctor2.png" alt="AI Healthcare Assistant" />
-        </div>
+   
       </div>
     </section>
   );
