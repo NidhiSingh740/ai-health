@@ -6,12 +6,7 @@ const AboutSection = () => {
     <div className="about-container">
 
       <div className="about-features">
-        <h2>About Us</h2>
-        <p>
-          Our AI-Powered Smart Healthcare Assistant is designed to help users manage their health effectively using AI technology.
-          It provides instant symptom analysis, personalized recovery suggestions, mental health support, medication reminders, and more—
-          all in one seamless platform.
-        </p>
+    
 
         <h2>Key Features</h2>
         <div className="features-grid">
@@ -42,6 +37,15 @@ const AboutSection = () => {
             <p>Access mindfulness tools, stress management resources, and emotional health support.</p>
           </div>
         </div>
+      </div>
+      <div className="about-features">
+        <h2>About Us</h2>
+        <p>
+          Our AI-Powered Smart Healthcare Assistant is designed to help users manage their health effectively using AI technology.
+          It provides instant symptom analysis, personalized recovery suggestions, mental health support, medication reminders, and more—
+          all in one seamless platform.
+        </p>
+
       </div>
 
       <div className="how-it-works">

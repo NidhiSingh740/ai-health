@@ -52,6 +52,7 @@ background:linear-gradient(to bottom, #f5fff7 0%, #caf0d7 50%, #96dfab 100%);
     max-width: 650px; /* Controls line length for readability */
     line-height: 1.7; /* Improved line height */
     margin-bottom: 2.5rem;
+    text-align: justify;
 }
 
 .cta-button {
@@ -77,14 +78,13 @@ background:linear-gradient(to bottom, #f5fff7 0%, #caf0d7 50%, #96dfab 100%);
 /* Hero Image Styling */
 .hero-image {
   flex: 1;
-  min-width: 300px;
+
   text-align: center;
-  padding: 1rem;
 }
 
 .hero-image img {
-  max-width: 50%;
-  height: auto;
+  width: 90%;
+  height: 100%;
   vertical-align: middle;
 }
 
