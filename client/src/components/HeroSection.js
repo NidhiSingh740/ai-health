@@ -15,7 +15,7 @@ const HeroSection = () => {
           <a href="/signup" className="cta-button">Get Started</a>
         </div>
         <div className="hero-image">
-          <img src="/images/doctor.png" alt="AI Healthcare Assistant" />
+          <img src="/images/doctor2.png" alt="AI Healthcare Assistant" />
         </div>
       </div>
     </section>
