@@ -24,7 +24,7 @@ const Navbar = ({ user, onLogout }) => {
         fontWeight: 'bold',
         color: '#04751c'
       }}>
-         Smart Health AI
+         Arogya AI
       </div>
 
       <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
