@@ -12,6 +12,8 @@
   display: flex; /* Helps center the container if its parent is not flex */
   justify-content: center;
   align-items: flex-start;
+    min-height: 100vh;
+
 }
 
 /* Main Recovery Plan Container (consistent with chatbot & symptom checker) */

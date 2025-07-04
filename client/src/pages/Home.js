@@ -11,7 +11,7 @@ const LandingPage = () => {
      
       <HeroSection />
       <AboutSection />
-      <Footer />
+      {/* <Footer /> */}
       
       {/* Uncomment the following line if you want to include the Navbar */}
       {/* <Navbar /> */}

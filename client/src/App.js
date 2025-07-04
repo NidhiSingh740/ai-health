@@ -93,6 +93,7 @@ function App() {
           <Route path="/nutrition-planner" element={<NutritionPlanner user = {user} />} />
           <Route path="/mental-health" element={<MentalHealth user = {user} />} />
         </Routes>
+         <Footer />
       </div>
 
  
