@@ -334,7 +334,7 @@
         padding: 10px 15px;
         font-size: 0.9rem;
          /* Allows button to stretch full width */
-        width: 100%; /* Explicitly make button full width */
+        width: 30%; /* Explicitly make button full width */
         align-items: center;
     }
 

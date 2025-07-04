@@ -337,7 +337,7 @@
     }
 
     .recovery-plan-input-form button {
-        width: 100%; /* Make button full width */
+        width: 50%; /* Make button full width */
         padding: 10px 15px;
         font-size: 0.9rem;
         min-width: unset; /* Remove min-width to allow full width */

@@ -324,11 +324,13 @@ main { // Assuming your main content area that wraps MedicationReminder componen
     }
 
     .medication-reminder-input-form button {
-        width: 100%; /* Full width button on mobile */
+        width: 65%; /* Full width button on mobile */
         padding: 8px 15px; /* Further reduced padding */
         font-size: 0.85rem;
         min-width: unset; /* Allow full width */
         margin-top: 8px;
+        align-items: left;
+
     }
 
     .medication-reminder-error-message,

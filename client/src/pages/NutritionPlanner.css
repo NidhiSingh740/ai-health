@@ -337,7 +337,7 @@ main { // Assuming your main content area that wraps NutritionPlanner
     .nutrition-planner-container {
         border-radius: 0; /* Full width on mobile */
         min-height: 450px;
-        max-height: 95vh;
+        max-height: 100vh;
     }
 
     .nutrition-planner-header {
@@ -361,10 +361,10 @@ main { // Assuming your main content area that wraps NutritionPlanner
     }
 
     .nutrition-planner-input-form textarea {
-        padding: 8px 12px; /* Further reduced padding */
-        font-size: 0.9rem;
-        min-height: 40px; /* Adjusted min-height for phones */
-        max-height: 100px; /* Adjusted max-height for phones */
+            padding: 10px 15px;
+    font-size: 0.95rem;
+    min-height: 35px;
+    max-height: 100px; /* Adjusted max-height for phones */
     }
 
     .nutrition-planner-input-form button {
@@ -419,7 +419,7 @@ main { // Assuming your main content area that wraps NutritionPlanner
 
     .nutrition-planner-input-form {
         padding: 8px 10px;
-        gap: 8px;
+        gap: 10px;
     }
 
     .nutrition-planner-input-form textarea {

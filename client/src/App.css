@@ -103,7 +103,7 @@ html, body, #root {
 .footer {
   max-height: 90px;
   color: white;
-  background-color: #000000;
+  background-color: #1d1d1d;
   flex-shrink: 0; /* Prevents footer from shrinking */
   margin-top: auto; /* Pushes the footer to the bottom if the main content is shorter than the viewport */
   /* Add other footer specific styles here */
