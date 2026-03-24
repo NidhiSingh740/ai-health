@@ -58,7 +58,7 @@ Example of the exact return:
 
     try {
         const model = genAI.getGenerativeModel({
-            model: "gemini-2.5-flash-preview-05-20" // Using the model you indicated is working
+            model: "gemini-3-flash-preview" // Using the model you indicated is working
         });
         const result = await model.generateContent(prompt);
         let raw = await result.response.text();

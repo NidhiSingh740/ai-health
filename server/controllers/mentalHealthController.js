@@ -42,7 +42,7 @@ Respond kindly and clearly in plain text only (no markdown or code).
 
   try {
     const model = genAI.getGenerativeModel({
-      model: "gemini-2.5-flash-preview-05-20"
+      model: "gemini-3-flash-preview"
     });
 
     const result = await model.generateContent(prompt);

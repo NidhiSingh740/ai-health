@@ -84,7 +84,7 @@ app.post('/api/doctor-chatbot/analyze-report', upload.single('medicalReport'), a
 
         // Example for Google Gemini
         const geminiResponse = await axios.post(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${process.env.GEMINI_API_KEY}`,
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${process.env.GEMINI_API_KEY}`,
             {
                 contents: [{ parts: [{ text: aiPrompt }] }],
             }
@@ -131,7 +131,7 @@ app.post('/api/doctor-chatbot', async (req, res) => {
         Provide a concise and helpful response. If it's a serious medical issue, advise them to consult a real doctor.`;
 
         const geminiResponse = await axios.post(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${process.env.GEMINI_API_KEY}`,
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${process.env.GEMINI_API_KEY}`,
             {
                 contents: [{ parts: [{ text: aiPrompt }] }],
             }

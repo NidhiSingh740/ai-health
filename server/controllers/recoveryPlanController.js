@@ -63,7 +63,7 @@ Please generate a personalized recovery plan including:
 `;
 
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-preview-05-20" });
+    const model = genAI.getGenerativeModel({ model: "gemini-3-flash-preview" });
     const result = await model.generateContent(prompt);
     const raw = await result.response.text();
 
